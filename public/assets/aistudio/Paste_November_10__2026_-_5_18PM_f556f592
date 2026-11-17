@@ -1,0 +1,1326 @@
+USEDRIGHT — PREMIUM MARKETPLACE FRONTEND DEVELOPMENT
+
+YOUR ROLE
+
+Act as a senior product designer, senior UI/UX designer, senior frontend developer, and experienced marketplace product architect.
+
+You are responsible for designing and building a premium, modern, production-quality frontend for UsedRight.
+
+Do not approach this as a basic e-commerce website template. Think like a professional team building a serious international technology marketplace.
+
+Your work must demonstrate:
+
+* Excellent visual design.
+* Clear user journeys.
+* Strong information architecture.
+* Thoughtful interaction design.
+* Consistent component design.
+* Responsive layouts.
+* Clean, maintainable frontend architecture.
+* Realistic marketplace workflows.
+
+The result must look professionally designed by an experienced product design agency, not like a generic AI-generated website.
+
+Do not use generic AI landing-page layouts, excessive gradients, random floating cards, unnecessary decorative icons, oversized headings everywhere, or repetitive rounded containers.
+
+Every section must have a purpose.
+
+⸻
+
+PHASE 1: PROJECT IDENTITY AND BRAND DESIGN
+
+1. Brand name
+
+UsedRight
+
+Brand positioning:
+
+A trusted marketplace for verified foreign-used smartphones and laptops.
+
+Brand promise:
+
+Know exactly what you’re buying.
+
+Supporting message:
+
+Every device has a disclosed condition, transparent repair history, clear functionality status, and a verified seller.
+
+The platform must communicate:
+
+* Transparency.
+* Trust.
+* Quality.
+* Accountability.
+* Simplicity.
+* Buyer protection.
+
+The marketplace must exclusively support foreign-used devices. Nigerian-used devices must not be listed or sold.
+
+Initially, the only product categories are:
+
+1. Phones.
+2. Laptops.
+
+Do not introduce televisions, cameras, gaming consoles, tablets, accessories, home appliances, or unrelated product categories at this stage.
+
+2. Official brand colours
+
+Use these colours consistently throughout the website, logo, buttons, icons, badges, dashboards, forms, illustrations, and other design elements.
+
+Primary Purple: #A981FF
+
+Secondary Purple: #B796FE
+
+Light Purple: #D0BCFC
+
+Supporting colours:
+
+* White: #FFFFFF
+* Main background: #FAF9FC
+* Soft purple background: #F5F0FF
+* Main text: #211B2B
+* Secondary text: #716B7B
+* Border: #EAE6F0
+* Success: #238653
+* Warning: #D99A32
+* Error: #D9534F
+
+The three purple colours above are the official brand colours. Do not introduce another dominant brand colour.
+
+Important design instructions:
+
+* Use #A981FF for primary brand actions and important highlights.
+* Use #B796FE for secondary brand elements.
+* Use #D0BCFC for subtle backgrounds and soft highlights.
+* Use dark text for readability.
+* Use white space generously.
+* Avoid making every button, card and background purple.
+* Use purple in a sophisticated and controlled manner.
+* Maintain sufficient text contrast.
+* Do not use rainbow gradients or unnecessary colour combinations.
+
+3. Logo design
+
+Create a professional, minimal UsedRight logo.
+
+The logo should communicate trust, verification and the resale of quality electronics.
+
+Explore a simple symbol that combines:
+
+* A subtle checkmark or verification concept.
+* A device-inspired shape.
+* A clean geometric symbol.
+
+The symbol should be recognisable at small sizes.
+
+Use the official purple palette.
+
+Create:
+
+* Full logo with symbol and UsedRight wordmark.
+* Compact logo symbol for mobile navigation.
+* Favicon.
+* Logo version suitable for white backgrounds.
+
+Do not create an overly complicated logo. Avoid cartoon-style illustrations and generic shopping bag symbols.
+
+The logo must be consistent across the public website, buyer dashboard and seller dashboard.
+
+⸻
+
+PHASE 2: FRONTEND ARCHITECTURE
+
+Build two complete frontend experiences within the same project:
+
+1. Buyer marketplace and buyer dashboard.
+2. Seller storefront and seller dashboard.
+
+Both experiences must share the same design system, product database structure, vendor information structure and order-related mock data.
+
+Use a clean and scalable frontend architecture.
+
+Recommended technology:
+
+* React.
+* TypeScript.
+* Tailwind CSS.
+* shadcn/ui where useful.
+* Lucide icons.
+* Responsive component-based architecture.
+
+Use reusable components.
+
+Do not create separate inconsistent designs for the buyer and seller sides.
+
+All navigation links, buttons, forms, filters, tabs, menus, modals, dropdowns and dashboard actions must be interactive.
+
+This is a frontend demo at this stage. Use realistic mock data and local demo state where necessary.
+
+Do not pretend that backend functionality, identity verification, payment settlement, real messaging or actual document verification is already connected.
+
+Clearly separate simulated functionality from features that will require backend integration.
+
+Do not build an admin dashboard in this phase.
+
+⸻
+
+PHASE 3: PUBLIC BUYER WEBSITE
+
+Create a premium marketplace homepage.
+
+1. Navigation
+
+Desktop navigation:
+
+* UsedRight logo.
+* Phones.
+* Laptops.
+* Verified Vendors.
+* How It Works.
+* Buyer Protection.
+* Search bar.
+* Sign In.
+* Create Account.
+
+Use a clean header with a white background and subtle bottom border.
+
+The navigation should remain simple and easy to understand.
+
+Mobile navigation:
+
+* Compact logo.
+* Search icon.
+* Account icon.
+* Shopping cart icon.
+* Hamburger menu.
+
+Create a well-designed mobile menu.
+
+2. Homepage hero section
+
+Main headline:
+
+Buy Pre-Owned. Know Exactly What You’re Getting.
+
+Supporting text:
+
+Shop verified foreign-used phones and laptops with transparent condition reports, disclosed repair history and trusted sellers.
+
+Primary CTA:
+Explore Devices
+
+Secondary CTA:
+How UsedRight Works
+
+Use a beautiful, professionally art-directed device image showing a premium smartphone and laptop.
+
+The image must look like real product photography, not a cartoon or an AI-style abstract illustration.
+
+Do not overcrowd the hero section.
+
+3. Trust indicators
+
+Below the hero section, introduce a clean trust strip with four points:
+
+* Foreign-Used Only.
+* Verified Sellers.
+* Transparent Device Reports.
+* Buyer Protection.
+
+Use simple icons and short supporting text.
+
+Do not make exaggerated promises.
+
+4. Shop by category
+
+Create two attractive category cards:
+
+Phones
+
+Explore verified foreign-used smartphones from leading manufacturers.
+
+CTA: Explore Phones.
+
+Laptops
+
+Explore foreign-used laptops for work, education, business and everyday use.
+
+CTA: Explore Laptops.
+
+Use high-quality product imagery.
+
+5. Featured devices
+
+Create a premium product grid.
+
+Show realistic products from brands such as:
+
+* Apple.
+* Samsung.
+* Google Pixel.
+* HP.
+* Dell.
+* Lenovo.
+* ASUS.
+
+Only show smartphones and laptops.
+
+Each product card must contain:
+
+* Product image.
+* Brand.
+* Model.
+* Storage or RAM and storage specification where relevant.
+* Price in Nigerian naira.
+* Cosmetic grade.
+* Battery health for phones where available.
+* Vendor name.
+* Vendor verification badge.
+* Foreign-used status.
+* Important disclosed fault or repair information.
+* View Details CTA.
+
+Example product:
+
+iPhone 13 Pro, 256GB
+
+₦420,000
+
+Grade A
+
+Battery Health: 88%
+
+Face ID: Working
+
+Screen: Original, verified
+
+SIM: Unlocked
+
+Seller: Prime Mobile Store
+
+Verified Vendor.
+
+These are illustrative demo details, not real inventory or verified claims.
+
+Do not hide important device limitations in tiny text.
+
+6. Search and product filtering
+
+Create a functional search system.
+
+Buyers should be able to search by:
+
+* Brand.
+* Model.
+* Price.
+* Storage.
+* RAM.
+* Cosmetic condition.
+* Battery health.
+* Network status.
+* Vendor.
+* Phone or laptop category.
+
+Phone filters:
+
+* Brand.
+* Model.
+* Storage capacity.
+* Battery health range.
+* Cosmetic grade.
+* Screen condition.
+* SIM status.
+* Face ID or fingerprint status.
+* Price range.
+
+Laptop filters:
+
+* Brand.
+* Model.
+* Processor.
+* RAM.
+* Storage.
+* Screen size.
+* Battery condition.
+* Cosmetic grade.
+* Price range.
+
+Add sorting:
+
+* Recommended.
+* Lowest price.
+* Highest price.
+* Newest listings.
+* Best condition.
+
+Filters must actually affect the mock product results.
+
+Include a clear-all-filters action.
+
+⸻
+
+PHASE 4: PRODUCT DETAILS PAGE
+
+Every device must have a detailed product page.
+
+The design should make it easy for a buyer to understand the exact condition of the device before purchasing.
+
+Product page layout
+
+Left side:
+
+* Main product image.
+* Image gallery.
+* Multiple angles.
+* Zoom or image enlargement.
+* Additional device images.
+
+Right side:
+
+* Brand and model.
+* Price.
+* Vendor name.
+* Vendor verification badge.
+* Storefront link.
+* Cosmetic grade.
+* Device availability.
+* Add to Cart.
+* Buy Now.
+* Message Seller.
+
+Below the main product information, create the following sections.
+
+A. Device Condition Report
+
+Display a structured report.
+
+Phones must support:
+
+* Battery health percentage.
+* Battery replaced or not.
+* Screen originality.
+* Screen replacement history.
+* Face ID or fingerprint functionality.
+* Front camera.
+* Rear camera.
+* Speakers.
+* Microphone.
+* Charging port.
+* Wi-Fi.
+* Bluetooth.
+* SIM functionality.
+* Network lock status.
+* iCloud or Google activation lock status.
+* MDM status.
+* IMEI verification status.
+* Other repairs.
+
+Laptops must support:
+
+* Battery condition.
+* Battery cycle count where available.
+* Screen condition.
+* Keyboard.
+* Trackpad.
+* Speakers.
+* Microphone.
+* Webcam.
+* Wi-Fi.
+* Bluetooth.
+* USB ports.
+* HDMI or other available ports.
+* Charging.
+* SSD or HDD condition.
+* RAM specification.
+* Processor specification.
+* Operating system.
+* BIOS or firmware lock status where applicable.
+* Activation or management lock status where applicable.
+* Other repairs.
+
+Each field must have clear status labels:
+
+* Working.
+* Faulty.
+* Replaced.
+* Original, verified.
+* Aftermarket.
+* Unknown.
+* Not tested.
+* Not applicable.
+
+Never force a seller to claim a feature is working when it has not been tested.
+
+B. Cosmetic condition
+
+Use four clear cosmetic grades:
+
+Grade A:
+Excellent condition with minimal signs of use.
+
+Grade B:
+Good condition with visible but minor signs of use.
+
+Grade C:
+Fair condition with noticeable cosmetic wear.
+
+Grade D:
+Heavy cosmetic wear, but the disclosed functionality must be clear.
+
+Make it clear that cosmetic grade is different from functional condition.
+
+C. Repair history
+
+Show:
+
+* Screen replacement.
+* Battery replacement.
+* Camera replacement.
+* Keyboard replacement for laptops.
+* Storage replacement.
+* Other component replacements.
+* Previous repairs.
+* Unknown repair history.
+
+D. Foreign-use verification
+
+Display:
+
+Foreign-Used Device.
+
+Show an appropriate verification status based on the mock data.
+
+Explain that the seller has submitted supporting evidence reviewed by UsedRight.
+
+Do not claim a device is independently verified unless the demo record explicitly has an approved verification status.
+
+E. Vendor information
+
+Display:
+
+* Store name.
+* Vendor verification badge.
+* Store rating.
+* Number of completed orders.
+* Store description.
+* Warranty policy.
+* Delivery policy.
+* Link to view the vendor storefront.
+
+The individual vendor’s private identity documents must never appear publicly.
+
+F. Buyer protection
+
+Create a simple explanation of:
+
+* Secure checkout.
+* Delivery tracking.
+* Inspection period.
+* Dispute reporting.
+* Refund or return policy.
+
+Do not invent legally binding terms. Use clearly labelled demo policy content pending final legal approval.
+
+⸻
+
+PHASE 5: BUYER ACCOUNT AND DASHBOARD
+
+Create a complete buyer account experience.
+
+1. Buyer registration
+
+Registration fields:
+
+* Full name.
+* Email.
+* Phone number.
+* Password.
+* Confirm password.
+
+Login:
+
+* Email or phone.
+* Password.
+* Forgot password.
+
+Include validation and useful error messages.
+
+Create a demo login option for testing.
+
+2. Buyer dashboard
+
+Dashboard navigation:
+
+* Overview.
+* My Orders.
+* Saved Devices.
+* Messages.
+* Notifications.
+* Addresses.
+* Profile.
+* Help and Support.
+
+Overview should show:
+
+* Active orders.
+* Completed purchases.
+* Pending payments.
+* Open disputes.
+* Recently viewed devices.
+
+Create a simple and clean dashboard, not an overcrowded analytics screen.
+
+3. Shopping cart and checkout
+
+Buyers should be able to:
+
+* Add devices to cart.
+* Remove devices.
+* Update cart.
+* View item prices.
+* View buyer service charge.
+* View delivery charge.
+* View final checkout total.
+
+For the demo, calculate a buyer service charge of 1% of the device price.
+
+Show the fee clearly before payment.
+
+Example:
+
+Device price: ₦300,000
+
+Buyer service charge: ₦3,000
+
+Delivery: ₦5,000
+
+Total: ₦308,000.
+
+Use mock payment interactions only.
+
+Do not connect live payment processing.
+
+4. Orders
+
+Buyer order dashboard should show:
+
+* Order reference.
+* Product.
+* Vendor.
+* Amount.
+* Payment status.
+* Fulfilment status.
+* Delivery tracking.
+* Estimated delivery.
+* Order history.
+
+Create realistic order status steps:
+
+1. Order placed.
+2. Seller preparing device.
+3. Awaiting courier collection.
+4. In transit.
+5. Delivered.
+6. Buyer inspection.
+7. Completed.
+
+Add a simulated buyer acceptance button and a dispute button.
+
+Do not allow a buyer to accept a product before it is delivered in the demo workflow.
+
+5. Buyer messaging
+
+Build a modern internal messaging interface.
+
+Features:
+
+* Conversation list.
+* Vendor name and store image.
+* Message history.
+* Text input.
+* Send button.
+* Timestamps.
+* Unread indicators.
+* Product reference attached to the conversation.
+
+Allow the buyer to start a conversation from a product page.
+
+Add a simple warning when a message appears to contain:
+
+* Phone numbers.
+* Email addresses.
+* Bank account details.
+* WhatsApp contact requests.
+* Instructions to pay outside UsedRight.
+
+For the demo, simulate warnings. Do not automatically ban users.
+
+The objective is to encourage communication and transactions to remain on the platform.
+
+⸻
+
+PHASE 6: SELLER REGISTRATION AND VERIFICATION FRONTEND
+
+Create a professional vendor onboarding experience.
+
+The seller must not be allowed to list products until their verification and foreign-use evidence have been approved in the eventual production system.
+
+For this frontend demo, simulate the review process with clear statuses.
+
+1. Seller registration
+
+Fields:
+
+* Full legal name.
+* Email.
+* Phone number.
+* Password.
+* Country.
+* Business type.
+
+Business type options:
+
+* Individual seller.
+* Registered business.
+
+2. Identity verification
+
+Create a structured identity verification page.
+
+For individual sellers:
+
+* Legal name.
+* Date of birth.
+* Government-issued ID type.
+* ID number.
+* ID upload.
+* Live facial verification placeholder.
+* Liveness check placeholder.
+* Address.
+* Phone verification.
+* Email verification.
+
+For registered businesses:
+
+* Registered legal business name.
+* CAC registration number.
+* Business address.
+* Company registration document.
+* Authorised representative’s legal name.
+* Representative’s identity verification.
+* Representative’s facial verification.
+* Business contact details.
+
+Do not actually collect or process sensitive biometric information in the frontend demo.
+
+Use simulated upload and verification states.
+
+Show:
+
+* Not Started.
+* Submitted.
+* Under Review.
+* Approved.
+* Rejected.
+* Additional Information Required.
+
+Clearly explain that identity verification must be completed before selling.
+
+3. Public storefront identity
+
+Keep legal identity and public store branding separate.
+
+Private verification information:
+
+* Legal name.
+* Identity documents.
+* Personal contact information.
+* Business verification records.
+
+Public storefront:
+
+* Store name.
+* Store logo.
+* Store banner.
+* Store description.
+* Business location at an appropriate general level.
+* Store warranty.
+* Delivery information.
+* Store rating.
+* Verification badge.
+
+For registered businesses, display their registered business name in the appropriate business identity section.
+
+For individual sellers, protect their private legal identity while displaying their approved storefront name.
+
+Allow storefront names to be edited, but any change to legal identity must require re-verification.
+
+⸻
+
+PHASE 7: FOREIGN-USED DEVICE EVIDENCE
+
+This is a core feature. Do not treat it as an optional document upload.
+
+The platform must exclusively support devices previously used outside Nigeria.
+
+A device manufactured abroad or merely shipped from another country is not automatically foreign-used.
+
+Seller evidence submission
+
+Before a device can be listed, the vendor must submit evidence supporting its foreign-use history.
+
+Possible documents:
+
+* Original supplier purchase invoice.
+* Supplier purchase record.
+* Airway bill.
+* Cargo receipt.
+* Freight-forwarder document.
+* Relevant import documentation.
+* Device batch manifest.
+* IMEI or serial number list linked to the shipment or purchase batch.
+* Additional supporting evidence.
+
+Allow PDF, JPG and PNG uploads.
+
+Create fields for:
+
+* Country where devices were sourced.
+* Supplier name.
+* Purchase date.
+* Shipment reference.
+* Shipping date.
+* Number of devices in the batch.
+* Device IMEI or serial number.
+* Related document uploads.
+
+Allow one document to support multiple devices in a batch, but each device must be linked to the relevant batch evidence.
+
+Do not automatically approve evidence simply because a file was uploaded.
+
+Use these demo statuses:
+
+* Evidence Not Submitted.
+* Evidence Submitted.
+* Under Review.
+* Verified.
+* Rejected.
+* Additional Evidence Required.
+
+Only devices with an approved foreign-use verification status should appear as approved listings in the production workflow.
+
+In the demo, clearly distinguish mock approved records from pending records.
+
+Include this vendor declaration:
+
+“I confirm that this device was previously used outside Nigeria. I understand that submitting false information or listing a Nigerian-used device may result in listing removal, withheld settlement where legally permitted, account suspension and further action under the platform’s policies.”
+
+Require the seller to accept the declaration.
+
+⸻
+
+PHASE 8: SELLER DASHBOARD
+
+Create a polished seller dashboard.
+
+Navigation:
+
+* Overview.
+* My Products.
+* Add New Device.
+* Orders.
+* Messages.
+* Storefront.
+* Promotions.
+* Warranty Settings.
+* Delivery Settings.
+* Foreign-Use Evidence.
+* Verification.
+* Earnings.
+* Profile and Settings.
+
+1. Seller overview
+
+Show:
+
+* Total listings.
+* Active listings.
+* Pending approval.
+* Sold devices.
+* Active orders.
+* Total sales.
+* Pending settlement.
+* Available balance.
+* Store rating.
+
+Use simple data visualisation only where it improves understanding.
+
+2. Add new device workflow
+
+Create a multi-step product listing form.
+
+Step 1: Category
+
+Select:
+
+* Phone.
+* Laptop.
+
+Do not allow other categories.
+
+Step 2: Product information
+
+For phones:
+
+* Brand.
+* Model.
+* Storage.
+* Colour.
+* Network/SIM type.
+* IMEI.
+* Price.
+* Device photographs.
+
+For laptops:
+
+* Brand.
+* Model.
+* Processor.
+* RAM.
+* Storage.
+* Screen size.
+* Operating system.
+* Serial number.
+* Price.
+* Device photographs.
+
+Step 3: Cosmetic condition
+
+Select Grade A, B, C or D.
+
+Show descriptions to help sellers choose correctly.
+
+Step 4: Functional condition
+
+Show the appropriate structured condition fields for the chosen category.
+
+Step 5: Repairs and replacements
+
+Allow sellers to disclose replaced parts and previous repairs.
+
+Step 6: Foreign-use evidence
+
+Link the device to an approved foreign-use evidence batch or submit new supporting evidence.
+
+Step 7: Warranty and delivery
+
+Select warranty terms and delivery options.
+
+Step 8: Review and submit
+
+Display a complete preview of the listing before submission.
+
+Allow saving as draft.
+
+A listing should not become publicly available until all required information and evidence have passed the required approval process.
+
+3. My products
+
+Create a product management page.
+
+Tabs:
+
+* All.
+* Active.
+* Drafts.
+* Pending Review.
+* Rejected.
+* Sold.
+* Archived.
+
+Allow vendors to:
+
+* Edit listings.
+* Update prices.
+* Mark devices unavailable.
+* Archive listings.
+* View listing performance.
+* See rejection reasons.
+
+Changes to important condition disclosures should trigger a review rather than silently changing information already shown to buyers.
+
+⸻
+
+PHASE 9: VENDOR STOREFRONT AND MARKETING CENTRE
+
+This is a major part of the marketplace.
+
+Vendors should have freedom to express their individual business identity and marketing strategy while remaining within UsedRight’s marketplace policies.
+
+Create a Storefront Management section.
+
+Store branding
+
+Allow sellers to:
+
+* Upload store logo.
+* Upload banner.
+* Set store name.
+* Write store description.
+* Set general business location.
+* Add customer service information through platform messaging.
+
+Promotions
+
+Allow sellers to create:
+
+* Percentage discounts.
+* Fixed-amount discounts.
+* Limited-time promotions.
+* Coupon codes.
+* Flash sales.
+* Repeat-customer offers.
+* Bundle offers.
+
+Include:
+
+* Promotion name.
+* Description.
+* Start date.
+* End date.
+* Eligible devices.
+* Discount type.
+* Discount value.
+* Maximum usage where applicable.
+* Active/inactive status.
+
+Show a preview before publishing.
+
+Warranty settings
+
+Allow vendors to set warranty periods:
+
+* No additional seller warranty.
+* 7 days.
+* 14 days.
+* 30 days.
+* 60 days.
+* 90 days.
+* Custom period.
+
+Allow the vendor to explain:
+
+* What is covered.
+* What is excluded.
+* How to make a claim.
+* Who pays return delivery where applicable.
+
+Do not allow vague warranty promises.
+
+The platform’s buyer protection and dispute policies must remain separate from vendor warranties.
+
+Delivery offers
+
+Allow vendors to offer:
+
+* Free delivery.
+* Paid delivery.
+* Free delivery within selected locations.
+* Free delivery above a minimum purchase amount.
+* Promotional delivery discounts.
+
+Allow vendors to define locations and conditions.
+
+Do not show free delivery unless the order qualifies.
+
+Store announcements
+
+Allow vendors to create promotional messages displayed on their storefront.
+
+Examples:
+
+* New arrivals.
+* Weekend sale.
+* Back-to-school offer.
+* Free delivery campaign.
+* Limited stock announcement.
+
+Include basic moderation-ready design.
+
+Do not allow false discount claims, misleading warranty statements or deceptive advertising.
+
+⸻
+
+PHASE 10: SELLER EARNINGS AND SERVICE CHARGES
+
+Create an earnings interface.
+
+For the frontend demo, use these illustrative service charge assumptions:
+
+Buyer service charge: 1%.
+
+Seller service charge: 1%.
+
+Combined marketplace service charge: 2%.
+
+The service charge must be calculated from the actual device sale price.
+
+Example:
+
+Device sale price: ₦300,000.
+
+Seller service charge: ₦3,000.
+
+Seller net amount before other deductions: ₦297,000.
+
+Display the calculation transparently.
+
+Seller dashboard must show:
+
+* Gross sales.
+* Service charges.
+* Refunds.
+* Pending settlement.
+* Completed settlements.
+* Transaction history.
+
+Do not treat buyer funds held pending an order as company revenue.
+
+Do not connect actual payouts or payment processing at this stage.
+
+Use mock transaction records and simulated status changes.
+
+The fee structure must be configurable later rather than hard-coded throughout the application.
+
+⸻
+
+PHASE 11: DEMO MODE AND INTERACTIVITY
+
+This is extremely important.
+
+I want a fully interactive frontend demonstration.
+
+Every major feature must have a working interaction.
+
+Do not create decorative buttons that do nothing.
+
+Create a clearly labelled DEMO MODE.
+
+Provide demo access for:
+
+1. Buyer.
+2. Seller with approved verification.
+3. Seller with pending verification.
+
+Use realistic sample data.
+
+Buyer demo
+
+Allow the user to:
+
+* Browse devices.
+* Search and filter.
+* View device reports.
+* View vendors.
+* Save devices.
+* Add devices to cart.
+* Complete simulated checkout.
+* View orders.
+* Send messages.
+* Simulate delivery.
+* Accept an order.
+* Raise a dispute.
+
+Seller demo
+
+Allow the user to:
+
+* Open seller dashboard.
+* Edit storefront.
+* Add a phone.
+* Add a laptop.
+* Complete a sample listing.
+* Upload mock documents.
+* View foreign-use evidence status.
+* Edit device conditions.
+* Set warranty terms.
+* Create discounts.
+* Set free delivery.
+* View orders.
+* Send messages.
+* View earnings.
+
+Pending seller demo
+
+Show the restrictions applied to an unapproved seller.
+
+The seller should be able to:
+
+* Complete identity information.
+* Submit verification documents.
+* Submit foreign-use evidence.
+* View review statuses.
+
+The seller should not be able to publish a listing while verification remains pending.
+
+Use local state or a suitable demo data store so interactions remain consistent during the session.
+
+Where appropriate, persist demo state locally.
+
+Clearly indicate when a feature is simulated.
+
+⸻
+
+PHASE 12: DESIGN QUALITY REQUIREMENTS
+
+The design must look premium, elegant and professionally art-directed.
+
+Visual direction
+
+Think of a carefully designed premium electronics marketplace.
+
+Use:
+
+* Excellent typography.
+* Clear spacing.
+* Strong visual hierarchy.
+* Consistent image proportions.
+* High-quality device photography.
+* Subtle shadows.
+* Refined borders.
+* Carefully designed cards.
+* Minimal animation.
+* Elegant hover states.
+* Clean transitions.
+
+Avoid:
+
+* Excessive gradients.
+* Huge rounded cards everywhere.
+* Unnecessary glassmorphism.
+* Too many floating elements.
+* Excessive purple backgrounds.
+* Generic AI-generated website layouts.
+* Unnecessary emojis.
+* Decorative charts without meaning.
+* Excessive animations.
+* Random illustrations.
+
+Use a consistent spacing system.
+
+Buttons should have consistent height and styling.
+
+Forms should be easy to understand.
+
+Use clear labels rather than relying on placeholder text.
+
+All important actions must have visible feedback.
+
+Typography
+
+Use a professional typeface such as Inter or Manrope.
+
+Use consistent typography scales.
+
+Avoid oversized typography in dashboards.
+
+Product prices and important figures should be easy to scan.
+
+Responsive design
+
+The website must work properly on:
+
+* Mobile phones.
+* Tablets.
+* Laptops.
+* Desktop monitors.
+
+Mobile is a priority.
+
+Do not simply shrink desktop pages to fit mobile screens.
+
+Redesign navigation, forms, tables and dashboards intelligently for smaller screens.
+
+For mobile:
+
+* Use collapsible filters.
+* Use bottom navigation where appropriate.
+* Keep checkout simple.
+* Make buttons easy to tap.
+* Prevent horizontal scrolling.
+* Keep product condition reports readable.
+
+Accessibility
+
+Implement:
+
+* Clear colour contrast.
+* Keyboard navigation.
+* Proper form labels.
+* Accessible buttons.
+* Meaningful error messages.
+* Appropriate focus states.
+
+⸻
+
+PHASE 13: FINAL QUALITY CONTROL
+
+Before considering the frontend complete, inspect every major route and interaction.
+
+Check:
+
+1. Buyer homepage works.
+2. Phone category works.
+3. Laptop category works.
+4. Search works.
+5. Filters work.
+6. Product details work.
+7. Condition reports display correctly.
+8. Vendor storefronts work.
+9. Buyer registration and login demo work.
+10. Buyer dashboard works.
+11. Cart and simulated checkout work.
+12. Buyer messaging works.
+13. Seller registration works.
+14. Verification workflow works in demo mode.
+15. Foreign-use evidence workflow works in demo mode.
+16. Seller dashboard works.
+17. Phone listing workflow works.
+18. Laptop listing workflow works.
+19. Promotions work.
+20. Warranty settings work.
+21. Delivery offers work.
+22. Seller earnings calculations work.
+23. Mobile layouts work.
+24. Navigation is consistent.
+25. No important buttons are decorative or broken.
+
+Do not remove features to simplify the project.
+
+Do not replace completed features with static mockup screenshots.
+
+Use real reusable frontend components and functional interactions.
+
+If the project becomes large, build it in structured stages while preserving existing components and working features.
+
+Do not rebuild the entire project unnecessarily when refining an existing component.
+
+⸻
+
+FINAL PRODUCT VISION
+
+UsedRight should become a marketplace where buyers can confidently purchase foreign-used smartphones and laptops without guessing about the condition of the device.
+
+The buyer should understand exactly what they are purchasing.
+
+The seller should have a professional space to market their products and build a trusted business.
+
+The platform should control identity verification, foreign-use evidence, device disclosures, communication and transaction workflows.
+
+The design should feel premium, simple, trustworthy and modern.
+
+Brand slogan: Know exactly what you’re buying.
+
+Build the complete buyer and seller frontend experience first.
+
+Backend development, real identity verification integrations, payment settlement, logistics integrations and automated device diagnostics will be handled in a later development phase.

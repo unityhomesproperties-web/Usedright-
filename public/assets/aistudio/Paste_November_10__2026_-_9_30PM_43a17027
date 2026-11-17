@@ -1,0 +1,1137 @@
+USED RIGHT: COMPLETE MOBILE-FIRST UI/UX REDESIGN AND MARKETPLACE REFINEMENT
+
+1. YOUR ROLE
+
+Act as a world-class senior UI/UX designer, senior frontend developer, senior product designer, e-commerce marketplace architect and design systems specialist.
+
+You have at least 15 years of experience designing premium mobile-first technology products and international e-commerce platforms.
+
+You are working on an existing project called UsedRight.
+
+Your assignment is to carefully audit, improve, reorganise and refine the entire existing application.
+
+I want a professional product that looks and feels as though it was designed by an experienced product design team and developed by senior engineers.
+
+Do not simply add more features. Improve the entire user experience, navigation, information architecture, responsiveness and visual consistency.
+
+IMPORTANT:
+
+* Do not rebuild the project from scratch.
+* Do not delete existing working features.
+* Do not replace existing functionality with static mockups.
+* Preserve existing routes, components, working data structures and business logic.
+* Inspect the current application before changing anything.
+* Identify duplicated features and confusing navigation.
+* Improve the existing project incrementally.
+* Do not introduce unnecessary features just to make the platform look bigger.
+
+The most important priorities are ease of use, mobile-first design, product transparency and premium visual quality.
+
+2. UNDERSTAND THE BUSINESS
+
+Brand: UsedRight
+
+Website: shopusedright.com
+
+Tagline: Know Exactly What You’re Buying.
+
+UsedRight is a specialised marketplace for foreign-used smartphones and laptops, with the ability to expand into other approved gadgets.
+
+We connect customers with vendors selling previously used devices sourced from outside Nigeria.
+
+We want to solve the problems associated with buying foreign-used electronics:
+
+* Hidden faults.
+* Misleading product descriptions.
+* Unclear battery condition.
+* Replaced components.
+* SIM-locked devices.
+* Network restrictions.
+* Fake device specifications.
+* Poor communication with vendors.
+* Customers not knowing how to inspect devices before purchasing.
+
+Our core promise is transparency.
+
+Customers should be able to understand the condition of a device before paying for it.
+
+We want UsedRight to become a trusted destination for affordable foreign-used electronics.
+
+Do not position the platform as a general second-hand marketplace.
+
+3. STRICT BRAND COLOUR REQUIREMENTS
+
+Use the following brand colours exactly:
+
+Primary Purple: #A981FF
+
+Secondary Purple: #B796FE
+
+Light Purple: #D0BCFC
+
+White: #FFFFFF
+
+Use dark charcoal or near-black only for readable typography and neutral interface elements.
+
+IMPORTANT:
+
+There is currently some deep purple styling in the project. Remove it.
+
+Do not introduce deep purple, dark violet, unrelated blue, pink, orange, green or other decorative colours.
+
+Do not invent additional purple shades.
+
+Use the supplied colours consistently throughout:
+
+* Website.
+* Mobile interface.
+* Buttons.
+* Navigation.
+* Cards.
+* Form controls.
+* Badges.
+* Active states.
+* Icons.
+* Vendor dashboard.
+* Customer dashboard.
+
+Use the primary purple for important actions and selected interface elements.
+
+Use the lighter shades for subtle backgrounds and secondary emphasis.
+
+Use white to maintain a clean premium appearance.
+
+Avoid excessive gradients.
+
+4. REPLACE THE EXISTING LOGO
+
+I will upload a new official UsedRight logo.
+
+When I upload it:
+
+* Replace the current logo everywhere.
+* Use the uploaded file as the single source of truth.
+* Do not redraw it.
+* Do not modify its proportions.
+* Do not change its colours.
+* Do not stretch or distort it.
+* Preserve its original appearance.
+* Use the correct logo variation where appropriate.
+
+Replace the old logo in:
+
+* Website header.
+* Mobile header.
+* Customer dashboard.
+* Vendor dashboard.
+* Sign-in page.
+* Registration page.
+* Footer.
+* Loading screens.
+* Favicon or app icon where appropriate.
+
+If the uploaded logo has transparent and light/dark variations, use the appropriate version.
+
+Do not generate a replacement logo.
+
+5. COMPLETE UI/UX DESIGN REFINEMENT
+
+The entire platform must be mobile-first.
+
+Do not design a desktop website and simply shrink it for mobile.
+
+Design the mobile experience first, then adapt it to tablet and desktop.
+
+Typography
+
+Use Inter or another suitable modern professional typeface.
+
+Typography must be medium-sized and comfortable to read.
+
+Avoid:
+
+* Oversized headings.
+* Excessively bold text.
+* Heavy font weights everywhere.
+* Huge cards.
+* Oversized buttons.
+* Unnecessary decorative typography.
+* Excessive spacing.
+* Long pages with too much scrolling.
+
+Use:
+
+* Medium-weight headings.
+* Regular-weight body text.
+* Consistent labels.
+* Comfortable line heights.
+* Compact but readable cards.
+* Balanced spacing.
+* Clear visual hierarchy.
+
+The platform should feel elegant, intelligent and organised.
+
+6. REDESIGN CUSTOMER BOTTOM NAVIGATION
+
+The current navigation has:
+
+* Home.
+* Explore.
+* Cart.
+* Profile.
+
+Home and Explore currently display similar information.
+
+Redesign them so each section has a distinct purpose.
+
+Use this five-item mobile bottom navigation:
+
+1. Home.
+2. Explore.
+3. Cart.
+4. Messages.
+5. Profile.
+
+Home
+
+Home should be the customer’s personalised shopping landing page.
+
+Display:
+
+* Welcome message.
+* Search bar.
+* Featured categories.
+* Popular smartphones.
+* Popular laptops.
+* Recommended devices.
+* Affordable device deals.
+* Vendor promotions.
+* Free gift offers.
+* Recently added devices.
+* Educational buying tips.
+
+Do not display the entire catalogue here.
+
+Explore
+
+Explore should be the dedicated product discovery and search experience.
+
+Display:
+
+* Search input.
+* Category selection.
+* Filters.
+* Sorting.
+* Product listings.
+* Selected filter chips.
+* Recently viewed products.
+
+Customers should be able to discover every approved available product through Explore.
+
+Do not duplicate the Home page.
+
+Cart
+
+Display:
+
+* Selected devices.
+* Selected accessories.
+* Free promotional gifts.
+* Quantity controls.
+* Price breakdown.
+* Applicable service charges.
+* Delivery information.
+* Checkout action.
+
+Messages
+
+Create a dedicated messaging centre.
+
+Customers should immediately see:
+
+* Recent conversations.
+* Vendor names.
+* Vendor profile pictures.
+* Product associated with the conversation.
+* Latest message preview.
+* Unread message indicators.
+* Conversation timestamps.
+
+Allow customers to open conversations directly.
+
+Profile
+
+Make Profile a compact account management centre.
+
+Do not turn it into another long homepage.
+
+7. REDESIGN THE CUSTOMER PROFILE COMPLETELY
+
+This is one of the highest priorities.
+
+The current customer profile is too large, poorly organised and requires too much scrolling.
+
+Redesign it from scratch visually while preserving all existing account functionality.
+
+Profile overview
+
+At the top, display:
+
+* Customer profile image or initials.
+* Customer display name.
+* Email verification status.
+* Account verification status where applicable.
+* Edit profile action.
+
+Keep this section compact.
+
+Group the settings into clear sections
+
+MY ACCOUNT
+
+* Personal information.
+* Email address.
+* Phone number.
+* Account verification.
+
+MY SHOPPING
+
+* My orders.
+* Saved devices.
+* My cart.
+* Recently viewed.
+
+COMMUNICATION
+
+* Messages.
+* Notifications.
+* Communication preferences.
+
+MY ACTIVITY
+
+* My reviews.
+* My disputes.
+* Order history.
+
+REWARDS
+
+* Referral programme.
+* Referral code.
+* Available shopping credits.
+* Referral history.
+
+DELIVERY
+
+* Saved addresses.
+* Delivery preferences.
+
+SECURITY
+
+* Change password.
+* Login security.
+* Active sessions.
+
+HELP AND SUPPORT
+
+* Help centre.
+* Contact support.
+* FAQs.
+* Terms and policies.
+
+ACCOUNT
+
+* Logout.
+* Delete account.
+
+Profile interface rules
+
+* Use compact list rows.
+* Use simple icons.
+* Use clear section headings.
+* Use subtle separators.
+* Keep the content aligned.
+* Make the entire row clickable.
+* Use short descriptions only where useful.
+* Open each setting in its own dedicated screen.
+* Avoid displaying every setting simultaneously.
+* Do not place everything in oversized cards.
+
+The profile should be easy to understand within seconds.
+
+8. PRODUCT FAULT DISCLOSURE MUST BE IMPOSSIBLE TO MISS
+
+This is a defining feature of UsedRight.
+
+Whenever a vendor declares a product faulty or restricted, the fault must be highlighted in RED.
+
+This applies to:
+
+* Product listing cards.
+* Product detail pages.
+* Search results where relevant.
+* Vendor product management.
+* Customer order summaries.
+* Checkout product summaries.
+
+Do not hide faults inside a long description.
+
+Examples of red fault indicators
+
+* SIM Locked.
+* Wi-Fi Only.
+* Face ID Not Working.
+* Battery Fault.
+* Screen Replaced.
+* Camera Not Working.
+* Speaker Fault.
+* Charging Port Fault.
+* Network Restricted.
+* Fingerprint Sensor Not Working.
+* Screen Burn.
+* Keyboard Fault.
+* Damaged Port.
+* BIOS Locked.
+
+Use a consistent red warning treatment with an icon and readable label.
+
+Every fault must have a written explanation.
+
+Never rely on red colour alone to communicate a fault.
+
+SIM restrictions
+
+If a phone is SIM locked, require the vendor to disclose:
+
+* SIM locked or unlocked.
+* Country associated with the restriction, if known.
+* Network carrier, if known.
+* Any known unlocking limitations.
+
+Example:
+
+SIM LOCKED
+Country: United States
+Carrier: AT&T
+
+Wi-Fi-only devices
+
+Display:
+
+WI-FI ONLY
+
+This device cannot use a SIM card for cellular calls or mobile data.
+
+Make the warning visible on the listing and product page.
+
+Vendor disclosures
+
+Allow vendors to add:
+
+* Faults.
+* Repair history.
+* Replaced components.
+* Missing accessories.
+* Usage limitations.
+* Cosmetic defects.
+* Things buyers should know.
+* Do’s and Don’ts.
+
+Every fault entered by the vendor must automatically appear in the red fault section.
+
+Do not allow the vendor to hide a declared fault by moving it into ordinary product notes.
+
+9. ADVANCED SEARCH AND FILTERING
+
+Improve filtering substantially.
+
+Customers must be able to find a device quickly without struggling.
+
+General filters
+
+* Category.
+* Brand.
+* Model.
+* Price range.
+* Vendor.
+* Location.
+* Cosmetic condition.
+* Functional condition.
+* Battery health.
+* Warranty.
+* Delivery availability.
+* Promotions.
+* Free gifts.
+* Rating.
+
+Phone filters
+
+* Brand.
+* Model.
+* Storage.
+* RAM where applicable.
+* Battery health.
+* SIM status.
+* Network carrier.
+* Country restriction.
+* Face ID.
+* Fingerprint.
+* Screen condition.
+* Repair history.
+* Component originality.
+* Faults.
+
+Laptop filters
+
+* Brand.
+* Model.
+* Processor.
+* RAM.
+* Storage.
+* Screen size.
+* Operating system.
+* Battery health.
+* Estimated runtime.
+* Keyboard layout.
+* Touchscreen.
+* Graphics.
+* Known faults.
+* Warranty.
+
+Filter experience
+
+On mobile:
+
+* Open filters in a clean bottom sheet or full-screen panel.
+* Group filters by category.
+* Provide Apply Filters and Clear All.
+* Show selected filters as removable chips.
+* Preserve filters when customers return from a product page.
+* Show the number of matching products.
+* Make filter controls easy to tap.
+
+On desktop:
+
+* Use a clean sidebar or well-organised filter panel.
+
+Do not expose every filter simultaneously on small screens.
+
+10. EASIER VENDOR COMMUNICATION
+
+Make vendor communication one of the easiest actions on the product page.
+
+Every product page should have:
+
+* A prominent Chat with Vendor action.
+* Vendor name.
+* Store logo.
+* Verification badge.
+* Rating.
+* Response information where available.
+
+Allow customers to start a conversation directly from a product.
+
+Automatically attach the relevant product reference to the conversation.
+
+Inside the conversation, display a compact product card showing:
+
+* Product image.
+* Product name.
+* Price.
+* Product condition.
+* Listing link.
+
+Customers should not need to search for the product again while chatting.
+
+Add:
+
+* Message timestamps.
+* Unread indicators.
+* Image attachments where supported.
+* Conversation history.
+* Report conversation action.
+* Block/report controls where appropriate.
+
+Make the message experience mobile-friendly.
+
+11. ACCESSORIES AND SMART PRODUCT SUGGESTIONS
+
+Allow vendors to list compatible accessories.
+
+Examples:
+
+* Chargers.
+* Pouches.
+* Screen protectors.
+* Screen guards.
+* Laptop bags.
+* Cables.
+* Earphones.
+* Power banks.
+* Adapters.
+
+When a customer selects an iPhone, suggest relevant compatible accessories.
+
+Example:
+
+Customer selects an iPhone 13.
+
+Display:
+
+COMPLETE YOUR PURCHASE
+
+* Compatible charger.
+* Compatible protective pouch.
+* Compatible screen protector.
+
+Allow customers to select individual accessories and add them to the same cart.
+
+Only show accessories that the vendor actually sells or has listed.
+
+Show the vendor name and price for each accessory.
+
+Do not recommend incompatible products.
+
+12. VENDOR FREE GIFT PROMOTIONS
+
+Allow vendors to create promotions such as:
+
+BUY THIS PHONE AND GET A FREE POUCH.
+
+BUY THIS IPHONE AND GET A FREE SCREEN PROTECTOR.
+
+BUY THIS LAPTOP AND GET A FREE CHARGER.
+
+Vendor promotion tools should include:
+
+* Select qualifying product.
+* Select free gift.
+* Set start and end dates.
+* Set available quantities.
+* Set promotional conditions.
+* Preview promotion.
+* Activate or deactivate promotion.
+
+Customers should see free gifts on product cards and product pages.
+
+Automatically add the qualifying free gift to the cart at zero cost.
+
+Clearly distinguish free gifts from paid accessories.
+
+Do not allow false promotional claims or gifts that are out of stock.
+
+13. REMOVE BRAND-NEW PRODUCT CATEGORY
+
+Remove the Brand New category and all associated listing options from the current marketplace.
+
+UsedRight is currently focusing on foreign-used devices.
+
+Keep:
+
+* Foreign-used smartphones.
+* Foreign-used laptops.
+* Approved used gadgets and accessories.
+
+Do not display brand-new products in the catalogue.
+
+Do not delete historical records or database information unnecessarily. Disable the feature safely so it can be reintroduced in a future phase.
+
+The public messaging should focus on:
+
+* Affordable foreign-used phones and laptops.
+* Transparent product condition reports.
+* Honest fault disclosures.
+* Verified vendors.
+* More confident buying decisions.
+
+Prefer the positioning:
+
+“A more transparent way to buy foreign-used phones and laptops.”
+
+Do not make unsupported claims such as being the most transparent marketplace in the world.
+
+14. CUSTOMER AND VENDOR SIGN-UP AND SIGN-IN
+
+Build a complete, easy-to-use authentication experience.
+
+Customer registration
+
+Allow customers to register using:
+
+* Full name.
+* Email address.
+* Phone number.
+* Password.
+* Confirm password.
+
+Include:
+
+* Password visibility.
+* Password strength guidance.
+* Terms and privacy consent.
+* Email or phone verification interface.
+* Clear validation messages.
+* Forgot password.
+* Sign-in link.
+
+Vendor registration
+
+Provide a separate vendor registration journey.
+
+Allow users to select:
+
+* Individual vendor.
+* Registered business.
+
+Collect the appropriate information.
+
+Include:
+
+* Store name.
+* Email.
+* Phone.
+* Password.
+* Business or individual information.
+* Verification requirements.
+* Terms acceptance.
+
+Vendor KYC should be a separate, guided onboarding process.
+
+Do not allow unapproved vendors to publish products.
+
+Sign-in
+
+Create a clear sign-in screen.
+
+Users should not be confused about whether they are signing in as customers or vendors.
+
+Use the correct role and permissions after authentication.
+
+Include:
+
+* Forgot password.
+* Password visibility.
+* Verification prompts.
+* Clear error messages.
+* Secure session handling.
+
+Do not create fake authentication that looks like production authentication.
+
+If backend authentication is not connected, clearly identify demo authentication.
+
+15. VENDOR DASHBOARD REDESIGN
+
+The vendor dashboard must be as beautiful and easy to use as the customer interface.
+
+Organise the vendor experience into a clean business management system.
+
+Suggested navigation:
+
+* Overview.
+* Products.
+* Add Product.
+* Orders.
+* Messages.
+* Storefront.
+* Promotions.
+* Accessories.
+* Reviews.
+* Earnings.
+* Analytics.
+* Verification.
+* Settings.
+
+Vendor overview
+
+Show:
+
+* Sales summary.
+* Active products.
+* Pending orders.
+* Completed orders.
+* Pending product approvals.
+* Customer messages.
+* Store rating.
+* Active promotions.
+* Recent reviews.
+
+Use compact cards and readable statistics.
+
+Vendor product management
+
+Make adding a product simple.
+
+Use a guided multi-step process:
+
+1. Select category.
+2. Enter product specifications.
+3. Add photographs.
+4. Complete condition report.
+5. Disclose faults.
+6. Enter price and stock.
+7. Add accessories.
+8. Add free gift promotion if applicable.
+9. Preview listing.
+10. Submit for approval.
+
+Allow vendors to save drafts.
+
+Provide edit, duplicate, archive and stock update actions.
+
+Useful vendor tools
+
+Add practical tools that reduce manual work:
+
+* Inventory management.
+* Stock alerts.
+* Bulk product updates.
+* Order management.
+* Message management.
+* Promotion management.
+* Review responses.
+* Sales summaries.
+* Listing performance.
+* Store profile management.
+
+Do not overwhelm small vendors with complicated enterprise software.
+
+16. CUSTOMER REVIEWS
+
+After a transaction is completed, prompt the buyer to review the vendor.
+
+Allow:
+
+* 1–5 star rating.
+* Product condition accuracy.
+* Vendor communication.
+* Delivery experience.
+* Written feedback.
+* Photo uploads.
+
+Display verified purchase reviews on the vendor storefront.
+
+Allow vendors to respond.
+
+Prevent vendors from deleting genuine negative reviews.
+
+17. PAYMENT INSPECTION PERIOD: MINIMUM 24 HOURS
+
+The buyer protection inspection period is now a minimum of 24 hours.
+
+Do not use the previous one-hour rule.
+
+The countdown begins only after confirmed physical delivery to the buyer.
+
+Workflow:
+
+1. Buyer pays.
+2. Vendor confirms the order.
+3. Vendor prepares and dispatches the device.
+4. Delivery is confirmed.
+5. The inspection countdown begins at a minimum of 24 hours.
+6. Buyer inspects the device.
+7. Buyer accepts or opens a dispute.
+8. Disputes immediately pause settlement.
+9. If no dispute is opened within the applicable period, the order proceeds through the approved settlement process.
+
+Make the inspection period configurable, but never set it below 24 hours.
+
+Show:
+
+* Inspection countdown.
+* Delivery confirmation time.
+* Accept order action.
+* Report a problem action.
+* Dispute status.
+
+The payment workflow must use a legally and operationally appropriate conditional-settlement provider.
+
+Do not describe ordinary payment split functionality as escrow.
+
+Do not treat the inspection period as a waiver of statutory consumer rights.
+
+18. REFERRAL AND REWARDS
+
+Create UsedRight Rewards.
+
+Give each customer a unique referral code and shareable link.
+
+Suggested initial campaign:
+
+* Existing customer receives ₦2,000 shopping credit.
+* New customer receives ₦1,000 welcome credit.
+
+Make these values configurable.
+
+Rewards should only become available after the referred customer completes a qualifying purchase and applicable dispute conditions are satisfied.
+
+Prevent:
+
+* Self-referrals.
+* Fake registrations.
+* Duplicate reward claims.
+* Abuse through multiple accounts.
+
+Credits should initially be non-withdrawable and usable toward eligible purchases.
+
+Create a clean referral dashboard showing:
+
+* Referral code.
+* Copy link.
+* Share link.
+* Invited customers.
+* Pending referrals.
+* Successful referrals.
+* Available credits.
+* Reward history.
+
+19. MORE REALISTIC DEMO PRODUCTS
+
+The current demo catalogue is too small.
+
+Populate the demo marketplace with a much wider selection of realistic sample products.
+
+Create at least:
+
+Smartphones
+
+20 realistic phone listings across different brands, models, storage sizes, conditions and prices.
+
+Include examples from:
+
+* Apple.
+* Samsung.
+* Google Pixel.
+* Other relevant smartphone brands.
+
+Laptops
+
+15 realistic laptop listings.
+
+Include:
+
+* Apple MacBook.
+* HP.
+* Dell.
+* Lenovo.
+* Other relevant laptop brands.
+
+Show realistic specifications, conditions, battery information and prices.
+
+Other gadgets
+
+10 realistic listings.
+
+Examples:
+
+* Apple Watch.
+* Samsung Galaxy Watch.
+* Other approved smartwatches.
+* Earbuds.
+* Other approved used gadgets.
+
+Accessories
+
+At least 15 sample accessory listings.
+
+Examples:
+
+* Chargers.
+* Pouches.
+* Screen protectors.
+* Laptop bags.
+* Adapters.
+* Cables.
+* Earphones.
+
+Vendor examples
+
+Create multiple demo vendors with:
+
+* Different storefront designs.
+* Store logos.
+* Product inventories.
+* Ratings.
+* Customer reviews.
+* Promotions.
+* Free gift campaigns.
+
+Important demo data requirements
+
+Include realistic examples of both good-condition and faulty products.
+
+Examples:
+
+* iPhone with excellent battery health.
+* iPhone with SIM lock.
+* Wi-Fi-only iPhone.
+* Samsung phone with screen replacement.
+* MacBook with estimated 5-hour battery runtime.
+* HP laptop with a keyboard fault.
+* Dell laptop with a weak battery.
+* MacBook with an issue that must be disclosed.
+
+Display every fault in red.
+
+Make demo data diverse enough for me to test every filter, product page, accessory suggestion and promotional feature.
+
+Use attractive product images that match the exact device model wherever possible.
+
+Do not use the same image for every product.
+
+20. COMPLETE DEMO TEST ENVIRONMENT
+
+I want to operate the platform as if it were a real marketplace.
+
+Create a clear DEMO MODE environment with separate demo roles:
+
+* Demo Customer.
+* Approved Demo Vendor.
+* Pending Demo Vendor.
+
+Allow easy switching between these roles.
+
+I should be able to test:
+
+Customer
+
+* Browse devices.
+* Search.
+* Filter.
+* Compare listings.
+* View faults.
+* Chat with vendors.
+* Add accessories.
+* Receive free gifts.
+* Add products to cart.
+* Simulate payment.
+* View orders.
+* Start inspection countdown.
+* Raise a dispute.
+* Accept delivery.
+* Submit reviews.
+* Upload review photographs.
+* Use referral codes.
+* View shopping credits.
+* Edit profile settings.
+
+Vendor
+
+* Edit storefront.
+* Add devices.
+* Edit listings.
+* Disclose faults.
+* Manage inventory.
+* Create promotions.
+* Add free gifts.
+* Sell accessories.
+* Receive messages.
+* Manage orders.
+* Respond to reviews.
+* View earnings.
+* View sales analytics.
+
+Demo controls
+
+Provide:
+
+* Reset demo data.
+* Switch demo role.
+* Simulate payment.
+* Simulate dispatch.
+* Simulate delivery.
+* Advance inspection workflow safely.
+* Simulate dispute.
+* Simulate order completion.
+
+Every interactive control must have a working demo action.
+
+Clearly distinguish simulated payments, verification and settlement from real services.
+
+Do not display buttons that do nothing.
+
+21. PERFORMANCE AND RESPONSIVENESS
+
+Make the entire application:
+
+* Mobile-first.
+* Responsive.
+* Fast.
+* Accessible.
+* Easy to navigate.
+* Consistent across screen sizes.
+
+Avoid:
+
+* Horizontal overflow.
+* Tiny tap targets.
+* Crowded forms.
+* Oversized cards.
+* Unnecessary animations.
+* Excessive scrolling.
+* Inconsistent navigation.
+* Confusing page layouts.
+
+Use reusable components.
+
+Maintain clean code.
+
+Keep components modular and easy to maintain.
+
+22. DEVELOPMENT EXECUTION PLAN
+
+Do not attempt to change everything without inspecting the existing application.
+
+Work in these stages:
+
+STAGE 1: AUDIT
+Inspect the existing project. Identify duplicated navigation, poorly organised screens, colour inconsistencies, missing interactions and mobile responsiveness problems.
+
+STAGE 2: DESIGN SYSTEM
+Correct the colour palette, typography, spacing, buttons, cards, badges and shared components.
+
+STAGE 3: CUSTOMER EXPERIENCE
+Redesign Home, Explore, Cart, Messages and the complete customer profile.
+
+STAGE 4: PRODUCT DISCOVERY
+Improve product pages, red fault indicators, search, filters, accessories and free gift promotions.
+
+STAGE 5: VENDOR EXPERIENCE
+Redesign vendor registration, sign-in, dashboard, inventory, orders, messages, storefront and promotions.
+
+STAGE 6: BUYER PROTECTION
+Implement the minimum 24-hour inspection workflow and dispute interface.
+
+STAGE 7: DEMO ENVIRONMENT
+Add realistic products, vendors, reviews, accessories, promotional campaigns and working demo interactions.
+
+STAGE 8: TESTING
+Test every screen and interaction on mobile, tablet and desktop.
+
+After each stage, check that existing working features remain functional.
+
+23. FINAL DESIGN STANDARD
+
+I do not want an ordinary marketplace template.
+
+I want a premium, beautiful and intelligently organised technology marketplace.
+
+The result must feel:
+
+* Professional.
+* Trustworthy.
+* Modern.
+* Premium.
+* Easy to use.
+* Well structured.
+* Mobile-first.
+* Consistent.
+
+Do not confuse premium design with oversized typography, giant cards, deep purple backgrounds or unnecessary animations.
+
+The best design is one that makes complex marketplace operations feel simple.
+
+Prioritise the customer experience, particularly the profile, search, product inspection and vendor communication.
+
+The final result should be suitable for a serious company preparing to launch a real marketplace.
+
+Begin by auditing the existing project. Then improve it systematically without removing existing working features.

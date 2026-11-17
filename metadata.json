@@ -1,0 +1,6 @@
+{
+  "name": "UsedRight",
+  "description": "Premium marketplace for verified foreign-used smartphones and laptops with transparent condition reports, disclosed repair history, and trusted sellers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

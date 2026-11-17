@@ -1,0 +1,1380 @@
+USED RIGHT: ADVANCED TECHNOLOGY MARKETPLACE, UNIFIED CHAT, ORDER MANAGEMENT AND PAYMENT-HOLD SYSTEM
+
+1. YOUR ROLE
+
+Act as a senior software architect, senior full-stack developer, senior UI/UX designer, senior e-commerce marketplace specialist and mobile product design expert.
+
+You have extensive experience developing professional technology marketplaces, e-commerce platforms, vendor management systems, real-time messaging applications and secure transaction workflows.
+
+You are working on the existing UsedRight project.
+
+I want you to take the project to a much more advanced and professionally structured level.
+
+This is not simply a request to add more pages.
+
+I want you to improve the underlying marketplace structure so that products, customers, vendors, conversations, orders, payments, delivery, payment holds and disputes work together.
+
+The entire platform must be easy for ordinary customers and vendors to understand.
+
+Critical instructions
+
+1. Inspect the entire existing application before making changes.
+2. Understand the current routes, components, features and data structures.
+3. Do not rebuild the application from scratch.
+4. Do not remove existing working features.
+5. Do not introduce duplicate features.
+6. Reorganise existing features where necessary.
+7. Keep the architecture modular and ready for real backend services.
+8. Make every new feature interactive in demo mode.
+9. Do not create buttons that do nothing.
+10. Test the complete buyer and vendor journeys.
+
+Your priorities are:
+
+* Professional design.
+* Mobile-first usability.
+* Simple English.
+* Connected marketplace operations.
+* Clear payment protection.
+* Easy product management.
+* Easy communication.
+* Transparency and accountability.
+
+2. OFFICIAL BRAND DESIGN
+
+Brand: UsedRight
+
+Website: shopusedright.com
+
+Tagline: Know Exactly What You’re Buying.
+
+Use these exact brand colours:
+
+Primary Purple: #A981FF
+
+Secondary Purple: #B796FE
+
+Light Purple: #D0BCFC
+
+White: #FFFFFF
+
+Use dark charcoal only for neutral text and interface elements.
+
+IMPORTANT: The light purple code is #D0BCFC, using the number zero. Do not use #DOBCFC because the letter O is not valid in a hexadecimal colour code.
+
+Remove all deep purple styling from the existing project.
+
+Do not introduce unrelated purple shades, blue, pink, orange or green as decorative brand colours.
+
+Use the three supplied purple shades throughout the complete application.
+
+The design should look premium, clean, professional, confident and well structured.
+
+Typography and spacing
+
+The current typography is too bold and too close to the edges of the mobile screen.
+
+Correct this.
+
+Use:
+
+* Regular and medium font weights for most content.
+* Semi-bold only for important headings.
+* Comfortable line height.
+* Consistent font sizes.
+* Proper horizontal padding.
+* Appropriate spacing between sections.
+* Clear separation between cards.
+* Comfortable mobile touch targets.
+
+Avoid:
+
+* Excessively bold text.
+* Oversized headings.
+* Crowded screens.
+* Text touching the edge of the phone.
+* Giant cards.
+* Excessive scrolling.
+* Unnecessary animations.
+
+Use a professional typeface such as Inter.
+
+The interface should feel intelligent and premium rather than heavy or bulky.
+
+3. BUILD A MORE COMPLETE TECHNOLOGY MARKETPLACE
+
+I want UsedRight to support a broader range of foreign-used technology products and accessories.
+
+Create a scalable category system.
+
+Main categories
+
+Phones
+
+* Apple iPhone.
+* Samsung Galaxy.
+* Google Pixel.
+* Other approved smartphones.
+
+Laptops
+
+* Apple MacBook.
+* HP.
+* Dell.
+* Lenovo.
+* ASUS.
+* Acer.
+* Other approved laptop brands.
+
+Tablets
+
+* Apple iPad.
+* Samsung Galaxy Tab.
+* Lenovo tablets.
+* Other Android tablets.
+
+Smartwatches
+
+* Apple Watch.
+* Samsung Galaxy Watch.
+* Other smartwatches.
+
+Audio
+
+* Wireless earbuds.
+* Headphones.
+* Speakers.
+* Other approved audio devices.
+
+Gaming
+
+* PlayStation.
+* Xbox.
+* Nintendo.
+* Gaming controllers.
+* Other approved gaming accessories.
+
+Cameras
+
+* Digital cameras.
+* Action cameras.
+* Camera lenses.
+* Approved camera accessories.
+
+Computer accessories
+
+* Monitors.
+* Keyboards.
+* Mice.
+* Laptop stands.
+* Cooling accessories.
+* Docking stations.
+* Adapters.
+
+Other technology
+
+* Printers.
+* Routers.
+* Networking devices.
+* Other approved electronics.
+
+Accessories
+
+* Chargers.
+* Cables.
+* Phone pouches.
+* Tablet cases.
+* Laptop bags.
+* Screen protectors.
+* Screen guards.
+* Power banks.
+* Earphones.
+* Adapters.
+* Styluses.
+* Batteries where permitted.
+* Other compatible accessories.
+
+Keep brand-new products disabled for now.
+
+UsedRight currently focuses on foreign-used devices and accessories.
+
+The category system should be configurable by the administrator so more categories can be introduced without rebuilding the application.
+
+4. ADVANCED PRODUCT INFORMATION
+
+Vendors must be able to enter detailed information about every product.
+
+I want the product creation form to collect enough information for customers to understand exactly what they are buying.
+
+General product information
+
+Every applicable product should have:
+
+* Product category.
+* Brand or manufacturer.
+* Product name.
+* Model.
+* Model number where available.
+* Model year.
+* Manufacturing year.
+* Colour.
+* Storage capacity.
+* Memory or RAM.
+* Condition grade.
+* Product description.
+* Price.
+* Stock quantity.
+* Product photographs.
+* Included accessories.
+* Known issues.
+* Repair information.
+* Product warranty if offered.
+
+Important distinction between years
+
+Do not confuse the year a model was introduced with the year a particular device was manufactured.
+
+Provide separate fields:
+
+Model year: The year the manufacturer introduced that model.
+
+Year made: The year the individual device was manufactured, where known.
+
+Year purchased: Optional information about when the vendor purchased the device.
+
+Example:
+
+Brand: Apple.
+
+Product: MacBook Pro.
+
+Model year: 2021.
+
+Year made: 2022, if confirmed.
+
+Year purchased: 2024, if known.
+
+Allow the vendor to select:
+
+* Year known.
+* Approximate year.
+* Not sure.
+
+Do not force vendors to invent a manufacturing year.
+
+Use simple customer-facing labels such as “Model year” and “Year made”.
+
+Product descriptions
+
+Vendors must have sufficient space to describe their products.
+
+Allow:
+
+* Product overview.
+* Specifications.
+* Included items.
+* Product condition.
+* Previous repairs.
+* Known limitations.
+* Things customers should know.
+* Recommended use.
+* Compatibility information.
+
+Use simple English.
+
+5. DIFFERENT PRODUCT TYPES NEED DIFFERENT SPECIFICATIONS
+
+Do not use one generic specification form for every electronic product.
+
+Build category-specific product forms.
+
+Smartphone specifications
+
+Include:
+
+* Brand.
+* Model.
+* Model year.
+* Year made.
+* Screen size.
+* Storage.
+* RAM where applicable.
+* Battery health.
+* SIM status.
+* Network restrictions.
+* Operating system.
+* Camera condition.
+* Face ID or fingerprint status.
+* Screen condition.
+* Charging condition.
+* Component replacement information.
+* Repair information.
+* Grade.
+
+Laptop specifications
+
+Include:
+
+* Manufacturer.
+* Model.
+* Model year.
+* Year made.
+* Processor.
+* RAM.
+* Storage.
+* Screen size.
+* Graphics.
+* Operating system.
+* Battery health.
+* Estimated battery runtime.
+* Keyboard layout.
+* Touchscreen status.
+* Ports.
+* Camera.
+* Speaker.
+* Charging condition.
+* Known issues.
+
+Tablet specifications
+
+Include:
+
+* Manufacturer.
+* Model.
+* Model year.
+* Year made.
+* Operating system.
+* Storage.
+* Screen size.
+* Wi-Fi or cellular version.
+* Battery information.
+* Stylus compatibility.
+* Charging condition.
+* Known issues.
+
+Smartwatch specifications
+
+Include:
+
+* Manufacturer.
+* Model.
+* Size.
+* Model year.
+* Year made.
+* GPS or cellular capability.
+* Battery condition.
+* Strap condition.
+* Screen condition.
+* Pairing compatibility.
+* Known issues.
+
+Audio device specifications
+
+Include:
+
+* Manufacturer.
+* Model.
+* Model year.
+* Year made.
+* Connection type.
+* Battery condition where applicable.
+* Sound condition.
+* Microphone condition.
+* Charging condition.
+* Compatibility.
+
+Create similar relevant forms for other categories.
+
+Do not force irrelevant fields into a product form.
+
+6. PRODUCT VARIATIONS AND INVENTORY
+
+Maintain the existing product variation requirement.
+
+Vendors must be able to add available:
+
+* Colours.
+* Storage capacities.
+* RAM options.
+* Processor configurations.
+* Screen sizes.
+* Condition grades.
+
+Example:
+
+An iPhone 13 vendor has:
+
+* Black 128GB Grade A.
+* Black 256GB Grade A.
+* Blue 128GB Grade B.
+* White 128GB Grade A.
+
+These combinations should belong to one parent product listing where appropriate.
+
+Customers should select the available variation before adding it to the cart.
+
+Each variation must have:
+
+* Its own price where necessary.
+* Its own stock quantity.
+* Its own photographs where relevant.
+* Its own condition report.
+* Its own disclosed issues.
+
+Vendors should be able to update prices and stock without uploading the entire product again.
+
+Never change an already confirmed order price when a vendor edits a current listing.
+
+7. SIMPLE AND HONEST PRODUCT CONDITION LANGUAGE
+
+Use simple English throughout the platform.
+
+Do not use intimidating technical expressions as the main customer-facing labels.
+
+Avoid:
+
+* Factory OEM Display.
+* Zero Board Soldering.
+* Board Rework.
+* Battery Degradation.
+* Faulty.
+* Aftermarket Components.
+
+Use clear descriptions instead.
+
+Examples:
+
+“Screen replaced.”
+
+“Main board repaired.”
+
+“Battery does not last as long.”
+
+“Face ID not working.”
+
+“Wi-Fi works, but SIM does not.”
+
+“SIM locked to a network.”
+
+“Not tested.”
+
+Use a consistent red warning style for disclosed problems.
+
+The red warning must appear clearly:
+
+* In product cards where space permits.
+* Near the top of product detail pages.
+* In order summaries.
+* In checkout summaries.
+* In relevant vendor listings.
+
+A product with a disclosed issue must not automatically be treated as unsellable.
+
+Customers may deliberately want a phone with a limitation if the price is attractive.
+
+Allow buyers to make informed decisions.
+
+8. COMPLETE CUSTOMER AND VENDOR ACCOUNT EXPERIENCE
+
+Create separate experiences for:
+
+1. Visitors.
+2. Registered customers.
+3. Registered vendors.
+4. UsedRight administrators.
+
+Do not expose role-switching controls in the public interface.
+
+Visitor experience
+
+People should be able to visit UsedRight without registering.
+
+Visitors may:
+
+* View the homepage.
+* Explore the product catalogue.
+* Search products.
+* Apply basic filters.
+* View product details.
+* View vendor storefronts.
+* Read public reviews.
+* Read educational guides.
+* View promotions.
+
+Visitors should not be able to:
+
+* Send vendor messages.
+* Place orders.
+* Complete payment.
+* Open disputes.
+* Submit verified purchase reviews.
+* Use customer rewards.
+
+When a visitor attempts a restricted action, show a clear message and guide them to sign in or register.
+
+Where appropriate, retain their selected product or cart information after sign-in.
+
+Customer account
+
+After registration and sign-in, customers receive their own customer dashboard.
+
+They should be able to:
+
+* Manage profile.
+* Manage saved addresses.
+* Save devices.
+* Manage cart.
+* Chat with vendors.
+* Place orders.
+* Pay.
+* Track delivery.
+* View payment holds.
+* Open disputes.
+* Review purchases.
+* Use referral credits.
+* Manage notifications.
+
+Vendor account
+
+After approved vendor registration and sign-in, vendors receive their own vendor dashboard.
+
+They should be able to:
+
+* Manage storefront.
+* Manage products.
+* Manage variations.
+* Change prices.
+* Manage stock.
+* Sell accessories.
+* Manage messages.
+* Manage orders.
+* Manage promotions.
+* Manage delivery options.
+* Monitor payment holds.
+* Track settlements.
+* Market sold products.
+* Request marketing support from UsedRight.
+
+Authentication
+
+Public navigation should show:
+
+LOG IN
+
+CREATE ACCOUNT
+
+Account registration should offer:
+
+* Create Customer Account.
+* Register as Vendor.
+
+After login, the system should automatically open the correct dashboard based on account permissions.
+
+Customer logout should be available from the customer profile.
+
+Vendor logout should be available from the vendor account menu.
+
+Never use a role-switching button as a substitute for actual authentication.
+
+Demo access
+
+Provide clearly labelled demo accounts for:
+
+* Customer.
+* Approved vendor.
+* Pending vendor.
+* Admin, in a separate protected demo environment.
+
+Demo access must not be exposed as a public production security bypass.
+
+9. BUILD A UNIFIED MESSAGING AND TRANSACTION WORKSPACE
+
+THIS IS ONE OF THE MOST IMPORTANT REQUIREMENTS.
+
+Currently, chat, orders, payment holds and disputes can feel like separate features.
+
+I want them connected.
+
+The customer and vendor should be able to manage the relevant transaction from their conversation.
+
+The conversation should become the central workspace for communication and transaction updates.
+
+9.1 Vendor messaging centre
+
+Create a dedicated Messages section in the vendor dashboard.
+
+Vendors must be able to see all conversations with their customers.
+
+Display:
+
+* Customer name.
+* Customer profile picture or initials.
+* Product being discussed.
+* Product image.
+* Last message.
+* Time of last message.
+* Unread message count.
+* Order reference where applicable.
+* Transaction status.
+* Dispute status where applicable.
+
+Provide filters:
+
+* All conversations.
+* Unread.
+* Product enquiries.
+* Active orders.
+* Payment holds.
+* Disputes.
+* Completed transactions.
+
+Make conversations searchable.
+
+9.2 Customer messaging centre
+
+Customers should have a dedicated Messages section.
+
+Display:
+
+* Vendor name.
+* Store logo.
+* Product being discussed.
+* Last message.
+* Unread message count.
+* Order reference.
+* Transaction status.
+
+Allow customers to return to any previous conversation.
+
+9.3 Pre-purchase and post-purchase conversations
+
+Support two conversation stages.
+
+Before purchase:
+
+The customer can ask the vendor questions about a product.
+
+Display:
+
+* Product card.
+* Product price.
+* Product condition.
+* Vendor information.
+* Buy Now shortcut.
+
+After purchase:
+
+Once an order is created, attach the order to the conversation.
+
+The conversation should become an order-linked transaction workspace.
+
+If a conversation contains multiple purchases, separate each order into its own transaction thread or provide a clear order selector.
+
+Never mix unrelated disputes or payment holds in one transaction record.
+
+10. THE CHAT SCREEN MUST SHOW THE TRANSACTION STATUS
+
+This requirement is essential.
+
+When a conversation is linked to an active order, display a compact transaction panel at the top of the chat.
+
+The panel should remain accessible while the user scrolls through messages.
+
+Customer chat panel
+
+Display:
+
+* Order reference.
+* Product name.
+* Amount paid.
+* Payment status.
+* Delivery status.
+* Inspection countdown.
+* Dispute status.
+
+Example:
+
+ORDER: UR-ORD-2026-000123
+
+iPhone 13, 128GB, Blue.
+
+Amount paid: ₦280,000.
+
+Payment status: Payment protected.
+
+Delivery status: Delivered.
+
+Inspection time remaining: 23 hours 45 minutes.
+
+Make this panel compact enough for a mobile screen.
+
+Allow the customer to expand it to see full order and payment details.
+
+Vendor chat panel
+
+Display:
+
+* Order reference.
+* Product.
+* Expected vendor payout.
+* Amount currently held.
+* Delivery status.
+* Inspection countdown.
+* Dispute status.
+* Settlement status.
+
+Example:
+
+ORDER: UR-ORD-2026-000123
+
+Expected vendor payout: ₦274,400.
+
+Payment status: Awaiting inspection completion.
+
+Inspection time remaining: 23 hours 45 minutes.
+
+Do not describe held money as available for withdrawal.
+
+Clearly distinguish:
+
+* Payment received.
+* Payment held.
+* Payment approved for release.
+* Payment settled.
+* Payment refunded.
+
+The vendor must know exactly why their money is not yet available.
+
+The customer must know exactly what has happened to their payment.
+
+Mobile behaviour
+
+On mobile:
+
+* Keep the transaction summary pinned near the top of the conversation.
+* Make it compact.
+* Allow the user to expand it.
+* Keep the message input accessible.
+* Avoid covering the messages.
+* Ensure the countdown remains visible while scrolling.
+* Make dispute and order shortcuts easy to reach.
+
+On desktop:
+
+Use a wider conversation layout with the transaction summary as a compact side panel or pinned header.
+
+11. SHORTCUTS INSIDE THE CHAT
+
+Customers and vendors must not have to leave the conversation to find important actions.
+
+Customer chat shortcuts
+
+* View Order.
+* Buy This Product.
+* Proceed to Payment.
+* View Payment Hold.
+* Track Delivery.
+* Confirm Receipt.
+* Report a Problem.
+* Open Dispute.
+* Contact UsedRight Support.
+* View Vendor Store.
+
+Vendor chat shortcuts
+
+* View Order.
+* View Product.
+* Update Order Status.
+* View Payment Hold.
+* View Expected Payout.
+* View Delivery Status.
+* Contact UsedRight Support.
+* Respond to Dispute.
+
+Only show shortcuts relevant to the order’s current status.
+
+Do not display payment actions after a product has already been purchased unless they are relevant to that order.
+
+12. PAYMENT HOLD AND ESCROW WORKFLOW
+
+The payment-hold system must work with the chat and order system.
+
+Maintain the minimum 24-hour inspection period after confirmed physical receipt.
+
+Use an approved conditional-settlement arrangement with the appropriate payment partner.
+
+Do not pretend that frontend timers or ordinary payment split features are genuine escrow.
+
+Workflow
+
+1. Customer places an order.
+2. Customer completes payment.
+3. Payment is confirmed.
+4. Vendor receives the order.
+5. Vendor prepares the product.
+6. Vendor dispatches the product or arranges pickup.
+7. Delivery or collection is independently confirmed.
+8. The inspection countdown starts.
+9. Customer inspects the product.
+10. Customer accepts the order or opens a dispute.
+11. A dispute pauses settlement.
+12. If the inspection period expires without a dispute, the order follows the configured release process.
+13. Settlement is recorded.
+
+Timer rules
+
+The countdown begins from confirmed physical receipt, not dispatch.
+
+Use server-authoritative timestamps in production.
+
+Do not rely on the customer’s or vendor’s phone clock.
+
+Provide an accurate countdown and deadline in both dashboards and chat.
+
+Allow the administrator to configure a longer inspection period, but never set it below 24 hours.
+
+Customer payment hold view
+
+Customers should see:
+
+* Amount paid.
+* Order reference.
+* Payment reference.
+* Vendor.
+* Payment status.
+* Delivery status.
+* Inspection start.
+* Deadline.
+* Remaining time.
+* Dispute status.
+* Refund or completion status.
+
+Vendor payment hold view
+
+Vendors should see:
+
+* Order reference.
+* Transaction reference.
+* Product.
+* Gross order value.
+* Applicable deductions.
+* Expected payout.
+* Amount held.
+* Inspection deadline.
+* Dispute status.
+* Settlement status.
+* Settlement history.
+
+Make these details accessible from the dashboard and conversation.
+
+13. DISPUTES MUST HAPPEN INSIDE THE TRANSACTION CONVERSATION
+
+I want the dispute process to be connected to the same chat.
+
+The customer should not need to search for a separate dispute page.
+
+Inside the transaction chat, provide a button:
+
+REPORT A PROBLEM.
+
+When selected, open a simple form.
+
+Allow the customer to select a reason:
+
+* Product not as described.
+* Device has an undisclosed issue.
+* Wrong product received.
+* Product damaged.
+* Missing accessory.
+* Product not received.
+* Other.
+
+Allow the customer to:
+
+* Explain what happened.
+* Upload photographs.
+* Upload a short video where supported.
+* Attach relevant evidence.
+* Select the requested resolution where available.
+
+Automatically attach:
+
+* Order reference.
+* Transaction reference.
+* Vendor.
+* Product.
+* Payment information.
+* Delivery information.
+* Existing conversation.
+
+Once a dispute is opened:
+
+1. Freeze the automatic payment release.
+2. Update the payment status.
+3. Notify both customer and vendor.
+4. Keep the conversation open.
+5. Notify UsedRight administrators.
+6. Assign a dispute reference.
+7. Display the dispute status in the chat.
+8. Allow the administrator to review the evidence.
+9. Record all actions and decisions.
+
+Admin participation
+
+UsedRight Support should be able to join the same transaction conversation.
+
+Display a clear label:
+
+USED RIGHT SUPPORT.
+
+The customer and vendor must know when a message comes from an administrator.
+
+Allow administrators to:
+
+* Join a dispute conversation.
+* Request more information.
+* Ask both parties questions.
+* Review uploaded evidence.
+* Add official updates.
+* Record internal notes separately.
+* Resolve the dispute.
+* Approve refund or settlement according to policy.
+* Notify both parties.
+
+Do not expose internal admin notes to customers or vendors.
+
+Dispute statuses
+
+Use simple statuses:
+
+* Problem Reported.
+* Under Review.
+* Waiting for Customer.
+* Waiting for Vendor.
+* Resolution Proposed.
+* Resolved.
+* Closed.
+
+Display the current status at the top of the transaction chat.
+
+Keep a complete timestamped activity history.
+
+14. ORDER MANAGEMENT
+
+Every order must have its own detailed page and unique reference.
+
+Example:
+
+UR-ORD-2026-000123.
+
+Each transaction must have another unique reference:
+
+UR-TXN-2026-000123.
+
+Each vendor must have a permanent vendor ID.
+
+Each dispute must have its own dispute ID.
+
+All references must be generated by the backend in production.
+
+Customer order page
+
+Display:
+
+* Product.
+* Variation.
+* Colour.
+* Storage.
+* Condition grade.
+* Known issues.
+* Vendor details.
+* Order amount.
+* Payment reference.
+* Delivery method.
+* Current status.
+* Inspection deadline.
+* Payment hold status.
+* Dispute status.
+
+Provide shortcuts:
+
+* Open Transaction Chat.
+* View Payment Hold.
+* Track Delivery.
+* Report a Problem.
+* View Receipt.
+
+Vendor order page
+
+Display:
+
+* Order reference.
+* Customer details according to privacy rules.
+* Product.
+* Variation.
+* Price.
+* Order status.
+* Delivery method.
+* Payment status.
+* Expected payout.
+* Inspection deadline.
+* Dispute status.
+
+Provide relevant shortcuts:
+
+* Open Customer Chat.
+* View Payment Hold.
+* Update Order.
+* View Delivery.
+* Request Support.
+
+Whenever an order status changes, update the related order page and transaction chat.
+
+Do not store separate conflicting copies of the same order status.
+
+15. VENDOR DASHBOARD: SIMPLE AND COMPLETE
+
+Make the vendor dashboard easy for ordinary vendors.
+
+Suggested main navigation:
+
+* Overview.
+* Products.
+* Orders.
+* Messages.
+* Payments.
+* Promotions.
+* Storefront.
+* Reviews.
+* Marketing with UsedRight.
+* Settings.
+
+Vendor overview
+
+Display:
+
+* Total sales.
+* Pending orders.
+* Active listings.
+* Sold products.
+* Unread messages.
+* Payments on hold.
+* Payments available.
+* Disputes requiring attention.
+* Active promotions.
+
+Use compact information cards.
+
+Essential vendor shortcuts
+
+* Add Product.
+* Edit Price.
+* Update Stock.
+* Add Product Variation.
+* Add Accessory.
+* View Messages.
+* View Orders.
+* View Payments on Hold.
+* Create Discount.
+* Add Free Gift.
+* Offer Free Delivery.
+* Request UsedRight Marketing.
+* View Reviews.
+
+Every shortcut should take the vendor directly to the relevant function.
+
+16. CUSTOMER DASHBOARD: SIMPLE AND COMPLETE
+
+The customer dashboard should make shopping and transaction monitoring easy.
+
+Suggested sections:
+
+* Overview.
+* My Orders.
+* Messages.
+* Payment Holds.
+* Saved Devices.
+* Cart.
+* Reviews.
+* Rewards.
+* Delivery Addresses.
+* Profile Settings.
+* Help and Support.
+
+Important dashboard shortcuts
+
+At the top of the customer overview, show:
+
+* Continue Shopping.
+* My Orders.
+* Messages.
+* My Payment Holds.
+
+When a customer has an active transaction, show a compact active-order card.
+
+Example:
+
+YOUR ORDER IS DELIVERED.
+
+Inspection time remaining: 18 hours.
+
+View Order.
+
+Open Chat.
+
+Report a Problem.
+
+Make it impossible for the customer to miss important transaction deadlines.
+
+17. BLOCKING AND CUSTOMER PROTECTION
+
+Provide a block and report feature.
+
+However, users must not be able to block the other party while an active transaction is awaiting inspection or has an open dispute.
+
+Show a clear explanation.
+
+Example:
+
+“You cannot block this account while an active order or dispute is being handled by UsedRight. You can still report a problem or contact support.”
+
+Keep reporting available.
+
+The administrator should be able to investigate account behaviour and take appropriate action.
+
+18. PROFESSIONAL MOBILE-FIRST UI
+
+The entire project must work beautifully on mobile.
+
+This is not optional.
+
+Customer mobile navigation
+
+Use:
+
+* Home.
+* Explore.
+* Cart.
+* Messages.
+* Profile.
+
+Vendor mobile navigation
+
+Use a separate vendor-specific navigation.
+
+Prioritise:
+
+* Overview.
+* Products.
+* Orders.
+* Messages.
+* More.
+
+The More section should contain less frequently used vendor settings and tools.
+
+Mobile design principles
+
+* Consistent page padding.
+* Readable medium-sized text.
+* Regular and medium font weights.
+* Compact transaction cards.
+* Clear status labels.
+* Easy-to-tap action buttons.
+* Sticky transaction information where useful.
+* Easy chat navigation.
+* Simple forms.
+* Minimal unnecessary scrolling.
+
+Do not put every vendor or customer setting on one enormous page.
+
+Use separate screens for different tasks.
+
+19. DEMO MODE: FULLY CONNECTED EXPERIENCE
+
+Create a comprehensive interactive demo.
+
+Provide:
+
+* Demo customer.
+* Demo approved vendor.
+* Demo pending vendor.
+* Demo admin.
+
+The demo must demonstrate the full transaction lifecycle.
+
+Required demo scenario
+
+Create a realistic scenario:
+
+A customer discovers an iPhone 13 listed by a vendor.
+
+The customer asks questions through chat.
+
+The vendor responds.
+
+The customer selects the colour and storage.
+
+The customer purchases the product.
+
+The system creates:
+
+* Order reference.
+* Transaction reference.
+* Transaction chat.
+* Payment record.
+
+The customer pays using simulated payment.
+
+The vendor sees the new order.
+
+Both parties can see the transaction summary in chat.
+
+The vendor updates dispatch status.
+
+Delivery is simulated.
+
+The customer receives the product.
+
+The inspection countdown begins.
+
+The customer either:
+
+* Accepts the product, or
+* Opens a dispute.
+
+If a dispute is opened:
+
+* Settlement pauses.
+* Admin is notified.
+* Admin joins the conversation.
+* Both parties can communicate.
+* Admin resolves the issue.
+
+If the order is accepted:
+
+* Payment release is simulated.
+* Vendor sees the settlement status.
+* Customer sees order completion.
+
+Demo controls
+
+Include convenient demo actions:
+
+* Simulate Payment.
+* Simulate Dispatch.
+* Simulate Delivery.
+* Confirm Receipt.
+* Advance Inspection Timer.
+* Open Dispute.
+* Simulate Admin Response.
+* Resolve Dispute.
+* Simulate Refund.
+* Complete Settlement.
+
+These controls must only operate in demo mode.
+
+Never make demo payment actions look like real money transfers.
+
+Create realistic product examples across phones, laptops, tablets, smartwatches, gaming products and accessories.
+
+20. BACKEND ARCHITECTURE AND DATA CONSISTENCY
+
+Do not build these features as unrelated frontend screens.
+
+Design the data relationships properly.
+
+At minimum, the architecture should support:
+
+* Users.
+* Customer profiles.
+* Vendor profiles.
+* Products.
+* Product variations.
+* Product specifications.
+* Accessories.
+* Product compatibility.
+* Listings.
+* Stock records.
+* Conversations.
+* Conversation participants.
+* Messages.
+* Orders.
+* Order items.
+* Transactions.
+* Payment holds.
+* Deliveries.
+* Inspection periods.
+* Disputes.
+* Dispute evidence.
+* Admin participation.
+* Settlement records.
+* Reviews.
+* Notifications.
+
+Keep one authoritative order record.
+
+The conversation, dashboard and order page should read the same transaction status.
+
+Use timestamps and server-side validation.
+
+Use proper role permissions.
+
+Keep customer and vendor private information protected.
+
+All important payment, delivery, dispute and settlement actions must be recorded in an audit history.
+
+Do not implement real payment custody or escrow using mock frontend state.
+
+A production payment-hold workflow must use an appropriately approved payment partner and a legally reviewed arrangement.
+
+21. DEVELOPMENT AND TESTING ORDER
+
+Work in the following stages:
+
+STAGE 1: Audit the existing application and map its current architecture.
+
+STAGE 2: Refine the visual design system, typography, padding and colours.
+
+STAGE 3: Complete technology and accessory categories.
+
+STAGE 4: Build category-specific product specifications, including manufacturer, model year and year made.
+
+STAGE 5: Build product variations and vendor inventory management.
+
+STAGE 6: Improve customer and vendor authentication and dashboard organisation.
+
+STAGE 7: Build the vendor messaging centre and customer messaging centre.
+
+STAGE 8: Build the unified transaction chat with its pinned payment and order summary.
+
+STAGE 9: Connect order management, delivery and payment-hold statuses.
+
+STAGE 10: Implement disputes directly inside transaction conversations, including administrator participation.
+
+STAGE 11: Add realistic demo scenarios and connected demo data.
+
+STAGE 12: Test the entire experience on mobile, tablet and desktop.
+
+After each stage, confirm that previous working features remain functional.
+
+22. FINAL EXPECTATION
+
+I want UsedRight to operate like one connected technology marketplace.
+
+The customer should not have to jump between different pages to understand what is happening with a purchase.
+
+The vendor should not have to search through different dashboards to understand a customer’s order or their pending payment.
+
+The chat, order, payment hold, inspection timer, delivery and dispute must work together.
+
+The customer should be able to open one conversation and understand the entire transaction.
+
+The vendor should be able to open that same conversation from their dashboard and see the relevant order and expected payout.
+
+UsedRight administrators should be able to join and manage disputes in that same transaction workspace.
+
+The interface must be premium, mobile-first, simple, professional and easy to operate.
+
+Do not prioritise adding more cards and buttons over improving the underlying experience.
+
+Build a connected marketplace, not a collection of disconnected features. Begin by auditing the existing project and then implement these improvements systematically.

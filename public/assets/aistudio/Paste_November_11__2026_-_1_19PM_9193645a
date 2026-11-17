@@ -1,0 +1,1245 @@
+USED RIGHT: ADVANCED MARKETPLACE FEATURES, VENDOR MANAGEMENT AND PREMIUM UI REFINEMENT
+
+1. YOUR ROLE
+
+Act as a senior full-stack web developer, senior UI/UX designer, senior product designer, e-commerce marketplace architect and professional design systems engineer.
+
+You are working on the existing UsedRight marketplace project.
+
+Your job is to implement the following improvements while preserving all existing working features.
+
+Think like a senior developer building a serious international e-commerce company.
+
+IMPORTANT DEVELOPMENT RULES:
+
+* Inspect the existing application before making changes.
+* Do not rebuild the project from scratch.
+* Do not remove existing working functionality.
+* Do not replace functional features with static designs.
+* Preserve existing routes, components, database structures and business logic where possible.
+* Integrate new features into the existing architecture.
+* Make all new features interactive in demo mode.
+* Avoid unnecessary complexity.
+* Use reusable components and maintainable code.
+* Test every new workflow.
+
+The most important objectives are simplicity, transparency, premium design, mobile-first usability and efficient marketplace operations.
+
+2. OFFICIAL BRAND IDENTITY
+
+Brand: UsedRight
+
+Website: shopusedright.com
+
+Tagline: Know Exactly What You’re Buying.
+
+Use these exact intended brand colours:
+
+Primary Purple: #A981FF
+
+Secondary Purple: #B796FE
+
+Light Purple: #D0BCFC
+
+White: #FFFFFF
+
+Use dark charcoal or near-black only for neutral typography and readable interface elements.
+
+IMPORTANT:
+
+The previous project contains deep purple shades that are not part of the official palette.
+
+Remove all deep purple styling.
+
+Do not introduce unrelated colours, additional purple shades, neon colours or decorative colour combinations.
+
+Use the three supplied purple shades consistently across:
+
+* Public website.
+* Customer dashboard.
+* Vendor dashboard.
+* Product pages.
+* Buttons.
+* Forms.
+* Navigation.
+* Cards.
+* Badges.
+* Notifications.
+* Checkout.
+* Messages.
+* Payment and transaction screens.
+
+Use red only for clearly disclosed product issues and important warnings, and other status colours only where essential for usability.
+
+The visual result should be clean, premium, modern, professional and consistent.
+
+Use medium-sized typography and restrained font weights.
+
+Do not make the interface oversized, excessively bold or crowded.
+
+3. PRODUCT CATEGORIES AND VARIATIONS
+
+UsedRight currently focuses on foreign-used devices.
+
+Remove the brand-new category.
+
+The active product categories should include:
+
+Smartphones
+
+* Apple iPhone.
+* Samsung.
+* Google Pixel.
+* Other approved smartphone brands.
+
+Laptops
+
+* Apple MacBook.
+* HP.
+* Dell.
+* Lenovo.
+* Other approved laptop brands.
+
+Tablets and Pads
+
+Add a dedicated tablet category.
+
+Include:
+
+* Apple iPad.
+* Samsung Galaxy Tab.
+* Lenovo tablets.
+* Other Android tablets.
+* Other approved tablet brands.
+
+Smart gadgets
+
+Include:
+
+* Apple Watch.
+* Samsung Galaxy Watch.
+* Other smartwatches.
+* Earbuds.
+* Other approved used gadgets.
+
+Accessories
+
+Allow vendors to sell:
+
+* Phone chargers.
+* Laptop chargers.
+* Tablet chargers.
+* Phone pouches.
+* Tablet cases.
+* Screen protectors.
+* Screen guards.
+* Laptop bags.
+* Cables.
+* Adapters.
+* Earphones.
+* Power banks.
+* Other compatible accessories.
+
+Keep the catalogue organised and make categories easy to browse.
+
+4. PRODUCT VARIATIONS: COLOUR, STORAGE AND MEMORY
+
+This is a very important requirement.
+
+Vendors should not need to upload a separate product listing for every colour or storage variation when those variations belong to the same model and condition grade.
+
+Create a proper product variation management system.
+
+Example: iPhone 12
+
+A vendor wants to sell an iPhone 12.
+
+The vendor should create one main listing:
+
+Apple iPhone 12.
+
+Then add the available variations:
+
+Colours
+
+* Black.
+* White.
+* Blue.
+* Green.
+* Purple.
+* Red.
+
+Storage
+
+* 64GB.
+* 128GB.
+* 256GB.
+
+Condition grade
+
+* Grade A.
+* Grade B.
+* Grade C.
+
+The vendor should be able to select which combinations are actually available.
+
+For example:
+
+Colour	Storage	Grade	Quantity
+Black	64GB	A	2
+Black	128GB	A	1
+White	128GB	B	3
+Blue	256GB	A	1
+
+Do not automatically create combinations that the vendor does not have.
+
+Customer experience
+
+When a customer opens the iPhone 12 listing, display:
+
+Choose Colour.
+
+Choose Storage.
+
+Choose Condition Grade, where applicable.
+
+Show the available options clearly.
+
+When the customer changes a selection:
+
+* Update the price if necessary.
+* Update stock availability.
+* Update the relevant product images.
+* Update the condition report.
+* Update any applicable promotions.
+
+If a combination is unavailable, show it as unavailable rather than allowing the customer to purchase it.
+
+Important condition rule
+
+Do not mix devices with different condition grades into one indistinguishable variation.
+
+Each combination must have an accurate condition report.
+
+If the same model has Grade A and Grade B units, their condition information must be clearly distinguished.
+
+Laptop variations
+
+Apply the same principle to laptops.
+
+Allow variations such as:
+
+* Colour.
+* RAM.
+* Storage.
+* Processor configuration.
+* Screen size.
+* Keyboard layout.
+* Condition grade.
+
+The vendor should only offer combinations that are genuinely in stock.
+
+Tablets and gadgets
+
+Use appropriate variations for each category.
+
+For example:
+
+* iPad model.
+* Wi-Fi or cellular version.
+* Storage capacity.
+* Colour.
+* Condition grade.
+
+For smartwatches:
+
+* Model.
+* Size.
+* Colour.
+* GPS or cellular version.
+* Condition grade.
+
+Build a flexible product variation engine rather than creating separate hard-coded systems for each category.
+
+5. VENDOR PRICE AND STOCK MANAGEMENT
+
+Vendors must be able to manage existing product listings without uploading the entire product again.
+
+Create a proper product management system.
+
+Vendors should be able to:
+
+* Edit product prices.
+* Increase prices.
+* Reduce prices.
+* Update stock quantities.
+* Mark variations out of stock.
+* Add newly available colours.
+* Add new storage options.
+* Update product descriptions.
+* Update product photographs.
+* Update disclosed issues.
+* Edit accessory prices.
+* Update promotional offers.
+* Pause listings.
+* Reactivate listings.
+* Archive listings.
+
+Price change workflow
+
+Example:
+
+A vendor lists an iPhone 12 at ₦280,000.
+
+The vendor later wants to change the price to ₦265,000.
+
+The vendor should simply open the product dashboard, select Edit Price, enter the new price and save.
+
+Do not require the vendor to upload the product again.
+
+Maintain a price-change history for accountability.
+
+Existing orders
+
+A price change must not alter the agreed price of an already confirmed order.
+
+Store the original order price and product variation when the customer purchases.
+
+6. VENDOR ACCESSORY MANAGEMENT
+
+Vendors should have a dedicated Accessories section in their dashboard.
+
+Allow them to add:
+
+* Chargers.
+* Pouches.
+* Screen protectors.
+* Screen guards.
+* Laptop bags.
+* Tablet cases.
+* Cables.
+* Power banks.
+* Adapters.
+* Earphones.
+* Other compatible accessories.
+
+Each accessory should support:
+
+* Product name.
+* Description.
+* Price.
+* Photographs.
+* Available quantity.
+* Compatibility information.
+* Condition.
+* Delivery or collection options.
+
+Vendors should be able to connect accessories to their main products.
+
+Example:
+
+An iPhone 12 listing can be connected to:
+
+* Compatible charger.
+* iPhone 12 pouch.
+* Compatible screen protector.
+
+When a customer opens the iPhone listing, show a section titled:
+
+COMPLETE YOUR PURCHASE
+
+Display compatible accessories from the vendor.
+
+Customers should be able to add individual accessories to their cart.
+
+Never recommend incompatible accessories.
+
+7. VENDOR PROMOTIONS AND MARKETING TOOLS
+
+Create a dedicated Vendor Marketing Centre.
+
+Vendors should be able to create and manage their own marketing campaigns.
+
+Promotional options
+
+Allow vendors to create:
+
+1. Percentage discounts.
+2. Fixed-amount discounts.
+3. Promotional codes.
+4. Free gifts.
+5. Buy-one-get-one offers where applicable.
+6. Free delivery offers.
+7. Bundle offers.
+8. Limited-time campaigns.
+9. Repeat-customer offers.
+10. Special customer offers.
+
+Free gift examples
+
+BUY THIS IPHONE AND GET A FREE POUCH.
+
+BUY THIS PHONE AND GET A FREE SCREEN PROTECTOR.
+
+BUY THIS LAPTOP AND GET A FREE CHARGER.
+
+Promotion configuration
+
+Allow vendors to:
+
+* Select qualifying products.
+* Select qualifying variations.
+* Select the free gift.
+* Set start date.
+* Set end date.
+* Set promotional quantity.
+* Set minimum purchase conditions.
+* Set discount value.
+* Preview the offer.
+* Activate or deactivate the campaign.
+
+Automatically apply qualifying offers at checkout.
+
+Clearly show the normal price, discounted price and promotional benefit.
+
+Do not allow misleading discounts or fake original prices.
+
+Free delivery promotions
+
+Allow vendors to collaborate with UsedRight on free delivery campaigns.
+
+For example:
+
+BUY THIS LAPTOP AND ENJOY FREE DELIVERY.
+
+The system should calculate the actual delivery cost and apply the approved promotion.
+
+Clearly show who is funding the promotion: vendor, UsedRight or a jointly funded campaign.
+
+8. USED RIGHT MARKETING COLLABORATION
+
+Create a section called:
+
+Grow With UsedRight
+
+This allows vendors to request marketing assistance from UsedRight.
+
+Vendors should be able to collaborate with the UsedRight team to promote selected products and create campaigns.
+
+Vendor marketing requests
+
+Allow vendors to submit:
+
+* Product they want promoted.
+* Promotional objective.
+* Proposed discount.
+* Proposed free gift.
+* Available promotional stock.
+* Campaign duration.
+* Target customer group.
+* Marketing budget, if applicable.
+* Additional campaign information.
+
+Possible collaboration campaigns
+
+Examples:
+
+* UsedRight Featured Deals.
+* Vendor of the Week.
+* Best Affordable iPhone Deals.
+* Laptop Deals of the Week.
+* Weekend Shopping Campaign.
+* Free Accessory Campaign.
+* Limited Stock Campaign.
+
+Workflow
+
+1. Vendor submits a campaign request.
+2. UsedRight marketing team reviews it.
+3. UsedRight approves, rejects or requests changes.
+4. Approved campaign is published.
+5. Vendor can track campaign performance.
+
+Display campaign status:
+
+* Draft.
+* Submitted.
+* Under Review.
+* Approved.
+* Active.
+* Completed.
+* Rejected.
+
+Create an administrative marketing campaign management interface.
+
+Do not automatically publish every vendor campaign.
+
+9. SOLD PRODUCT MARKETING
+
+Vendors should be able to use products they have successfully sold on UsedRight as social proof.
+
+When a product is sold, allow the vendor to:
+
+* Mark it as sold automatically through completed orders.
+* Display it in a Sold Products section.
+* Share the sold product listing.
+* Use the product in their vendor marketing portfolio.
+* Show customers examples of previously sold devices.
+
+Display a clear SOLD label.
+
+Sold products must not appear as available for purchase.
+
+Do not allow sold listings to be represented as current inventory.
+
+Allow vendors to create a new listing using the same product specifications without having to re-enter everything.
+
+10. CHECKOUT IMPROVEMENT: ADD MORE PRODUCTS
+
+Customers must be able to add additional items while already in the checkout process.
+
+Currently, customers can add products to their cart, but I want a more flexible shopping experience.
+
+Required behaviour
+
+When a customer enters checkout, display a clear action:
+
+CONTINUE SHOPPING / ADD MORE ITEMS.
+
+This should allow customers to return to Explore or browse related products without losing their existing cart or checkout information.
+
+When they select another product or accessory:
+
+* Add it to the existing cart.
+* Preserve previously selected items.
+* Preserve selected product variations.
+* Recalculate the order total.
+* Recalculate applicable discounts.
+* Recalculate delivery.
+* Recalculate service charges.
+* Recalculate free gift eligibility.
+
+Return the customer to the checkout when they are ready.
+
+Suggested accessories during checkout
+
+If the customer is buying an iPhone, suggest compatible:
+
+* Charger.
+* Pouch.
+* Screen protector.
+* Earphones.
+
+If the customer is buying a laptop, suggest:
+
+* Laptop bag.
+* Compatible charger.
+* Mouse.
+* Adapter.
+
+If the customer is buying an iPad, suggest:
+
+* Tablet case.
+* Screen protector.
+* Compatible charger.
+* Stylus where compatible.
+
+Only suggest products that are actually available.
+
+Important
+
+Do not interrupt checkout with excessive pop-ups.
+
+Make additional shopping optional and easy to dismiss.
+
+11. CHAT-TO-PAYMENT SHORTCUT
+
+Customers must be able to complete their purchase without struggling to navigate away from a vendor conversation.
+
+Inside the customer-vendor chat interface, add a prominent shortcut:
+
+BUY THIS DEVICE.
+
+Or:
+
+PROCEED TO PAYMENT.
+
+When the customer selects the shortcut:
+
+1. Open the relevant product or order summary.
+2. Confirm the selected variation.
+3. Show the price.
+4. Show applicable charges.
+5. Show delivery options.
+6. Continue to secure checkout.
+
+If the customer has already agreed on a product and a valid order has been prepared, allow a shortcut directly to that order’s payment screen.
+
+Never collect payment card details inside chat messages.
+
+Use the secure checkout process.
+
+Chat shortcuts
+
+Provide useful actions such as:
+
+* View Product.
+* Buy Now.
+* Proceed to Payment.
+* View Vendor Store.
+* Ask About Product.
+* View Order.
+* Track Order.
+* Report a Problem.
+
+Show only shortcuts relevant to the current conversation.
+
+12. SIMPLE ENGLISH THROUGHOUT THE PLATFORM
+
+This is extremely important.
+
+UsedRight serves ordinary customers, not only technology experts.
+
+Avoid unnecessarily technical terms.
+
+Use simple, natural English that customers can understand immediately.
+
+Do not make customers feel intimidated or discouraged from buying a device because of technical wording.
+
+Replace complicated wording
+
+Avoid	Use instead
+Faulty	Not working
+Face ID Failure	Face ID not working
+SIM Locked	SIM locked to a network
+Wi-Fi Only	Works with Wi-Fi only, no SIM
+Battery Degradation	Battery does not last as long
+Aftermarket Display	Replacement screen, not original
+Factory OEM Display	Original manufacturer screen, if verified
+Board Soldering / Rework	Main board has been repaired
+Component Replacement	Part has been replaced
+Cosmetic Defects	Signs of use or visible marks
+Activation Lock	Device is linked to another owner’s account
+Not Tested	Not tested yet
+
+Do not use complicated technical expressions as the main customer-facing labels.
+
+Where a technical term is necessary, provide a simple explanation beside it.
+
+Product issue examples
+
+Instead of making a customer feel that a device is unusable, present the information neutrally.
+
+Example:
+
+Face ID not working
+
+You can still unlock and use the phone with its passcode. Face ID is not available.
+
+Wi-Fi only
+
+This device connects to the internet through Wi-Fi. It cannot use a SIM card for calls or mobile data.
+
+Screen replaced
+
+The screen has been changed. The vendor has provided information about the replacement.
+
+Battery does not last as long
+
+The battery condition is below the expected level. You may need to charge the device more often.
+
+Important honesty rule
+
+Simple language must not hide serious product issues.
+
+All limitations must remain clearly visible.
+
+Use a consistent red indicator for declared issues, but use calm, neutral wording.
+
+Some customers may intentionally want a device with Wi-Fi-only functionality, a non-working Face ID or a replaced screen because it is more affordable.
+
+Do not prevent purchases simply because a product has a disclosed issue.
+
+Customers must be able to understand the issue and make an informed decision.
+
+13. DELIVERY AND COLLECTION SYSTEM
+
+Vendors should not have to guess delivery costs when creating a product listing.
+
+The delivery cost depends on the customer’s location and delivery arrangements.
+
+Remove mandatory vendor-entered delivery fees from the product listing form.
+
+UsedRight delivery policy
+
+For the initial Lagos launch, implement a configurable flat delivery fee of ₦5,000 where the delivery location is eligible.
+
+UsedRight should control this fee.
+
+Vendors should not individually enter the standard platform delivery charge.
+
+The administrator should be able to:
+
+* Set the standard Lagos delivery fee.
+* Change the amount.
+* Define eligible locations.
+* Define excluded locations.
+* Approve special delivery charges.
+* Offer free delivery campaigns.
+* Configure exceptional delivery arrangements.
+
+Do not promise ₦5,000 delivery to locations that cannot reasonably be served at that price.
+
+If a location requires a different arrangement, show the actual applicable charge before payment.
+
+Customer delivery options
+
+At checkout, allow customers to choose:
+
+1. UsedRight-arranged delivery.
+2. Physical pickup, if the vendor offers it.
+
+Vendor pickup settings
+
+Vendors can enable or disable physical pickup.
+
+If enabled, they must provide:
+
+* Pickup location.
+* Pickup instructions.
+* Available pickup hours.
+* Contact information or approved communication method.
+
+Do not display a vendor’s private residential address publicly without appropriate consent.
+
+Customer pickup experience
+
+If the customer selects physical pickup:
+
+* Show the pickup location and instructions.
+* Generate a unique collection reference or OTP.
+* Require successful collection confirmation.
+* Update the order status.
+
+If the customer chooses delivery:
+
+* Show the applicable delivery fee.
+* Show the delivery method.
+* Provide tracking or delivery status where available.
+
+14. ESCROW / PAYMENT HOLD DASHBOARDS
+
+Both customers and vendors must be able to monitor payment holds.
+
+Create a clear section for customers:
+
+MY PAYMENT HOLDS.
+
+Create a corresponding vendor section:
+
+PAYMENTS ON HOLD.
+
+Do not use complicated financial terminology without explanation.
+
+Customer payment hold information
+
+Display:
+
+* Order reference.
+* Transaction reference.
+* Product.
+* Vendor.
+* Amount paid.
+* Delivery confirmation.
+* Inspection start time.
+* Inspection deadline.
+* Time remaining.
+* Current payment status.
+* Dispute status.
+* Settlement status.
+
+Provide shortcuts:
+
+* View Order.
+* View Payment Details.
+* Report a Problem.
+* Open Dispute.
+* Contact Support.
+
+Vendor payment hold information
+
+Display:
+
+* Order reference.
+* Transaction reference.
+* Customer reference, using appropriate privacy controls.
+* Product.
+* Amount.
+* Applicable charges.
+* Amount expected after deductions.
+* Delivery status.
+* Inspection countdown.
+* Dispute status.
+* Expected settlement status.
+* Settlement history.
+
+Provide shortcuts:
+
+* View Order.
+* View Customer Conversation.
+* View Delivery Status.
+* View Payment Details.
+* Contact Support.
+
+Payment hold statuses
+
+Use simple statuses:
+
+* Payment Received.
+* Preparing Order.
+* Dispatched.
+* Delivered.
+* Inspection Period Active.
+* Dispute Opened.
+* Payment Approved for Release.
+* Settled.
+* Refunded.
+
+The inspection period must be at least 24 hours from confirmed physical receipt.
+
+A dispute must immediately pause settlement.
+
+Do not describe ordinary payment split functionality as escrow.
+
+Use a compliant payment partner and approved conditional-settlement arrangement.
+
+Show customers and vendors the status of funds without exposing private payment credentials.
+
+15. ORDER DETAILS AND TRACKING
+
+When customers open My Orders, every order should be clickable.
+
+Clicking an order must open a detailed order page.
+
+Display:
+
+* Unique order number.
+* Unique transaction reference.
+* Product image.
+* Product name.
+* Selected colour.
+* Storage or memory.
+* Condition grade.
+* Disclosed issues.
+* Vendor name.
+* Vendor ID.
+* Quantity.
+* Item price.
+* Accessory charges.
+* Discounts.
+* Free gifts.
+* Delivery fee.
+* Total paid.
+* Payment status.
+* Delivery method.
+* Delivery status.
+* Inspection period.
+* Payment hold status.
+* Dispute status.
+
+Create a clear order timeline.
+
+Example:
+
+1. Order placed.
+2. Payment received.
+3. Vendor preparing order.
+4. Dispatched.
+5. Delivered.
+6. Inspection period active.
+7. Accepted or dispute opened.
+8. Payment released or refund processed.
+
+Provide prominent shortcuts:
+
+* Chat with Vendor.
+* Track Delivery.
+* View Payment Hold.
+* Report a Problem.
+* View Receipt.
+
+Make the same order information available to vendors with appropriate role-based permissions.
+
+16. UNIQUE VENDOR AND TRANSACTION IDENTIFICATION
+
+Every vendor and every transaction must have a unique reference number.
+
+Vendor ID
+
+Example:
+
+UR-VND-000123.
+
+Each vendor receives a permanent unique ID.
+
+Display it in:
+
+* Vendor dashboard.
+* Vendor profile where appropriate.
+* Admin dashboard.
+* Internal support records.
+
+Order ID
+
+Example:
+
+UR-ORD-2026-000001.
+
+Every order receives a unique order reference.
+
+Transaction ID
+
+Example:
+
+UR-TXN-2026-000001.
+
+Every payment transaction receives its own unique reference.
+
+Dispute ID
+
+Example:
+
+UR-DSP-2026-000001.
+
+Every dispute receives a unique reference.
+
+Important technical rules
+
+* Generate IDs on the backend in production.
+* Never rely on manually entered identifiers.
+* Prevent duplicate IDs.
+* Do not expose sensitive internal database identifiers.
+* Keep references permanent.
+* Make references searchable by authorised support and admin users.
+
+Add Copy Reference buttons throughout the relevant dashboards.
+
+17. BLOCKING AND REPORTING
+
+Add the ability for customers and vendors to block or report another account.
+
+However, blocking must be restricted while an active transaction is under payment hold.
+
+Blocking rules
+
+If a transaction is active and payment is still held:
+
+* Disable the Block button for the parties involved in that transaction.
+* Explain why blocking is temporarily unavailable.
+* Keep the conversation accessible for transaction communication.
+* Keep dispute and support functions available.
+
+Example message:
+
+“You cannot block this account while an active order is under review. You can still report a problem or contact UsedRight Support.”
+
+Once all relevant transactions are completed and no active dispute or payment hold remains, the block option may become available.
+
+Reporting
+
+Allow customers and vendors to report:
+
+* Suspicious behaviour.
+* Harassment.
+* Fraud attempts.
+* Misleading listings.
+* Off-platform payment requests.
+* Other policy violations.
+
+A report must not be confused with blocking.
+
+Reporting must remain available even when blocking is disabled.
+
+18. VENDOR DASHBOARD NAVIGATION
+
+Make the vendor dashboard easy to operate on mobile.
+
+Suggested sections:
+
+* Overview.
+* Products.
+* Add Product.
+* Orders.
+* Messages.
+* Payments on Hold.
+* Earnings.
+* Accessories.
+* Promotions.
+* Grow With UsedRight.
+* Sold Products.
+* Reviews.
+* Storefront.
+* Settings.
+
+Use compact navigation and shortcuts.
+
+Vendor dashboard shortcuts
+
+Add clear actions for:
+
+* Add New Product.
+* Edit Prices.
+* Update Stock.
+* Manage Variations.
+* Add Accessories.
+* Create Promotion.
+* Offer Free Gift.
+* Offer Free Delivery.
+* View Orders.
+* Reply to Messages.
+* View Payment Holds.
+* Market Sold Products.
+* Request UsedRight Campaign.
+
+Do not make vendors navigate through multiple screens for common tasks.
+
+19. CUSTOMER DASHBOARD SHORTCUTS
+
+Make common shopping actions easy to access.
+
+Suggested shortcuts:
+
+* Search Devices.
+* Browse Phones.
+* Browse Laptops.
+* Browse Tablets.
+* View Cart.
+* Continue Checkout.
+* Messages.
+* My Orders.
+* Payment Holds.
+* Track Order.
+* Saved Devices.
+* My Rewards.
+* Contact Support.
+
+Only show relevant shortcuts in each screen.
+
+Avoid displaying every action everywhere.
+
+20. AUTHENTICATION: REMOVE ROLE SWITCHING
+
+Remove the existing role-switching button from the public interface.
+
+Do not allow customers to switch into vendor accounts through a role toggle.
+
+The public interface must show:
+
+* Log In.
+* Create Account.
+
+Create Account
+
+Allow visitors to select:
+
+* Create Customer Account.
+* Register as a Vendor.
+
+Each option should lead to the correct registration journey.
+
+Log In
+
+Provide a normal sign-in screen.
+
+Authenticate users using their actual demo or production credentials.
+
+The application should automatically identify the account role after successful authentication and open the correct dashboard.
+
+Do not show a role-switching control.
+
+Demo accounts
+
+Keep demo accounts available for testing.
+
+Place them in a separate, clearly labelled Demo Access area on the login screen.
+
+Example:
+
+DEMO CUSTOMER
+Email: customer@usedright.demo
+Password: Demo123!
+
+DEMO VENDOR
+Email: vendor@usedright.demo
+Password: Demo123!
+
+DEMO PENDING VENDOR
+Email: pending@usedright.demo
+Password: Demo123!
+
+Use these only as demo credentials.
+
+The demo accounts should load realistic account data and allow the user to test their respective workflows.
+
+Make sure demo access does not bypass production security.
+
+Provide a reset demo data option in the demo environment, not as a public production control.
+
+21. DEMO PRODUCTS AND REALISTIC TEST DATA
+
+Expand the demo catalogue.
+
+Include realistic products across:
+
+* Smartphones.
+* Laptops.
+* iPads.
+* Android tablets.
+* Smartwatches.
+* Accessories.
+
+Provide realistic variations:
+
+* Colours.
+* Storage.
+* RAM.
+* Processor.
+* Battery condition.
+* Condition grades.
+* Prices.
+* Stock quantities.
+
+Include:
+
+* Good-condition devices.
+* Devices with replaced screens.
+* Wi-Fi-only devices.
+* SIM-locked devices.
+* Devices with Face ID not working.
+* Laptops with reduced battery runtime.
+* Laptops with keyboard issues.
+* Tablets with different storage capacities.
+
+Use appropriate sample images for each product.
+
+Create multiple demo vendors with different:
+
+* Stores.
+* Listings.
+* Product variations.
+* Promotions.
+* Free gifts.
+* Delivery arrangements.
+* Ratings.
+* Reviews.
+
+Every new feature must have realistic demo data and working interactions.
+
+22. DESIGN AND DEVELOPMENT QUALITY CONTROL
+
+Before completing the work, test all these scenarios.
+
+Customer tests
+
+* Register a new customer.
+* Log in.
+* Browse products.
+* Select a device.
+* Choose colour and storage.
+* View disclosed issues.
+* Chat with the vendor.
+* Use Buy Now from chat.
+* Add accessories.
+* Add more products during checkout.
+* Apply promotions.
+* Select delivery or pickup.
+* Complete simulated payment.
+* Open My Orders.
+* View order details.
+* View payment hold.
+* Check inspection countdown.
+* Open a dispute.
+* Submit a review.
+* Use referral credits.
+
+Vendor tests
+
+* Register a vendor.
+* Log in.
+* Edit storefront.
+* Add a product.
+* Add variations.
+* Change prices without re-uploading.
+* Update stock.
+* Add accessories.
+* Create discounts.
+* Create free gifts.
+* Offer free delivery.
+* Request a marketing collaboration.
+* Receive a customer message.
+* Send a payment shortcut.
+* View an order.
+* View payment holds.
+* Track settlement.
+* Mark sold products for marketing.
+* View customer reviews.
+
+Mobile tests
+
+Test every major screen on a narrow mobile viewport.
+
+Ensure:
+
+* No horizontal scrolling.
+* No overflowing buttons.
+* No tiny text.
+* No crowded product cards.
+* No oversized settings pages.
+* No hidden important actions.
+* Easy navigation.
+* Easy checkout.
+* Easy vendor operations.
+
+23. EXECUTION INSTRUCTIONS
+
+Implement the work in manageable stages.
+
+STAGE 1: Audit the existing project and preserve working features.
+
+STAGE 2: Correct the design system and remove deep purple styling.
+
+STAGE 3: Add tablets and accessory categories.
+
+STAGE 4: Build the product variation and inventory management system.
+
+STAGE 5: Build price editing, promotions and free gifts.
+
+STAGE 6: Improve cart, checkout and chat-to-payment shortcuts.
+
+STAGE 7: Implement delivery and physical pickup options.
+
+STAGE 8: Implement customer and vendor payment hold dashboards.
+
+STAGE 9: Add unique references and blocking/reporting rules.
+
+STAGE 10: Replace role switching with login, registration and demo account access.
+
+STAGE 11: Expand demo products and test data.
+
+STAGE 12: Complete responsive testing and quality control.
+
+Do not stop after creating visual screens. Implement working frontend interactions and connected demo workflows.
+
+Where a backend service is not yet available, simulate the interaction with realistic demo data and keep the architecture ready for backend integration.
+
+FINAL EXPECTATION:
+
+UsedRight must feel like a premium, well-organised and trustworthy technology marketplace.
+
+Customers should find it easy to browse, understand products, communicate with vendors, add products and accessories, pay securely and track their orders.
+
+Vendors should find it easy to manage products, prices, stock, promotions, accessories, orders, customers and payments.
+
+The entire project must use simple English, clear navigation and the official purple brand palette.
+
+Start by inspecting the existing project. Preserve everything that works. Then implement these improvements systematically.

@@ -581,7 +581,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="space-y-1">
                 <p className="text-sm font-semibold text-[#211B2B]">Your cart is empty</p>
                 <p className="text-xs text-[#716B7B] max-w-xs mx-auto">
-                  Browse verified foreign-used phones, laptops, and accessories backed by our Delivery Verification Code and 24-hour inspection window.
+                  Browse quality pre-owned phones, laptops, and accessories backed by our Delivery Verification Code and 24-hour inspection window.
                 </p>
               </div>
               <button

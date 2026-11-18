@@ -1109,7 +1109,7 @@ export const UnifiedTransactionChat: React.FC<UnifiedTransactionChatProps> = ({
                         {activeConv.listingTitle}
                       </div>
                       <div className="text-xs text-[#716B7B]">
-                        {activeConv.listingPrice ? formatNaira(activeConv.listingPrice) : ''} · Foreign-Used · Pre-purchase enquiry
+                        {activeConv.listingPrice ? formatNaira(activeConv.listingPrice) : ''} · Pre-Owned · Pre-purchase enquiry
                       </div>
                     </div>
                   </div>

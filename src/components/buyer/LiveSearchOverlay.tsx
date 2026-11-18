@@ -431,7 +431,7 @@ export const LiveSearchOverlay: React.FC<LiveSearchOverlayProps> = ({
                 <span>
                   {query.trim()
                     ? `${matchingResults.length} result${matchingResults.length === 1 ? '' : 's'} for "${query}"`
-                    : `Popular foreign-used devices (${matchingResults.length})`}
+                    : `Popular pre-owned devices (${matchingResults.length})`}
                 </span>
               </div>
 

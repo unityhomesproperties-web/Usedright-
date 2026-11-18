@@ -223,6 +223,35 @@ function loadStore(): ServerStore {
       const parsed = JSON.parse(raw) as Partial<ServerStore>;
       if (parsed.marketplace && Array.isArray(parsed.marketplace.listings)) {
         const mp = parsed.marketplace;
+        const seedById = new Map(seed.listings.map((l) => [l.id, l]));
+        const hydratedListings = (mp.listings || []).map((l) => {
+          const seedMatch = seedById.get(l.id);
+          const mergedReport =
+            seedMatch &&
+            l.conditionReport &&
+            'simFunctionality' in l.conditionReport &&
+            'simFunctionality' in seedMatch.conditionReport &&
+            !(l.conditionReport as any).touchscreen
+              ? {
+                  ...l.conditionReport,
+                  touchscreen: (seedMatch.conditionReport as any).touchscreen,
+                }
+              : l.conditionReport;
+          return {
+            ...l,
+            title: seedMatch ? seedMatch.title : l.title,
+            cosmeticDescription: seedMatch?.cosmeticDescription ?? l.cosmeticDescription,
+            conditionReport: mergedReport,
+            originEvidenceReviewed:
+              l.originEvidenceReviewed ??
+              seedMatch?.originEvidenceReviewed ??
+              (l.foreignUsedStatus === 'Verified Foreign-Used'),
+            usedRightInspected: l.usedRightInspected ?? seedMatch?.usedRightInspected ?? false,
+            functionalTestStatus: l.functionalTestStatus ?? seedMatch?.functionalTestStatus,
+          };
+        });
+        const existingListingIds = new Set(hydratedListings.map((l) => l.id));
+        const missingListings = seed.listings.filter((l) => !existingListingIds.has(l.id));
         const existingOrderIds = new Set((mp.orders || []).map((o) => o.id));
         const missingOrders = seed.orders.filter((o) => !existingOrderIds.has(o.id));
         const existingPreqIds = new Set((mp.paymentRequests || []).map((r) => r.id));
@@ -234,6 +263,7 @@ function loadStore(): ServerStore {
         return {
           marketplace: {
             ...mp,
+            listings: [...missingListings, ...hydratedListings],
             platformConfig: {
               ...mp.platformConfig,
               paymentRequestValidityHours:

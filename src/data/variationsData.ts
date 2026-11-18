@@ -104,7 +104,7 @@ export const IPHONE_13_PRO_VARIATIONS: ProductVariation[] = [
     originalPrice: 470000,
     stockQuantity: 3,
     isAvailable: true,
-    conditionSummary: 'Grade A foreign-used US trade-in. 89% battery health. ProMotion 120Hz display verified.',
+    conditionSummary: 'Excellent (Grade A) pre-owned US-origin trade-in. 89% battery health. ProMotion 120Hz display verified.',
     images: ['https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&auto=format&fit=crop&q=80'],
     batteryHealth: 89,
     simStatus: 'Unlocked (Physical + eSIM)',

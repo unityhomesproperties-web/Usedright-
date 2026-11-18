@@ -425,9 +425,9 @@ export const VendorBulkListingWizard: React.FC<VendorBulkListingWizardProps> = (
                       }
                       className="w-full px-2.5 py-2 rounded-xl border border-[#EAE6F0] bg-white"
                     >
-                      <option value="Grade A">Grade A (Excellent)</option>
-                      <option value="Grade B">Grade B (Great)</option>
-                      <option value="Grade C">Grade C (Good)</option>
+                      <option value="Grade A">Excellent (Grade A)</option>
+                      <option value="Grade B">Very Good (Grade B)</option>
+                      <option value="Grade C">Good (Grade C)</option>
                     </select>
                   </div>
 

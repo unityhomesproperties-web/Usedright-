@@ -3,9 +3,17 @@ import {
   CosmeticGrade,
   DeviceListing,
   DisclosedFault,
+  FunctionalTestStatus,
   PhoneConditionReport,
   ProductVariation,
 } from '../types/marketplace';
+import {
+  buildConditionStatement,
+  getEffectiveFunctionalStatus,
+  hasFaceIdOrBiometricFault,
+  hasReplacedScreen,
+  qualifiesForWorksLikeNew,
+} from './deviceCondition';
 
 export type ConfiguratorGradeKey = 'Grade C' | 'Grade B' | 'Grade A';
 
@@ -22,6 +30,8 @@ export interface GradeOptionCard {
   screenOriginality: string;
   faceIdStatus: 'Working' | 'Not working';
   cosmeticNotes: string;
+  worksLikeNewEligible: boolean;
+  functionalStatus: FunctionalTestStatus;
 }
 
 export interface ColorOptionConfig {
@@ -79,22 +89,28 @@ export const GRADE_OFFSETS: Record<ConfiguratorGradeKey, number> = {
 
 export const GRADE_COPY: Record<
   ConfiguratorGradeKey,
-  { title: string; badgeLabel: string; description: string }
+  { title: string; badgeLabel: string; description: string; appearanceDescription: string }
 > = {
   'Grade C': {
     title: 'Good (Grade C)',
     badgeLabel: 'Good',
-    description: 'Visible scratches or dents; works like new.',
+    description: 'Visible scratches, dents or signs of use. Works like new.',
+    appearanceDescription:
+      'Visible scratches, dents or signs of use. May show noticeable cosmetic marks while passing functionality checks.',
   },
   'Grade B': {
-    title: 'Great (Grade B)',
-    badgeLabel: 'Great',
-    description: 'Minor cosmetic marks; works like new.',
+    title: 'Very Good (Grade B)',
+    badgeLabel: 'Very Good',
+    description: 'Minor scratches or cosmetic marks. Works like new.',
+    appearanceDescription:
+      'Minor scratches or cosmetic marks. Small signs of previous use while maintaining a clean appearance.',
   },
   'Grade A': {
     title: 'Excellent (Grade A)',
     badgeLabel: 'Excellent',
-    description: 'Nearly flawless appearance; works like new.',
+    description: 'Nearly flawless appearance. Works like new.',
+    appearanceDescription:
+      'Nearly flawless appearance. Very little visible cosmetic wear.',
   },
 };
 
@@ -186,7 +202,9 @@ export function buildFlagshipGradeOptions(
       grade: 'Grade C',
       title: GRADE_COPY['Grade C'].title,
       badgeLabel: GRADE_COPY['Grade C'].badgeLabel,
-      description: GRADE_COPY['Grade C'].description,
+      description: isProMax
+        ? 'Visible scratches, dents or signs of use. Other tested functions work as expected. Face ID is not working.'
+        : GRADE_COPY['Grade C'].description,
       priceDelta: GRADE_OFFSETS['Grade C'],
       price: getGradePrice(model.baseGradeCPrice, 'Grade C'),
       stock: selectedColor.gradeStock['Grade C'],
@@ -195,6 +213,8 @@ export function buildFlagshipGradeOptions(
       screenOriginality: 'Original, verified',
       faceIdStatus: isProMax ? 'Not working' : 'Working',
       cosmeticNotes: 'Visible scratches on titanium edges and back matte glass; screen responds cleanly.',
+      worksLikeNewEligible: !isProMax,
+      functionalStatus: isProMax ? 'Functional With Disclosed Limitations' : 'Fully Functional',
     },
     {
       grade: 'Grade B',
@@ -209,6 +229,8 @@ export function buildFlagshipGradeOptions(
       screenOriginality: 'Original, verified',
       faceIdStatus: 'Working',
       cosmeticNotes: 'Light micro-marks only visible within 15cm; display and lenses spotless.',
+      worksLikeNewEligible: true,
+      functionalStatus: 'Fully Functional',
     },
     {
       grade: 'Grade A',
@@ -223,6 +245,8 @@ export function buildFlagshipGradeOptions(
       screenOriginality: 'Original, verified',
       faceIdStatus: 'Working',
       cosmeticNotes: 'Nearly indistinguishable from open-box retail unit; zero screen or lens wear.',
+      worksLikeNewEligible: true,
+      functionalStatus: 'Fully Functional',
     },
   ];
 }
@@ -268,16 +292,16 @@ export function buildGenericGradeOptions(
           ? listing.disclosedFaultsList
           : [
               {
-                label: 'Visible cosmetic scratches from foreign use',
+                label: 'Visible cosmetic scratches or signs of use',
                 description:
-                  'Noticeable marks on outer chassis or frame; internal hardware and display verified working.',
+                  'Noticeable marks on outer chassis or frame; internal hardware checked separately.',
               },
             ]
         : grade === 'Grade B'
         ? [
             {
               label: 'Minor cosmetic marks on frame',
-              description: 'Faint surface wear from normal previous use; works like new.',
+              description: 'Small surface signs of previous use while maintaining a clean appearance.',
             },
           ]
         : [];
@@ -288,13 +312,45 @@ export function buildGenericGradeOptions(
         description: matchedVar.conditionSummary || f,
       })) || [];
 
+    const resolvedIssues =
+      varFaults.length > 0
+        ? varFaults
+        : matchesBaseListing && listing.disclosedFaultsList?.length
+        ? listing.disclosedFaultsList
+        : fallbackFaults;
+
     const phoneReport = listing.conditionReport as PhoneConditionReport | undefined;
+    const effectiveScreenOrig = matchedVar?.screenReplaced
+      ? 'Screen replaced (tested)'
+      : hasReplacedScreen(listing, matchedVar)
+      ? 'Screen replaced (tested)'
+      : phoneReport?.screenOriginality || 'Original, verified';
+
+    const faceIdFault = hasFaceIdOrBiometricFault(
+      listing,
+      matchedVar,
+      undefined,
+      resolvedIssues.map((i) => i.label)
+    );
+
+    const qualInput = {
+      listing,
+      variation: matchedVar,
+      gradeOverride: grade,
+      screenOriginalityOverride: effectiveScreenOrig,
+      faceIdOverride: (faceIdFault ? 'Not working' : 'Working') as 'Working' | 'Not working',
+      disclosedLabelsOverride: resolvedIssues.map((i) => i.label),
+    };
+
+    const worksLikeNewEligible = qualifiesForWorksLikeNew(qualInput);
+    const functionalStatus = getEffectiveFunctionalStatus(qualInput);
+    const qualifiedDescription = buildConditionStatement(qualInput);
 
     return {
       grade,
       title: GRADE_COPY[grade].title,
       badgeLabel: GRADE_COPY[grade].badgeLabel,
-      description: GRADE_COPY[grade].description,
+      description: qualifiedDescription,
       priceDelta: GRADE_OFFSETS[grade],
       price,
       stock,
@@ -305,22 +361,15 @@ export function buildGenericGradeOptions(
           : grade === 'Grade B'
           ? listing.batteryHealth || 86
           : Math.min(listing.batteryHealth || 82, 83)),
-      disclosedIssues:
-        varFaults.length > 0
-          ? varFaults
-          : matchesBaseListing && listing.disclosedFaultsList?.length
-          ? listing.disclosedFaultsList
-          : fallbackFaults,
-      screenOriginality: phoneReport?.screenOriginality || 'Original, verified',
-      faceIdStatus:
-        phoneReport?.faceIdOrFingerprint === 'Not working' ||
-        phoneReport?.faceIdOrFingerprint === 'Faulty'
-          ? 'Not working'
-          : 'Working',
+      disclosedIssues: resolvedIssues,
+      screenOriginality: effectiveScreenOrig,
+      faceIdStatus: faceIdFault ? 'Not working' : 'Working',
       cosmeticNotes:
         matchedVar?.conditionSummary ||
         listing.cosmeticDescription ||
-        GRADE_COPY[grade].description,
+        GRADE_COPY[grade].appearanceDescription,
+      worksLikeNewEligible,
+      functionalStatus,
     };
   });
 }

@@ -23,6 +23,9 @@ import {
   Gift,
   BadgeCheck,
   MapPin,
+  HelpCircle,
+  Wrench,
+  Eye,
 } from 'lucide-react';
 import {
   AccessoryItem,
@@ -59,6 +62,18 @@ import {
   ConfiguratorGradeKey,
   resolveColorHex,
 } from '../../utils/productConfig';
+import {
+  buildConditionStatement,
+  buildFunctionalityChecklistRows,
+  buildVerificationLayers,
+  getEffectiveFunctionalStatus,
+  getSimRestrictionDetails,
+  hasReplacedBattery,
+  hasReplacedScreen,
+  mapCosmeticGrade,
+  qualifiesForWorksLikeNew,
+  sanitizeVendorFreeText,
+} from '../../utils/deviceCondition';
 import { SmartImage } from '../common/SmartImage';
 import { TrustTileIcon } from '../common/TrustGraphics';
 
@@ -458,6 +473,67 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
   const phoneReport = isPhone ? (listing.conditionReport as PhoneConditionReport) : null;
   const laptopReport = isLaptop ? (listing.conditionReport as LaptopConditionReport) : null;
 
+  const conditionInput = useMemo(
+    () => ({
+      listing,
+      variation: matchedGenericVariation || configuredVariation,
+      faceIdOverride: activeGradeCard.faceIdStatus,
+      batteryHealthOverride: activeGradeCard.batteryHealth,
+      screenOriginalityOverride: activeGradeCard.screenOriginality,
+      gradeOverride: activeGradeCard.grade,
+      disclosedLabelsOverride: combinedDisclosedIssues.map((i) => `${i.label} ${i.description}`),
+    }),
+    [
+      listing,
+      matchedGenericVariation,
+      configuredVariation,
+      activeGradeCard.faceIdStatus,
+      activeGradeCard.batteryHealth,
+      activeGradeCard.screenOriginality,
+      activeGradeCard.grade,
+      combinedDisclosedIssues,
+    ]
+  );
+
+  const mappedGrade = useMemo(
+    () => mapCosmeticGrade(activeGradeCard.grade),
+    [activeGradeCard.grade]
+  );
+  const effectiveFunctionalStatus = useMemo(
+    () => getEffectiveFunctionalStatus(conditionInput),
+    [conditionInput]
+  );
+  const worksLikeNewAllowed = useMemo(
+    () => qualifiesForWorksLikeNew(conditionInput),
+    [conditionInput]
+  );
+  const conditionStatement = useMemo(
+    () => buildConditionStatement(conditionInput),
+    [conditionInput]
+  );
+  const checklistRows = useMemo(
+    () => buildFunctionalityChecklistRows(conditionInput),
+    [conditionInput]
+  );
+  const simRestriction = useMemo(
+    () => getSimRestrictionDetails(listing, matchedGenericVariation || configuredVariation),
+    [listing, matchedGenericVariation, configuredVariation]
+  );
+  const batteryReplaced = useMemo(
+    () => hasReplacedBattery(listing, matchedGenericVariation || configuredVariation),
+    [listing, matchedGenericVariation, configuredVariation]
+  );
+  const screenReplaced = useMemo(
+    () =>
+      hasReplacedScreen(
+        listing,
+        matchedGenericVariation || configuredVariation,
+        activeGradeCard.screenOriginality
+      ),
+    [listing, matchedGenericVariation, configuredVariation, activeGradeCard.screenOriginality]
+  );
+  const verificationLayers = useMemo(() => buildVerificationLayers(listing), [listing]);
+
   const reviews = INITIAL_REVIEWS.filter(
     (r) => r.listingId === listing.id || r.vendorId === listing.sellerId
   );
@@ -617,11 +693,11 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
               {/* Top Condition, Color & Photo Evidence Pill */}
               <div className="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-1.5 pointer-events-none">
                 <div className="flex flex-wrap gap-1.5">
-                  <span className="px-2.5 py-1 rounded-lg bg-white/95 border border-[#D0BCFC] text-xs font-medium text-[#211B2B]">
-                    {listing.condition === 'Brand-New' ? 'Brand New' : 'Foreign Used'}
+                  <span className="px-2.5 py-1 rounded-lg bg-white/95 border border-[#D0BCFC] text-xs font-medium text-[#30102F]">
+                    {listing.condition === 'Brand-New' ? 'Brand New' : 'Pre-Owned'}
                   </span>
                   <span className="px-2.5 py-1 rounded-lg bg-[#211B2B]/90 text-white text-xs font-medium">
-                    {activeColorOption.name} · {activeGradeCard.grade}
+                    {activeColorOption.name} · {mappedGrade.label} ({mappedGrade.internalKey})
                   </span>
                 </div>
                 <span
@@ -950,7 +1026,7 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
                 </div>
               </div>
 
-              {/* D. Inline Expandable Condition & Honesty Report (No Pop-ups) */}
+              {/* D. Structured 4-Section Condition & Verification Panel */}
               <div className="rounded-xl border border-[#EAE6F0] bg-[#FAF9FC] overflow-hidden">
                 <button
                   type="button"
@@ -960,15 +1036,22 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
                 >
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs font-semibold text-[#211B2B]">
-                      Condition & Honesty Report ({activeGradeCard.grade})
+                      Condition, Device History & Verification ({mappedGrade.label})
                     </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white border border-[#D0BCFC] text-[11px] font-medium text-[#211B2B]">
-                      <BadgeCheck className="w-3 h-3 text-[#238653]" />
-                      Vendor Disclosed
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#D0BCFC]/55 border border-[#D0BCFC] text-[11px] font-semibold text-[#30102F]">
+                      {mappedGrade.code}
                     </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white border border-[#EAE6F0] text-[11px] font-medium text-[#238653]">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Foreign-Use Batch Verified
+                    <span
+                      data-testid="pdp-functional-status-pill"
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[11px] font-medium ${
+                        effectiveFunctionalStatus === 'Fully Functional'
+                          ? 'bg-[#ECFDF5] border-[#A7F3D0] text-[#238653]'
+                          : effectiveFunctionalStatus === 'Not Tested'
+                          ? 'bg-[#FEF3C7] border-[#FDE68A] text-[#92400E]'
+                          : 'bg-[#FFF5F5] border-[#FED7D7] text-[#C53030]'
+                      }`}
+                    >
+                      {effectiveFunctionalStatus}
                     </span>
                   </div>
                   {honestyReportExpanded ? (
@@ -979,104 +1062,100 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
                 </button>
 
                 {honestyReportExpanded && (
-                  <div className="px-4 pb-4 pt-1 space-y-3 border-t border-[#EAE6F0] bg-white">
-                    {/* Plain-English Disclosed Issues Box (#D9534F soft red alert) */}
-                    {combinedDisclosedIssues.length > 0 ? (
-                      <div
-                        data-testid="disclosed-issues-alert"
-                        className="p-3.5 rounded-xl bg-[#D9534F]/8 border border-[#D9534F]/35 space-y-1.5"
-                      >
-                        <div className="flex items-center gap-2 text-xs font-semibold text-[#D9534F]">
-                          <AlertOctagon className="w-4 h-4 shrink-0" />
-                          Disclosed Limitations & Issues ({activeGradeCard.grade})
-                        </div>
-                        <ul className="space-y-1.5 text-xs text-[#211B2B]">
-                          {combinedDisclosedIssues.map((issue, idx) => (
-                            <li key={idx} className="leading-relaxed">
-                              <span className="font-semibold text-[#D9534F]">• {issue.label}:</span>{' '}
-                              {issue.description}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <div className="p-3 rounded-xl bg-[#238653]/8 border border-[#238653]/25 flex items-center gap-2 text-xs text-[#211B2B]">
-                        <CheckCircle2 className="w-4 h-4 text-[#238653] shrink-0" />
-                        <span>
-                          No technical limitations disclosed for this {activeGradeCard.grade} unit. All hardware tests passed cleanly.
+                  <div className="px-4 pb-4 pt-3 space-y-4 border-t border-[#EAE6F0] bg-white">
+                    {/* A. Appearance */}
+                    <section
+                      data-testid="pdp-section-appearance"
+                      aria-label="Appearance"
+                      className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-2"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <h3 className="text-xs font-semibold text-[#211B2B] flex items-center gap-1.5">
+                          <Eye className="w-3.5 h-3.5 text-[#A981FF]" />
+                          A. Appearance (Cosmetic Condition Only)
+                        </h3>
+                        <span className="px-2 py-0.5 rounded-md bg-[#D0BCFC]/55 text-[#30102F] text-[10px] font-bold tracking-wide">
+                          {mappedGrade.badgeText}
                         </span>
                       </div>
-                    )}
-
-                    {/* 2-Column Hardware Checklist */}
-                    <div>
-                      <div className="text-[11px] font-semibold uppercase tracking-wide text-[#716B7B] mb-2">
-                        Hardware Verification Checklist
+                      <p className="text-xs text-[#211B2B] font-medium">
+                        {mappedGrade.label} ({mappedGrade.internalKey}): {mappedGrade.wearExplanation}
+                      </p>
+                      <p className="text-[11px] text-[#4A4356] leading-relaxed">
+                        {sanitizeVendorFreeText(activeGradeCard.cosmeticNotes, worksLikeNewAllowed).cleaned}
+                      </p>
+                      <div className="text-[11px] text-[#716B7B] flex items-center justify-between pt-1 border-t border-[#EAE6F0]">
+                        <span>Gallery Photo Evidence:</span>
+                        <span className="font-medium text-[#211B2B]">{photoEvidenceLabel}</span>
                       </div>
-                      {isLaptop && laptopReport ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                          {[
-                            ['Battery Condition', `${laptopReport.batteryCondition} (${laptopReport.batteryCycleCount} cycles)`],
-                            ['Screen Originality', sanitizeConditionText(laptopReport.screenCondition)],
-                            ['Keyboard & Trackpad', `${laptopReport.keyboard} · ${toSimpleEnglish(laptopReport.trackpad).label}`],
-                            ['Ports & Charging', `${laptopReport.usbPorts} · ${toSimpleEnglish(laptopReport.charging).label}`],
-                            ['SSD & Memory', `${laptopReport.ramSpecification} · ${laptopReport.ssdOrHddCondition}`],
-                            ['Firmware / MDM Lock', `${laptopReport.biosOrFirmwareLock} · ${laptopReport.activationOrManagementLock}`],
-                          ].map(([label, value]) => (
-                            <div
-                              key={label}
-                              className="p-2.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0]"
-                            >
-                              <span className="text-[#716B7B] block text-[11px]">{label}</span>
-                              <span className="font-medium text-[#211B2B] mt-0.5 block">
-                                {value}
-                              </span>
-                            </div>
-                          ))}
+                    </section>
+
+                    {/* B. Functionality */}
+                    <section
+                      data-testid="pdp-section-functionality"
+                      aria-label="Functionality"
+                      className="space-y-3"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <h3 className="text-xs font-semibold text-[#211B2B] flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#A981FF]" />
+                          B. Functionality & Hardware Check
+                        </h3>
+                        <span
+                          className={`px-2 py-0.5 rounded-md text-[11px] font-semibold ${
+                            effectiveFunctionalStatus === 'Fully Functional'
+                              ? 'bg-[#ECFDF5] text-[#238653]'
+                              : effectiveFunctionalStatus === 'Not Tested'
+                              ? 'bg-[#FEF3C7] text-[#92400E]'
+                              : 'bg-[#FFF5F5] text-[#C53030]'
+                          }`}
+                        >
+                          {effectiveFunctionalStatus}
+                        </span>
+                      </div>
+
+                      <div
+                        data-testid="pdp-condition-statement"
+                        className={`p-3 rounded-xl border text-xs leading-relaxed ${
+                          worksLikeNewAllowed
+                            ? 'bg-[#238653]/8 border-[#238653]/25 text-[#211B2B]'
+                            : effectiveFunctionalStatus === 'Not Tested'
+                            ? 'bg-[#FEF3C7]/60 border-[#FDE68A] text-[#92400E]'
+                            : 'bg-[#FFF5F5] border-[#FED7D7] text-[#211B2B]'
+                        }`}
+                      >
+                        <span className="font-semibold block mb-0.5">Condition Summary:</span>
+                        {conditionStatement}
+                      </div>
+
+                      {/* Plain-English Disclosed Limitations Box (#D9534F soft red alert) */}
+                      {combinedDisclosedIssues.length > 0 && (
+                        <div
+                          data-testid="disclosed-issues-alert"
+                          className="p-3.5 rounded-xl bg-[#D9534F]/8 border border-[#D9534F]/35 space-y-1.5"
+                        >
+                          <div className="flex items-center gap-2 text-xs font-semibold text-[#D9534F]">
+                            <AlertOctagon className="w-4 h-4 shrink-0" />
+                            Disclosed Limitations & Issues ({mappedGrade.label})
+                          </div>
+                          <ul className="space-y-1.5 text-xs text-[#211B2B]">
+                            {combinedDisclosedIssues.map((issue, idx) => (
+                              <li key={idx} className="leading-relaxed">
+                                <span className="font-semibold text-[#D9534F]">• {issue.label}:</span>{' '}
+                                {issue.description}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      ) : (
+                      )}
+
+                      {/* Itemized Non-Fabricated Hardware Checklist */}
+                      <div>
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-[#716B7B] mb-2">
+                          Hardware Verification Checklist (No Assumed Passes)
+                        </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                          {[
-                            {
-                              label: 'Battery Health',
-                              value: `${activeGradeCard.batteryHealth}% (Original cell)`,
-                              ok: activeGradeCard.batteryHealth >= 80,
-                            },
-                            {
-                              label: 'Screen Originality',
-                              value: activeGradeCard.screenOriginality,
-                              ok: true,
-                            },
-                            {
-                              label: 'Cameras (Front & Rear)',
-                              value: phoneReport
-                                ? `${toSimpleEnglish(phoneReport.frontCamera).label} / ${toSimpleEnglish(phoneReport.rearCamera).label}`
-                                : 'Working properly',
-                              ok: true,
-                            },
-                            {
-                              label: 'Charging Port',
-                              value: phoneReport
-                                ? toSimpleEnglish(phoneReport.chargingPort).label
-                                : 'Fast charging tested',
-                              ok: true,
-                            },
-                            {
-                              label: 'iCloud / MDM Lock Status',
-                              value: phoneReport
-                                ? `${phoneReport.icloudOrGoogleLock} · ${phoneReport.mdmStatus}`
-                                : 'Clean & Removed · No MDM',
-                              ok: true,
-                            },
-                            {
-                              label: 'Face ID / Biometrics',
-                              value:
-                                activeGradeCard.faceIdStatus === 'Not working'
-                                  ? 'Not working (passcode only)'
-                                  : 'Tested & Working',
-                              ok: activeGradeCard.faceIdStatus !== 'Not working',
-                            },
-                          ].map((item) => (
+                          {checklistRows.map((item) => (
                             <div
                               key={item.label}
                               className="p-2.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] flex items-start justify-between gap-2"
@@ -1087,22 +1166,167 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
                                 </span>
                                 <span
                                   className={`font-medium mt-0.5 block ${
-                                    item.ok ? 'text-[#211B2B]' : 'text-[#D9534F]'
+                                    item.state === 'issue'
+                                      ? 'text-[#D9534F]'
+                                      : item.state === 'not_tested'
+                                      ? 'text-[#92400E]'
+                                      : 'text-[#211B2B]'
                                   }`}
                                 >
                                   {item.value}
                                 </span>
                               </div>
-                              {item.ok ? (
+                              {item.state === 'working' ? (
                                 <CheckCircle2 className="w-3.5 h-3.5 text-[#238653] shrink-0 mt-0.5" />
-                              ) : (
+                              ) : item.state === 'issue' ? (
                                 <AlertOctagon className="w-3.5 h-3.5 text-[#D9534F] shrink-0 mt-0.5" />
+                              ) : (
+                                <HelpCircle className="w-3.5 h-3.5 text-[#92400E] shrink-0 mt-0.5" />
                               )}
                             </div>
                           ))}
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    </section>
+
+                    {/* C. Device History */}
+                    <section
+                      data-testid="pdp-section-history"
+                      aria-label="Device History"
+                      className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-2.5"
+                    >
+                      <h3 className="text-xs font-semibold text-[#211B2B] flex items-center gap-1.5">
+                        <Wrench className="w-3.5 h-3.5 text-[#A981FF]" />
+                        C. Device History & Provenance
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <div className="p-2.5 rounded-lg bg-white border border-[#EAE6F0]">
+                          <span className="text-[11px] text-[#716B7B] block">Battery History</span>
+                          <span className={`font-medium mt-0.5 block ${batteryReplaced ? 'text-[#D9534F]' : 'text-[#211B2B]'}`}>
+                            {batteryReplaced
+                              ? `Battery replaced (${activeGradeCard.batteryHealth}%)`
+                              : phoneReport?.batteryReplaced === 'Unknown'
+                              ? 'Not disclosed'
+                              : `Original battery (${activeGradeCard.batteryHealth}%)`}
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-[#EAE6F0]">
+                          <span className="text-[11px] text-[#716B7B] block">Screen History</span>
+                          <span className={`font-medium mt-0.5 block ${screenReplaced ? 'text-[#D9534F]' : 'text-[#211B2B]'}`}>
+                            {screenReplaced
+                              ? 'Screen replaced (disclosed)'
+                              : activeGradeCard.screenOriginality || 'Not disclosed'}
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-[#EAE6F0]">
+                          <span className="text-[11px] text-[#716B7B] block">SIM & Network Lock</span>
+                          <span className={`font-medium mt-0.5 block ${simRestriction.type !== 'unlocked' ? 'text-[#D9534F]' : 'text-[#211B2B]'}`}>
+                            {simRestriction.label}
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-[#EAE6F0]">
+                          <span className="text-[11px] text-[#716B7B] block">Origin & Batch Traceability</span>
+                          <span className="font-medium text-[#211B2B] mt-0.5 block">
+                            Foreign-Used / Imported ({listing.sourceCountry}) · {listing.batchReference}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-[11px] text-[#4A4356] leading-relaxed">
+                        <span className="font-semibold text-[#211B2B]">Repair History: </span>
+                        {listing.repairHistory && listing.repairHistory.length > 0
+                          ? listing.repairHistory
+                              .map((r) => `${r.component} (${r.status}: ${r.notes})`)
+                              .join('; ')
+                          : phoneReport?.otherRepairsNotes ||
+                            listing.structuredDescription?.previousRepairs ||
+                            'No repairs reported by vendor.'}
+                      </div>
+                    </section>
+
+                    {/* D. Verification (3 Separate Independent Layers) */}
+                    <section
+                      data-testid="pdp-section-verification"
+                      aria-label="Verification Layers"
+                      className="space-y-2"
+                    >
+                      <h3 className="text-xs font-semibold text-[#211B2B] flex items-center gap-1.5">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#A981FF]" />
+                        D. Verification (Three Independent Checks)
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                        {/* 1. Vendor Verification */}
+                        <div
+                          data-testid="pdp-verify-vendor"
+                          className={`p-2.5 rounded-xl border ${
+                            verificationLayers.vendorVerification.verified
+                              ? 'bg-[#ECFDF5]/60 border-[#A7F3D0]'
+                              : 'bg-[#FAF9FC] border-[#EAE6F0]'
+                          }`}
+                        >
+                          <div className="font-semibold text-[#211B2B] flex items-center gap-1">
+                            <BadgeCheck
+                              className={`w-3.5 h-3.5 shrink-0 ${
+                                verificationLayers.vendorVerification.verified
+                                  ? 'text-[#238653]'
+                                  : 'text-[#716B7B]'
+                              }`}
+                            />
+                            <span>{verificationLayers.vendorVerification.label}</span>
+                          </div>
+                          <p className="text-[11px] text-[#4A4356] mt-1 leading-snug">
+                            {verificationLayers.vendorVerification.detail}
+                          </p>
+                        </div>
+
+                        {/* 2. Origin Evidence */}
+                        <div
+                          data-testid="pdp-verify-origin"
+                          className={`p-2.5 rounded-xl border ${
+                            verificationLayers.originEvidence.reviewed
+                              ? 'bg-[#ECFDF5]/60 border-[#A7F3D0]'
+                              : 'bg-[#FEF3C7]/50 border-[#FDE68A]'
+                          }`}
+                        >
+                          <div className="font-semibold text-[#211B2B] flex items-center gap-1">
+                            <Globe
+                              className={`w-3.5 h-3.5 shrink-0 ${
+                                verificationLayers.originEvidence.reviewed
+                                  ? 'text-[#238653]'
+                                  : 'text-[#92400E]'
+                              }`}
+                            />
+                            <span>{verificationLayers.originEvidence.label}</span>
+                          </div>
+                          <p className="text-[11px] text-[#4A4356] mt-1 leading-snug">
+                            {verificationLayers.originEvidence.detail}
+                          </p>
+                        </div>
+
+                        {/* 3. Physical UsedRight Inspection */}
+                        <div
+                          data-testid="pdp-verify-inspection"
+                          className={`p-2.5 rounded-xl border ${
+                            verificationLayers.physicalInspection.inspected
+                              ? 'bg-[#ECFDF5]/60 border-[#A7F3D0]'
+                              : 'bg-[#FAF9FC] border-[#EAE6F0]'
+                          }`}
+                        >
+                          <div className="font-semibold text-[#211B2B] flex items-center gap-1">
+                            <ShieldCheck
+                              className={`w-3.5 h-3.5 shrink-0 ${
+                                verificationLayers.physicalInspection.inspected
+                                  ? 'text-[#238653]'
+                                  : 'text-[#716B7B]'
+                              }`}
+                            />
+                            <span>{verificationLayers.physicalInspection.label}</span>
+                          </div>
+                          <p className="text-[11px] text-[#4A4356] mt-1 leading-snug">
+                            {verificationLayers.physicalInspection.detail}
+                          </p>
+                        </div>
+                      </div>
+                    </section>
                   </div>
                 )}
               </div>
@@ -1295,7 +1519,10 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
                 <div>
                   <span className="font-semibold text-[#211B2B] block">Overview</span>
                   <p className="text-[#4A4356] mt-0.5 leading-relaxed">
-                    {sanitizeConditionText(listing.structuredDescription.overview)}
+                    {sanitizeVendorFreeText(
+                      sanitizeConditionText(listing.structuredDescription.overview),
+                      worksLikeNewAllowed
+                    ).cleaned}
                   </p>
                 </div>
                 {listing.structuredDescription.specsSummary && (

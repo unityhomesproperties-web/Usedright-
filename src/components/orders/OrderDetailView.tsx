@@ -41,6 +41,7 @@ import {
   getOrderStageIndex,
   ORDER_STAGES_8,
 } from '../../utils/marketplace';
+import { mapCosmeticGrade } from '../../utils/deviceCondition';
 import {
   createOrderWarrantySnapshot,
   getWarrantyDaysRemaining,
@@ -899,7 +900,7 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
                 </span>
               )}
               <span className="px-2 py-0.5 rounded bg-[#FAF9FC] border border-[#EAE6F0]">
-                Condition: {variation?.grade || order.listing.cosmeticGrade} (Foreign Used)
+                Condition: {mapCosmeticGrade(variation?.grade || order.listing.cosmeticGrade).label} ({variation?.grade || order.listing.cosmeticGrade}) · Pre-Owned
               </span>
             </div>
 

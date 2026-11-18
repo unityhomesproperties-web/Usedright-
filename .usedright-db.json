@@ -218,7 +218,7 @@
         "number": 1,
         "title": "About UsedRight",
         "category": "Core Terms",
-        "summary": "Who UsedRight is, our brand promise (\"Know Exactly What You’re Buying.\"), and how our Nigerian verified foreign-used electronics marketplace operates.",
+        "summary": "Who UsedRight is, our brand promise (\"Know Exactly What You’re Buying.\"), and how our Nigerian pre-owned technology marketplace operates.",
         "currentVersion": "1.0.0",
         "effectiveDate": "2026-11-16",
         "lastUpdated": "2026-11-16",
@@ -233,8 +233,8 @@
           {
             "heading": "1. Marketplace Mission & Brand Promise",
             "paragraphs": [
-              "UsedRight (shopusedright.com) is a Nigerian technology marketplace built to bring clarity, verifiable device histories, and honest pricing to foreign-used smartphones, laptops, tablets, audio gear, cameras, and accessories.",
-              "Our core brand promise is \"Know Exactly What You’re Buying.\" Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and origin before checkout."
+              "UsedRight (shopusedright.com) is a Nigerian pre-owned technology marketplace built to bring clarity, verifiable device histories, and honest pricing to pre-owned smartphones, laptops, tablets, audio gear, cameras, and accessories.",
+              "Our core brand promise is \"Know Exactly What You’re Buying.\" Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and foreign-origin provenance before checkout."
             ]
           },
           {
@@ -264,8 +264,8 @@
               {
                 "heading": "1. Marketplace Mission & Brand Promise",
                 "paragraphs": [
-                  "UsedRight (shopusedright.com) is a Nigerian technology marketplace built to bring clarity, verifiable device histories, and honest pricing to foreign-used smartphones, laptops, tablets, audio gear, cameras, and accessories.",
-                  "Our core brand promise is \"Know Exactly What You’re Buying.\" Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and origin before checkout."
+                  "UsedRight (shopusedright.com) is a Nigerian pre-owned technology marketplace built to bring clarity, verifiable device histories, and honest pricing to pre-owned smartphones, laptops, tablets, audio gear, cameras, and accessories.",
+                  "Our core brand promise is \"Know Exactly What You’re Buying.\" Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and foreign-origin provenance before checkout."
                 ]
               },
               {
@@ -539,7 +539,7 @@
           {
             "heading": "1. Mandatory Listing Fields & Prominent Defect Alerts",
             "paragraphs": [
-              "Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Grade A/B/C/D), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.",
+              "Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Excellent / Grade A, Very Good / Grade B, or Good / Grade C), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.",
               "Critical limitations (e.g., SIM Locked, Wi-Fi Only, Non-Working Face ID, Battery Below 80%) must appear prominently in clear plain language—never buried inside prose."
             ]
           },
@@ -569,7 +569,7 @@
               {
                 "heading": "1. Mandatory Listing Fields & Prominent Defect Alerts",
                 "paragraphs": [
-                  "Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Grade A/B/C/D), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.",
+                  "Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Excellent / Grade A, Very Good / Grade B, or Good / Grade C), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.",
                   "Critical limitations (e.g., SIM Locked, Wi-Fi Only, Non-Working Face ID, Battery Below 80%) must appear prominently in clear plain language—never buried inside prose."
                 ]
               },
@@ -595,7 +595,7 @@
         "number": 6,
         "title": "Device Condition and Verification Policy",
         "category": "Devices & Warranty",
-        "summary": "Definitions of Grade A, Grade B, Grade C, and Grade D plus standardized component statuses (\"Working\", \"Not working\", \"Replaced\").",
+        "summary": "Definitions of Excellent (Grade A), Very Good (Grade B), and Good (Grade C) cosmetic grades, kept strictly separate from functionality status (\"Working\", \"Not working\", \"Not tested\").",
         "currentVersion": "1.0.0",
         "effectiveDate": "2026-11-16",
         "lastUpdated": "2026-11-16",
@@ -607,15 +607,14 @@
         ],
         "sections": [
           {
-            "heading": "1. Cosmetic Grading Standards",
+            "heading": "1. Cosmetic Grading Standards (Appearance Only)",
             "paragraphs": [
-              "UsedRight classifies devices consistently across all listings, carts, checkouts, and order history snapshots:"
+              "UsedRight classifies physical appearance separately from functional testing across all listings, carts, checkouts, and order history snapshots:"
             ],
             "bullets": [
-              "Excellent (Grade A): Clean glass and body with near-invisible hairline wear from normal inspection distances; all core hardware tested.",
-              "Great (Grade B): Light visible micro-scuffs or faint bezel wear balanced with substantial price savings and full functional disclosure.",
-              "Good (Grade C): Visible exterior wear, lower battery capacity (<80%), or disclosed secondary component defects priced transparently for value.",
-              "Fair / Value (Grade D): Heavy cosmetic marks or hardware faults itemized in red prior to checkout."
+              "Excellent (Grade A): Nearly flawless appearance with very little visible cosmetic wear.",
+              "Very Good (Grade B): Minor scratches or cosmetic marks while maintaining a clean overall appearance.",
+              "Good (Grade C): Visible scratches, dents or signs of use while still passing required functionality checks (any limitation is disclosed separately)."
             ]
           },
           {
@@ -636,15 +635,14 @@
             "requiresVendorReacceptance": false,
             "sections": [
               {
-                "heading": "1. Cosmetic Grading Standards",
+                "heading": "1. Cosmetic Grading Standards (Appearance Only)",
                 "paragraphs": [
-                  "UsedRight classifies devices consistently across all listings, carts, checkouts, and order history snapshots:"
+                  "UsedRight classifies physical appearance separately from functional testing across all listings, carts, checkouts, and order history snapshots:"
                 ],
                 "bullets": [
-                  "Excellent (Grade A): Clean glass and body with near-invisible hairline wear from normal inspection distances; all core hardware tested.",
-                  "Great (Grade B): Light visible micro-scuffs or faint bezel wear balanced with substantial price savings and full functional disclosure.",
-                  "Good (Grade C): Visible exterior wear, lower battery capacity (<80%), or disclosed secondary component defects priced transparently for value.",
-                  "Fair / Value (Grade D): Heavy cosmetic marks or hardware faults itemized in red prior to checkout."
+                  "Excellent (Grade A): Nearly flawless appearance with very little visible cosmetic wear.",
+                  "Very Good (Grade B): Minor scratches or cosmetic marks while maintaining a clean overall appearance.",
+                  "Good (Grade C): Visible scratches, dents or signs of use while still passing required functionality checks (any limitation is disclosed separately)."
                 ]
               },
               {
@@ -2087,7 +2085,7 @@
               "id": "dev-phone-ip13-demo",
               "category": "phones",
               "condition": "Foreign-Used",
-              "title": "Apple iPhone 13 (Foreign Used)",
+              "title": "Apple iPhone 13",
               "brand": "Apple",
               "model": "iPhone 13",
               "modelNumber": "A2482",
@@ -2173,7 +2171,8 @@
                 "mdmStatus": "No MDM / Clean",
                 "imeiVerificationStatus": "Verified Clean",
                 "otherRepairsNotes": "No repairs done.",
-                "knownFaults": []
+                "knownFaults": [],
+                "touchscreen": "Working"
               },
               "repairHistory": [],
               "warrantyDays": 30,
@@ -2241,7 +2240,9 @@
                     "Visible scratches on side frame"
                   ]
                 }
-              ]
+              ],
+              "originEvidenceReviewed": true,
+              "usedRightInspected": false
             },
             "selectedVariation": {
               "id": "var-ip13-blu-128-a",
@@ -2352,6 +2353,8 @@
               "views": 880,
               "stockQuantity": 3,
               "totalStock": 3,
+              "originEvidenceReviewed": true,
+              "usedRightInspected": false,
               "thingsToKnow": []
             },
             "quantity": 1,
@@ -2363,7 +2366,7 @@
             "cartItemId": "snap-preq-1",
             "listingId": "dev-phone-ip13-demo",
             "variationId": "var-ip13-blu-128-a",
-            "title": "Apple iPhone 13 (Foreign Used)",
+            "title": "Apple iPhone 13",
             "brand": "Apple",
             "model": "iPhone 13",
             "category": "phones",
@@ -2435,12 +2438,12 @@
         "totalPayableAmount": 1576920,
         "currency": "NGN",
         "validityHours": 24,
-        "expiresAt": "2026-11-18T14:34:07.068Z",
-        "createdAt": "2026-11-17T13:49:07.068Z",
+        "expiresAt": "2026-11-19T14:22:35.593Z",
+        "createdAt": "2026-11-18T13:37:35.593Z",
         "auditEvents": [
           {
             "id": "paud-seed-active-1",
-            "timestamp": "2026-11-17T13:49:07.068Z",
+            "timestamp": "2026-11-18T13:37:35.593Z",
             "actorRole": "buyer",
             "actorName": "Ayodele Olayinka",
             "action": "Created 3-person Gift Payment Request (UR-PAYREQ-2026-000401)"
@@ -2474,7 +2477,7 @@
               "id": "dev-phone-ip13-demo",
               "category": "phones",
               "condition": "Foreign-Used",
-              "title": "Apple iPhone 13 (Foreign Used)",
+              "title": "Apple iPhone 13",
               "brand": "Apple",
               "model": "iPhone 13",
               "modelNumber": "A2482",
@@ -2560,7 +2563,8 @@
                 "mdmStatus": "No MDM / Clean",
                 "imeiVerificationStatus": "Verified Clean",
                 "otherRepairsNotes": "No repairs done.",
-                "knownFaults": []
+                "knownFaults": [],
+                "touchscreen": "Working"
               },
               "repairHistory": [],
               "warrantyDays": 30,
@@ -2628,7 +2632,9 @@
                     "Visible scratches on side frame"
                   ]
                 }
-              ]
+              ],
+              "originEvidenceReviewed": true,
+              "usedRightInspected": false
             },
             "selectedVariation": {
               "id": "var-ip13-blu-128-a",
@@ -2652,7 +2658,7 @@
             "cartItemId": "snap-preq-paid-1",
             "listingId": "dev-phone-ip13-demo",
             "variationId": "var-ip13-blu-128-a",
-            "title": "Apple iPhone 13 (Foreign Used)",
+            "title": "Apple iPhone 13",
             "brand": "Apple",
             "model": "iPhone 13",
             "category": "phones",
@@ -2691,7 +2697,7 @@
         "totalPayableAmount": 286974,
         "currency": "NGN",
         "validityHours": 24,
-        "expiresAt": "2026-11-18T02:34:07.068Z",
+        "expiresAt": "2026-11-19T02:22:35.593Z",
         "createdAt": "2026-11-12T12:30:00Z",
         "paidAt": "2026-11-12T13:10:00Z",
         "paymentProviderRef": "UR-PSK-REQ-DEMO-131",
@@ -2850,7 +2856,8 @@
                 "icloudOrGoogleLock": "Clean & Removed",
                 "mdmStatus": "No MDM / Clean",
                 "imeiVerificationStatus": "Verified Clean",
-                "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network."
+                "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network.",
+                "touchscreen": "Working"
               },
               "repairHistory": [
                 {
@@ -2866,6 +2873,8 @@
               "status": "Active",
               "createdAt": "2026-11-06T15:00:00Z",
               "views": 140,
+              "originEvidenceReviewed": true,
+              "usedRightInspected": false,
               "modelYear": 2020,
               "yearMadePrecision": "approximate",
               "stockQuantity": 3,
@@ -2997,6 +3006,9 @@
         "sellerRating": 4.9,
         "sellerSalesCount": 342,
         "foreignUsedStatus": "Verified Foreign-Used",
+        "originEvidenceReviewed": true,
+        "usedRightInspected": true,
+        "functionalTestStatus": "Fully Functional",
         "sourceCountry": "United States",
         "batchReference": "US-AWB-99412-P",
         "simStatus": "Unlocked (Physical + eSIM)",
@@ -3006,7 +3018,7 @@
         "disclosedFaults": [],
         "disclosedFaultsList": [],
         "structuredDescription": {
-          "overview": "Foreign-used US iPhone 14 Pro Max with Dynamic Island, 48MP main camera, and tested battery.",
+          "overview": "Pre-owned US-origin iPhone 14 Pro Max with Dynamic Island, 48MP main camera, and tested battery.",
           "specsSummary": "6.7-inch 120Hz OLED, A16 Bionic, 128GB storage, Unlocked.",
           "includedItems": "Phone, SIM pin, and 24-hour inspection guarantee."
         },
@@ -3015,6 +3027,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3105,6 +3118,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3131,6 +3145,8 @@
         "views": 840,
         "stockQuantity": 4,
         "totalStock": 4,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3153,7 +3169,7 @@
         "modelRating": 4.91,
         "modelReviewCount": 54,
         "cosmeticGrade": "Grade B",
-        "cosmeticDescription": "Individually tested foreign-used iPhone 16 units with A18 chip and Camera Control.",
+        "cosmeticDescription": "Individually tested pre-owned iPhone 16 units with A18 chip and Camera Control.",
         "batteryHealth": 96,
         "images": [
           "/assets/images/iphone_15_space_black_1794643997957.jpg",
@@ -3241,7 +3257,7 @@
           }
         ],
         "structuredDescription": {
-          "overview": "Clean foreign-used iPhone 16 (256GB) with A18 chip and Camera Control. Select your finish and condition grade below to inspect battery health and cosmetic specs.",
+          "overview": "Clean pre-owned iPhone 16 (256GB) with A18 chip and Camera Control. Select your finish and condition grade below to inspect battery health and cosmetic specs.",
           "specsSummary": "6.1-inch OLED, A18 chip, 256GB storage, Unlocked.",
           "includedItems": "Phone + USB-C braided cable."
         },
@@ -3250,6 +3266,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3276,6 +3293,8 @@
         "views": 910,
         "stockQuantity": 2,
         "totalStock": 2,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3360,6 +3379,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3386,6 +3406,8 @@
         "views": 920,
         "stockQuantity": 2,
         "totalStock": 2,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3467,6 +3489,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3493,6 +3516,8 @@
         "views": 760,
         "stockQuantity": 4,
         "totalStock": 4,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3579,6 +3604,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3605,6 +3631,8 @@
         "views": 710,
         "stockQuantity": 6,
         "totalStock": 6,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3680,6 +3708,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3706,6 +3735,8 @@
         "views": 685,
         "stockQuantity": 7,
         "totalStock": 7,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3792,6 +3823,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3818,6 +3850,8 @@
         "views": 640,
         "stockQuantity": 8,
         "totalStock": 8,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -3885,7 +3919,7 @@
           }
         ],
         "structuredDescription": {
-          "overview": "Clean foreign-used iPad 9.7\" ideal for study, POS apps, streaming, and reading.",
+          "overview": "Clean pre-owned iPad 9.7\" ideal for study, POS apps, streaming, and reading.",
           "specsSummary": "9.7-inch Retina, A10 Fusion, 32GB Wi-Fi.",
           "includedItems": "iPad and charging adapter."
         },
@@ -3894,6 +3928,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -3920,6 +3955,8 @@
         "views": 590,
         "stockQuantity": 6,
         "totalStock": 6,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4013,13 +4050,15 @@
         "views": 880,
         "stockQuantity": 3,
         "totalStock": 3,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
         "id": "ur-airpods-4th-gen",
         "category": "audio",
         "condition": "Foreign-Used",
-        "title": "AirPods (4th Generation) Foreign-Used",
+        "title": "AirPods (4th Generation)",
         "brand": "Apple",
         "model": "AirPods 4",
         "modelYear": 2024,
@@ -4032,7 +4071,7 @@
         "modelRating": 4.82,
         "modelReviewCount": 51,
         "cosmeticGrade": "Grade A",
-        "cosmeticDescription": "Sanitized Grade A earbuds & clean USB-C charging case.",
+        "cosmeticDescription": "Sanitized Excellent (Grade A) earbuds & clean USB-C charging case.",
         "images": [
           "/assets/aistudio/IMG_2195_95a91caa.jpeg"
         ],
@@ -4055,7 +4094,7 @@
         "disclosedFaults": [],
         "disclosedFaultsList": [],
         "structuredDescription": {
-          "overview": "Foreign-used Apple AirPods 4th Gen with H2 chip, spatial audio, and USB-C charging.",
+          "overview": "Pre-owned Apple AirPods 4th Gen with H2 chip, spatial audio, and USB-C charging.",
           "specsSummary": "H2 audio chip, Bluetooth 5.3, USB-C charging case.",
           "includedItems": "AirPods 4 + USB-C Charging Case."
         },
@@ -4064,6 +4103,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -4090,6 +4130,8 @@
         "views": 530,
         "stockQuantity": 6,
         "totalStock": 6,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4155,6 +4197,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -4181,6 +4224,8 @@
         "views": 615,
         "stockQuantity": 3,
         "totalStock": 3,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4282,6 +4327,203 @@
         "views": 420,
         "stockQuantity": 9,
         "totalStock": 9,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
+        "thingsToKnow": []
+      },
+      {
+        "id": "ur-ip13pro-batt-replaced",
+        "category": "phones",
+        "condition": "Foreign-Used",
+        "title": "Apple iPhone 13 Pro 256GB Graphite (Battery Replaced)",
+        "brand": "Apple",
+        "model": "iPhone 13 Pro",
+        "modelNumber": "A2483",
+        "modelYear": 2021,
+        "yearMade": 2022,
+        "yearMadePrecision": "known",
+        "operatingSystem": "iOS 18",
+        "storage": "256GB",
+        "color": "Graphite",
+        "price": 495000,
+        "originalPrice": 580000,
+        "cosmeticGrade": "Grade B",
+        "cosmeticDescription": "Minor scratches on stainless steel rail; display and rear glass are clean.",
+        "batteryHealth": 100,
+        "images": [
+          "/assets/images/iphone_15_space_black_1794643997957.jpg",
+          "/assets/images/iphone_15_front_screen_1794644013924.jpg"
+        ],
+        "colorSwatches": [
+          {
+            "name": "Graphite",
+            "hex": "#4A4A4F",
+            "image": "/assets/images/iphone_15_space_black_1794643997957.jpg"
+          }
+        ],
+        "sellerId": "vendor-1",
+        "sellerName": "Prime Mobile",
+        "sellerVerified": true,
+        "sellerRating": 4.9,
+        "sellerSalesCount": 342,
+        "foreignUsedStatus": "Verified Foreign-Used",
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
+        "functionalTestStatus": "Functional With Disclosed Limitations",
+        "sourceCountry": "United States",
+        "batchReference": "US-AWB-99704-BR",
+        "simStatus": "Unlocked (Physical + eSIM)",
+        "faceIdStatus": "Working",
+        "screenSize": "6.1-inch Super Retina XDR 120Hz",
+        "imeiOrSerial": "359204118827410",
+        "disclosedFaults": [
+          "Battery replaced with tested high-capacity cell"
+        ],
+        "disclosedFaultsList": [
+          {
+            "label": "Battery replaced",
+            "description": "Battery was replaced before import with a tested 100% capacity cell. Settings may show a non-genuine battery notice.",
+            "isCritical": false
+          }
+        ],
+        "structuredDescription": {
+          "overview": "Pre-owned iPhone 13 Pro (256GB) with working Face ID, original Apple OLED display, and a newly replaced battery.",
+          "specsSummary": "6.1-inch 120Hz OLED, A15 Bionic, 256GB storage, SIM Unlocked.",
+          "includedItems": "Phone + USB-C to Lightning cable.",
+          "previousRepairs": "Battery replaced before listing."
+        },
+        "conditionReport": {
+          "batteryHealth": 100,
+          "batteryReplaced": "Replaced",
+          "screenOriginality": "Original, verified",
+          "screenReplacementHistory": "Original Apple/OEM screen, never replaced",
+          "touchscreen": "Working",
+          "faceIdOrFingerprint": "Working",
+          "frontCamera": "Working",
+          "rearCamera": "Working",
+          "speakers": "Working",
+          "microphone": "Working",
+          "chargingPort": "Working",
+          "wifi": "Working",
+          "bluetooth": "Working",
+          "simFunctionality": "Working",
+          "networkLockStatus": "Unlocked",
+          "icloudOrGoogleLock": "Clean & Removed",
+          "mdmStatus": "No MDM / Clean",
+          "imeiVerificationStatus": "Verified Clean",
+          "otherRepairsNotes": "Battery replaced; original display and motherboard untouched.",
+          "knownFaults": []
+        },
+        "repairHistory": [
+          {
+            "component": "Battery",
+            "status": "Replaced",
+            "notes": "Replaced with tested cell (100% capacity)"
+          }
+        ],
+        "warrantyDays": 90,
+        "warrantyPolicyNotes": "3-month vendor hardware warranty.",
+        "deliveryFee": 3000,
+        "freeDeliveryEligible": true,
+        "status": "Active",
+        "createdAt": "2026-11-14T11:00:00Z",
+        "views": 310,
+        "stockQuantity": 3,
+        "totalStock": 3,
+        "thingsToKnow": []
+      },
+      {
+        "id": "ur-samsung-s23-untested",
+        "category": "phones",
+        "condition": "Foreign-Used",
+        "title": "Samsung Galaxy S23 128GB Cream (Partial Check)",
+        "brand": "Samsung",
+        "model": "Galaxy S23",
+        "modelNumber": "SM-S911U1",
+        "modelYear": 2023,
+        "yearMade": 2023,
+        "yearMadePrecision": "known",
+        "operatingSystem": "Android 14",
+        "storage": "128GB",
+        "ram": "8GB",
+        "color": "White",
+        "price": 365000,
+        "originalPrice": 460000,
+        "cosmeticGrade": "Grade B",
+        "cosmeticDescription": "Minor cosmetic marks around aluminum border. Powered on for initial intake.",
+        "batteryHealth": 86,
+        "images": [
+          "/assets/images/iphone_15_white_titanium_1794643999465.jpg"
+        ],
+        "colorSwatches": [
+          {
+            "name": "White",
+            "hex": "#F4F4F5",
+            "image": "/assets/images/iphone_15_white_titanium_1794643999465.jpg"
+          }
+        ],
+        "sellerId": "vendor-techvault",
+        "sellerName": "TechVault Ikeja",
+        "sellerVerified": true,
+        "sellerRating": 4.8,
+        "sellerSalesCount": 176,
+        "foreignUsedStatus": "Under Review",
+        "originEvidenceReviewed": false,
+        "usedRightInspected": false,
+        "functionalTestStatus": "Not Tested",
+        "sourceCountry": "United States",
+        "batchReference": "US-INT-2026-881",
+        "simStatus": "Unlocked (Physical + eSIM)",
+        "faceIdStatus": "Not tested",
+        "screenSize": "6.1-inch Dynamic AMOLED 2X",
+        "imeiOrSerial": "356619044812009",
+        "disclosedFaults": [
+          "Partial check only — cameras, SIM call test, and touchscreen sensitivity not fully tested yet"
+        ],
+        "disclosedFaultsList": [
+          {
+            "label": "Partial check only — some features not tested",
+            "description": "Unit powers on and charges cleanly, but front camera, microphone, and SIM call test have not been completed yet.",
+            "isCritical": false
+          }
+        ],
+        "structuredDescription": {
+          "overview": "Pre-owned Galaxy S23 (128GB) awaiting full diagnostic bench run. Unchecked features are clearly marked Not tested.",
+          "specsSummary": "6.1-inch AMOLED 120Hz, Snapdragon 8 Gen 2, 8GB RAM, 128GB.",
+          "includedItems": "Phone only."
+        },
+        "conditionReport": {
+          "batteryHealth": 86,
+          "batteryReplaced": "Original",
+          "screenOriginality": "Not disclosed",
+          "screenReplacementHistory": "Not tested",
+          "touchscreen": "Not tested",
+          "faceIdOrFingerprint": "Not tested",
+          "frontCamera": "Not tested",
+          "rearCamera": "Working",
+          "speakers": "Working",
+          "microphone": "Not tested",
+          "chargingPort": "Working",
+          "wifi": "Working",
+          "bluetooth": "Not tested",
+          "simFunctionality": "Not tested",
+          "networkLockStatus": "Not tested",
+          "icloudOrGoogleLock": "Clean & Removed",
+          "mdmStatus": "No MDM / Clean",
+          "imeiVerificationStatus": "Under Review",
+          "otherRepairsNotes": "Pending full vendor 10-point diagnostic completion.",
+          "knownFaults": []
+        },
+        "repairHistory": [],
+        "warrantyDays": 90,
+        "warrantyPolicyNotes": "Covered by 24-hour inspection and 3-month vendor warranty.",
+        "deliveryFee": 3000,
+        "freeDeliveryEligible": false,
+        "status": "Active",
+        "createdAt": "2026-11-14T12:00:00Z",
+        "views": 195,
+        "stockQuantity": 2,
+        "totalStock": 2,
         "thingsToKnow": []
       },
       {
@@ -4301,7 +4543,7 @@
         "price": 895000,
         "originalPrice": 1280000,
         "cosmeticGrade": "Grade B",
-        "cosmeticDescription": "Minor cosmetic marks; works like new. Original OLED panel, titanium chassis, and verified foreign-use batch.",
+        "cosmeticDescription": "Minor scratches or cosmetic marks on titanium rail. Original OLED panel and verified foreign-origin batch.",
         "batteryHealth": 89,
         "images": [
           "/assets/images/iphone_15_natural_titanium_1794643998199.jpg",
@@ -4339,6 +4581,9 @@
           }
         ],
         "foreignUsedStatus": "Verified Foreign-Used",
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
+        "functionalTestStatus": "Fully Functional",
         "sourceCountry": "United States",
         "batchReference": "US-AWB-99482-PRO",
         "simStatus": "Unlocked (Physical + eSIM)",
@@ -4362,12 +4607,12 @@
           "Includes a complimentary Tempered Glass Screen Protector packed by Prime Mobile Store."
         ],
         "structuredDescription": {
-          "overview": "Verified US foreign-used Apple iPhone 15 Pro Max (256GB) inspected on a 10-point hardware checklist. Ready for pro 5x telephoto photography, mobile banking, and all-day 5G use in Nigeria.",
+          "overview": "Pre-owned US-origin Apple iPhone 15 Pro Max (256GB) tested on a 10-point hardware checklist. Ready for pro 5x telephoto photography, mobile banking, and all-day 5G use in Nigeria.",
           "specsSummary": "6.7-inch 120Hz ProMotion OLED, A17 Pro chip, 256GB NVMe storage, USB-C port, Unlocked.",
           "includedItems": "iPhone 15 Pro Max unit + Free 9H Tempered Glass Screen Protector.",
-          "productCondition": "Grade B Great appearance (89% battery health) with optional Grade C value or Grade A flagship tiers.",
+          "productCondition": "Very Good (Grade B) appearance (89% battery health) with optional Good (Grade C) value or Excellent (Grade A) tiers.",
           "previousRepairs": "No previous repairs disclosed; original Apple OLED screen verified.",
-          "knownLimitations": "Cosmetic grade reflects outer casing only; see Inline Honesty Report for Grade C specifics.",
+          "knownLimitations": "Cosmetic grade reflects outer casing only; see Condition & Functionality details for Grade C specifics.",
           "thingsToKnow": "24-hour physical inspection period starts only after delivery or pickup confirmation.",
           "recommendedUse": "Content creation, ProRes USB-C video, heavy multitasking, and everyday flagship reliability."
         },
@@ -4376,6 +4621,7 @@
           "batteryReplaced": "Original",
           "screenOriginality": "Original, verified",
           "screenReplacementHistory": "Original Apple Super Retina XDR screen, True Tone intact",
+          "touchscreen": "Working",
           "faceIdOrFingerprint": "Working",
           "frontCamera": "Working",
           "rearCamera": "Working",
@@ -4451,6 +4697,8 @@
             "stockQuantity": 3,
             "isAvailable": true,
             "batteryHealth": 82,
+            "faceIdStatus": "Not working",
+            "functionalTestStatus": "Functional With Disclosed Limitations",
             "images": [
               "/assets/images/iphone_15_space_black_1794643997957.jpg",
               "/assets/images/iphone_15_front_screen_1794644013924.jpg",
@@ -4505,7 +4753,7 @@
         "id": "dev-phone-ip13-demo",
         "category": "phones",
         "condition": "Foreign-Used",
-        "title": "Apple iPhone 13 (Foreign Used)",
+        "title": "Apple iPhone 13",
         "brand": "Apple",
         "model": "iPhone 13",
         "modelNumber": "A2482",
@@ -4591,7 +4839,8 @@
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
           "otherRepairsNotes": "No repairs done.",
-          "knownFaults": []
+          "knownFaults": [],
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -4659,7 +4908,9 @@
               "Visible scratches on side frame"
             ]
           }
-        ]
+        ],
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false
       },
       {
         "id": "dev-audio-airpods-pro2",
@@ -4713,7 +4964,9 @@
         "createdAt": "2026-11-10T12:00:00Z",
         "views": 189,
         "stockQuantity": 4,
-        "totalStock": 4
+        "totalStock": 4,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false
       },
       {
         "id": "dev-gaming-ps5-slim",
@@ -4770,6 +5023,8 @@
         "views": 312,
         "stockQuantity": 2,
         "totalStock": 2,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4819,6 +5074,8 @@
         "views": 145,
         "stockQuantity": 2,
         "totalStock": 2,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4866,6 +5123,8 @@
         "views": 118,
         "stockQuantity": 5,
         "totalStock": 5,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -4912,6 +5171,8 @@
         "views": 162,
         "stockQuantity": 6,
         "totalStock": 6,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "thingsToKnow": []
       },
       {
@@ -5007,7 +5268,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Full 42-point hardware diagnostic test passed. Factory seals intact."
+          "otherRepairsNotes": "Full 42-point hardware diagnostic test passed. Factory seals intact.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5028,6 +5290,8 @@
         "status": "Active",
         "createdAt": "2026-11-09T10:00:00Z",
         "views": 48,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -5126,7 +5390,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US carrier trade-in. Tested on MTN and Airtel 5G."
+          "otherRepairsNotes": "US carrier trade-in. Tested on MTN and Airtel 5G.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5142,6 +5407,8 @@
         "status": "Active",
         "createdAt": "2026-11-08T14:20:00Z",
         "views": 89,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -5258,7 +5525,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Cellular radio chip removed during US laboratory decommission. Fully stable on Wi-Fi."
+          "otherRepairsNotes": "Cellular radio chip removed during US laboratory decommission. Fully stable on Wi-Fi.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5279,6 +5547,8 @@
         "status": "Active",
         "createdAt": "2026-11-07T12:00:00Z",
         "views": 112,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -5385,7 +5655,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network."
+          "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5401,6 +5672,8 @@
         "status": "Active",
         "createdAt": "2026-11-06T15:00:00Z",
         "views": 140,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2020,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -5485,7 +5758,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Tokyo trade-in unit with flawless digitizer sensor and S-Pen."
+          "otherRepairsNotes": "Tokyo trade-in unit with flawless digitizer sensor and S-Pen.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5501,6 +5775,8 @@
         "status": "Active",
         "createdAt": "2026-11-05T09:00:00Z",
         "views": 75,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -5584,7 +5860,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Passed complete 42-point hardware inspection."
+          "otherRepairsNotes": "Passed complete 42-point hardware inspection.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -5594,6 +5871,8 @@
         "status": "Active",
         "createdAt": "2026-11-04T11:00:00Z",
         "views": 64,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -5678,7 +5957,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Pristine US trade-in."
+          "otherRepairsNotes": "Pristine US trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -5688,6 +5968,8 @@
         "status": "Active",
         "createdAt": "2026-11-03T16:00:00Z",
         "views": 42,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -5778,7 +6060,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Tested and verified by UsedRight Audit Lab."
+          "otherRepairsNotes": "Tested and verified by UsedRight Audit Lab.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5794,6 +6077,8 @@
         "status": "Active",
         "createdAt": "2026-11-02T13:00:00Z",
         "views": 82,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -5875,7 +6160,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London carrier trade-in."
+          "otherRepairsNotes": "London carrier trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -5885,6 +6171,8 @@
         "status": "Active",
         "createdAt": "2026-11-01T15:00:00Z",
         "views": 94,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -5982,7 +6270,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Hardware discount clearance unit. Sold with disclosed Face ID & battery condition."
+          "otherRepairsNotes": "Hardware discount clearance unit. Sold with disclosed Face ID & battery condition.",
+          "touchscreen": "Working"
         },
         "repairHistory": [
           {
@@ -5998,6 +6287,8 @@
         "status": "Active",
         "createdAt": "2026-10-30T10:00:00Z",
         "views": 135,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2020,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -6079,7 +6370,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US Snapdragon model."
+          "otherRepairsNotes": "US Snapdragon model.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6089,6 +6381,8 @@
         "status": "Active",
         "createdAt": "2026-10-29T14:00:00Z",
         "views": 71,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6171,7 +6465,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Pristine Japanese trade-in."
+          "otherRepairsNotes": "Pristine Japanese trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6181,6 +6476,8 @@
         "status": "Active",
         "createdAt": "2026-10-28T16:00:00Z",
         "views": 52,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6278,7 +6575,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US carrier trade-in. Dual eSIM verified on MTN & Airtel."
+          "otherRepairsNotes": "US carrier trade-in. Dual eSIM verified on MTN & Airtel.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6288,6 +6586,8 @@
         "status": "Active",
         "createdAt": "2026-10-27T10:00:00Z",
         "views": 66,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6370,7 +6670,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "UK direct trade-in."
+          "otherRepairsNotes": "UK direct trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6380,6 +6681,8 @@
         "status": "Active",
         "createdAt": "2026-10-26T11:00:00Z",
         "views": 45,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6462,7 +6765,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London import."
+          "otherRepairsNotes": "London import.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6472,6 +6776,8 @@
         "status": "Active",
         "createdAt": "2026-10-25T14:00:00Z",
         "views": 78,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6554,7 +6860,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "North American unlocked model."
+          "otherRepairsNotes": "North American unlocked model.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6564,6 +6871,8 @@
         "status": "Active",
         "createdAt": "2026-10-24T12:00:00Z",
         "views": 39,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6646,7 +6955,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US carrier trade-in."
+          "otherRepairsNotes": "US carrier trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6656,6 +6966,8 @@
         "status": "Active",
         "createdAt": "2026-10-23T15:00:00Z",
         "views": 48,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -6746,7 +7058,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Sold with disclosed battery capacity."
+          "otherRepairsNotes": "Sold with disclosed battery capacity.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 14,
@@ -6756,6 +7069,8 @@
         "status": "Active",
         "createdAt": "2026-10-22T10:00:00Z",
         "views": 68,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -6837,7 +7152,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London trade-in."
+          "otherRepairsNotes": "London trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6847,6 +7163,8 @@
         "status": "Active",
         "createdAt": "2026-10-21T11:00:00Z",
         "views": 83,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -6930,7 +7248,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US trade-in."
+          "otherRepairsNotes": "US trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -6940,6 +7259,8 @@
         "status": "Active",
         "createdAt": "2026-10-20T14:00:00Z",
         "views": 57,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7030,7 +7351,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London import."
+          "otherRepairsNotes": "London import.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 14,
@@ -7040,6 +7362,8 @@
         "status": "Active",
         "createdAt": "2026-10-19T10:00:00Z",
         "views": 62,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2020,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -7163,6 +7487,8 @@
         "status": "Active",
         "createdAt": "2026-11-08T09:30:00Z",
         "views": 182,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7267,6 +7593,8 @@
         "status": "Active",
         "createdAt": "2026-11-07T14:00:00Z",
         "views": 110,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -7373,6 +7701,8 @@
         "status": "Active",
         "createdAt": "2026-11-06T11:00:00Z",
         "views": 124,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7471,6 +7801,8 @@
         "status": "Active",
         "createdAt": "2026-11-05T12:00:00Z",
         "views": 98,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7568,6 +7900,8 @@
         "status": "Active",
         "createdAt": "2026-11-04T15:00:00Z",
         "views": 142,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7665,6 +7999,8 @@
         "status": "Active",
         "createdAt": "2026-11-03T10:00:00Z",
         "views": 165,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7762,6 +8098,8 @@
         "status": "Active",
         "createdAt": "2026-11-02T11:00:00Z",
         "views": 89,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -7859,6 +8197,8 @@
         "status": "Active",
         "createdAt": "2026-11-01T12:00:00Z",
         "views": 74,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -7957,6 +8297,8 @@
         "status": "Active",
         "createdAt": "2026-10-31T09:00:00Z",
         "views": 86,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8054,6 +8396,8 @@
         "status": "Active",
         "createdAt": "2026-10-30T14:00:00Z",
         "views": 65,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8151,6 +8495,8 @@
         "status": "Active",
         "createdAt": "2026-10-29T10:00:00Z",
         "views": 79,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2021,
         "yearMadePrecision": "approximate",
@@ -8257,6 +8603,8 @@
         "status": "Active",
         "createdAt": "2026-10-28T14:00:00Z",
         "views": 61,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -8353,6 +8701,8 @@
         "status": "Active",
         "createdAt": "2026-10-27T12:00:00Z",
         "views": 73,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8450,6 +8800,8 @@
         "status": "Active",
         "createdAt": "2026-10-26T16:00:00Z",
         "views": 67,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8561,6 +8913,8 @@
         "status": "Active",
         "createdAt": "2026-10-25T11:00:00Z",
         "views": 88,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -8657,6 +9011,8 @@
         "status": "Active",
         "createdAt": "2026-10-24T10:00:00Z",
         "views": 104,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8735,7 +9091,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US trade-in. Tested ECG, Blood Oxygen, and Depth sensors."
+          "otherRepairsNotes": "US trade-in. Tested ECG, Blood Oxygen, and Depth sensors.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -8745,6 +9102,8 @@
         "status": "Active",
         "createdAt": "2026-11-09T08:00:00Z",
         "views": 92,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8817,7 +9176,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Tokyo import. All sensors verified clean."
+          "otherRepairsNotes": "Tokyo import. All sensors verified clean.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -8827,6 +9187,8 @@
         "status": "Active",
         "createdAt": "2026-11-08T11:00:00Z",
         "views": 64,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8899,7 +9261,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US trade-in."
+          "otherRepairsNotes": "US trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -8909,6 +9272,8 @@
         "status": "Active",
         "createdAt": "2026-11-07T10:00:00Z",
         "views": 58,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -8980,7 +9345,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Sanitized and ultrasonic cleaned. Brand-new sealed ear tips."
+          "otherRepairsNotes": "Sanitized and ultrasonic cleaned. Brand-new sealed ear tips.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -8990,6 +9356,8 @@
         "status": "Active",
         "createdAt": "2026-11-06T14:00:00Z",
         "views": 120,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9062,7 +9430,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Tokyo import."
+          "otherRepairsNotes": "Tokyo import.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9072,6 +9441,8 @@
         "status": "Active",
         "createdAt": "2026-11-05T13:00:00Z",
         "views": 45,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9152,7 +9523,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London import."
+          "otherRepairsNotes": "London import.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9162,6 +9534,8 @@
         "status": "Active",
         "createdAt": "2026-11-04T12:00:00Z",
         "views": 71,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -9233,7 +9607,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Sanitized with professional acoustic foam cleaner."
+          "otherRepairsNotes": "Sanitized with professional acoustic foam cleaner.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9243,6 +9618,8 @@
         "status": "Active",
         "createdAt": "2026-11-03T16:00:00Z",
         "views": 84,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9315,7 +9692,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Tokyo import. UV sterilized."
+          "otherRepairsNotes": "Tokyo import. UV sterilized.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9325,6 +9703,8 @@
         "status": "Active",
         "createdAt": "2026-11-02T14:00:00Z",
         "views": 53,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9406,7 +9786,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US educational trade-in."
+          "otherRepairsNotes": "US educational trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9416,6 +9797,8 @@
         "status": "Active",
         "createdAt": "2026-11-01T09:00:00Z",
         "views": 115,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9488,7 +9871,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US trade-in."
+          "otherRepairsNotes": "US trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9498,6 +9882,8 @@
         "status": "Active",
         "createdAt": "2026-10-31T11:00:00Z",
         "views": 70,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9570,7 +9956,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Germany outdoor sports trade-in."
+          "otherRepairsNotes": "Germany outdoor sports trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9580,6 +9967,8 @@
         "status": "Active",
         "createdAt": "2026-10-30T10:00:00Z",
         "views": 49,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "disclosedFaultsList": [],
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
@@ -9742,7 +10131,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "United States Apple Retail trade-in clearance."
+          "otherRepairsNotes": "United States Apple Retail trade-in clearance.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9752,6 +10142,8 @@
         "status": "Active",
         "createdAt": "2026-11-05T12:00:00Z",
         "views": 184,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -9827,7 +10219,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "London corporate digital design off-lease."
+          "otherRepairsNotes": "London corporate digital design off-lease.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9837,6 +10230,8 @@
         "status": "Active",
         "createdAt": "2026-11-06T14:30:00Z",
         "views": 129,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -9911,7 +10306,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "US carrier trade-in, flawless diagnostic audit."
+          "otherRepairsNotes": "US carrier trade-in, flawless diagnostic audit.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -9921,6 +10317,8 @@
         "status": "Active",
         "createdAt": "2026-11-04T09:00:00Z",
         "views": 95,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -10004,7 +10402,8 @@
           "icloudOrGoogleLock": "Clean & Removed",
           "mdmStatus": "No MDM / Clean",
           "imeiVerificationStatus": "Verified Clean",
-          "otherRepairsNotes": "Frankfurt corporate IT trade-in."
+          "otherRepairsNotes": "Frankfurt corporate IT trade-in.",
+          "touchscreen": "Working"
         },
         "repairHistory": [],
         "warrantyDays": 30,
@@ -10014,6 +10413,8 @@
         "status": "Active",
         "createdAt": "2026-11-03T11:00:00Z",
         "views": 82,
+        "originEvidenceReviewed": true,
+        "usedRightInspected": false,
         "modelYear": 2022,
         "yearMadePrecision": "approximate",
         "stockQuantity": 3,
@@ -10473,7 +10874,7 @@
             "verified": true
           }
         ],
-        "warrantyPolicy": "3-Month Diagnostic & Hardware Guarantee on every foreign-used unit.",
+        "warrantyPolicy": "3-Month Diagnostic & Hardware Guarantee on every pre-owned unit.",
         "deliveryPolicy": "Same-day dispatch in Port Harcourt; 24–48h nationwide air courier.",
         "freeDeliveryThreshold": 450000,
         "reviews": [],
@@ -10491,7 +10892,7 @@
         "cacNumber": "RC-1874302",
         "logo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80",
         "banner": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&auto=format&fit=crop&q=80",
-        "description": "Ibadan enterprise workstation specialists supplying foreign-used MacBooks, ThinkPads, EliteBooks, and USB-C laptop accessories.",
+        "description": "Ibadan enterprise workstation specialists supplying pre-owned MacBooks, ThinkPads, EliteBooks, and USB-C laptop accessories.",
         "location": "Ring Road, Ibadan, Oyo State",
         "state": "Oyo State",
         "rating": 4.8,
@@ -10596,7 +10997,7 @@
           "price": 895000,
           "originalPrice": 1280000,
           "cosmeticGrade": "Grade B",
-          "cosmeticDescription": "Minor cosmetic marks; works like new. Original OLED panel, titanium chassis, and verified foreign-use batch.",
+          "cosmeticDescription": "Minor scratches or cosmetic marks on titanium rail. Original OLED panel and verified foreign-origin batch.",
           "batteryHealth": 89,
           "images": [
             "/assets/images/iphone_15_natural_titanium_1794643998199.jpg",
@@ -10634,6 +11035,9 @@
             }
           ],
           "foreignUsedStatus": "Verified Foreign-Used",
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false,
+          "functionalTestStatus": "Fully Functional",
           "sourceCountry": "United States",
           "batchReference": "US-AWB-99482-PRO",
           "simStatus": "Unlocked (Physical + eSIM)",
@@ -10657,12 +11061,12 @@
             "Includes a complimentary Tempered Glass Screen Protector packed by Prime Mobile Store."
           ],
           "structuredDescription": {
-            "overview": "Verified US foreign-used Apple iPhone 15 Pro Max (256GB) inspected on a 10-point hardware checklist. Ready for pro 5x telephoto photography, mobile banking, and all-day 5G use in Nigeria.",
+            "overview": "Pre-owned US-origin Apple iPhone 15 Pro Max (256GB) tested on a 10-point hardware checklist. Ready for pro 5x telephoto photography, mobile banking, and all-day 5G use in Nigeria.",
             "specsSummary": "6.7-inch 120Hz ProMotion OLED, A17 Pro chip, 256GB NVMe storage, USB-C port, Unlocked.",
             "includedItems": "iPhone 15 Pro Max unit + Free 9H Tempered Glass Screen Protector.",
-            "productCondition": "Grade B Great appearance (89% battery health) with optional Grade C value or Grade A flagship tiers.",
+            "productCondition": "Very Good (Grade B) appearance (89% battery health) with optional Good (Grade C) value or Excellent (Grade A) tiers.",
             "previousRepairs": "No previous repairs disclosed; original Apple OLED screen verified.",
-            "knownLimitations": "Cosmetic grade reflects outer casing only; see Inline Honesty Report for Grade C specifics.",
+            "knownLimitations": "Cosmetic grade reflects outer casing only; see Condition & Functionality details for Grade C specifics.",
             "thingsToKnow": "24-hour physical inspection period starts only after delivery or pickup confirmation.",
             "recommendedUse": "Content creation, ProRes USB-C video, heavy multitasking, and everyday flagship reliability."
           },
@@ -10671,6 +11075,7 @@
             "batteryReplaced": "Original",
             "screenOriginality": "Original, verified",
             "screenReplacementHistory": "Original Apple Super Retina XDR screen, True Tone intact",
+            "touchscreen": "Working",
             "faceIdOrFingerprint": "Working",
             "frontCamera": "Working",
             "rearCamera": "Working",
@@ -10746,6 +11151,8 @@
               "stockQuantity": 3,
               "isAvailable": true,
               "batteryHealth": 82,
+              "faceIdStatus": "Not working",
+              "functionalTestStatus": "Functional With Disclosed Limitations",
               "images": [
                 "/assets/images/iphone_15_space_black_1794643997957.jpg",
                 "/assets/images/iphone_15_front_screen_1794644013924.jpg",
@@ -10930,7 +11337,7 @@
           "id": "dev-phone-ip13-demo",
           "category": "phones",
           "condition": "Foreign-Used",
-          "title": "Apple iPhone 13 (Foreign Used)",
+          "title": "Apple iPhone 13",
           "brand": "Apple",
           "model": "iPhone 13",
           "modelNumber": "A2482",
@@ -11016,7 +11423,8 @@
             "mdmStatus": "No MDM / Clean",
             "imeiVerificationStatus": "Verified Clean",
             "otherRepairsNotes": "No repairs done.",
-            "knownFaults": []
+            "knownFaults": [],
+            "touchscreen": "Working"
           },
           "repairHistory": [],
           "warrantyDays": 30,
@@ -11084,7 +11492,9 @@
                 "Visible scratches on side frame"
               ]
             }
-          ]
+          ],
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false
         },
         "selectedVariation": {
           "id": "var-ip13-blk-128-a",
@@ -11152,7 +11562,7 @@
           "orderId": "ord-131",
           "orderNumber": "UR-ORD-2026-000131",
           "listingId": "dev-phone-ip13-demo",
-          "deviceTitle": "Apple iPhone 13 (Foreign Used)",
+          "deviceTitle": "Apple iPhone 13",
           "serialOrImei": "354891092830133",
           "vendorId": "vendor-1",
           "vendorNumber": "U-0001",
@@ -11195,7 +11605,7 @@
           "id": "dev-phone-ip13-demo",
           "category": "phones",
           "condition": "Foreign-Used",
-          "title": "Apple iPhone 13 (Foreign Used)",
+          "title": "Apple iPhone 13",
           "brand": "Apple",
           "model": "iPhone 13",
           "modelNumber": "A2482",
@@ -11281,7 +11691,8 @@
             "mdmStatus": "No MDM / Clean",
             "imeiVerificationStatus": "Verified Clean",
             "otherRepairsNotes": "No repairs done.",
-            "knownFaults": []
+            "knownFaults": [],
+            "touchscreen": "Working"
           },
           "repairHistory": [],
           "warrantyDays": 30,
@@ -11349,7 +11760,9 @@
                 "Visible scratches on side frame"
               ]
             }
-          ]
+          ],
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false
         },
         "selectedVariation": {
           "id": "var-ip13-blu-128-a",
@@ -11437,7 +11850,7 @@
           "orderId": "ord-123",
           "orderNumber": "UR-ORD-2026-000123",
           "listingId": "dev-phone-ip13-demo",
-          "deviceTitle": "Apple iPhone 13 (Foreign Used)",
+          "deviceTitle": "Apple iPhone 13",
           "serialOrImei": "354891092830133",
           "vendorId": "vendor-1",
           "vendorNumber": "U-0001",
@@ -11570,6 +11983,8 @@
           "views": 880,
           "stockQuantity": 3,
           "totalStock": 3,
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false,
           "thingsToKnow": []
         },
         "buyerId": "buyer-user-1",
@@ -11784,7 +12199,8 @@
             "icloudOrGoogleLock": "Clean & Removed",
             "mdmStatus": "No MDM / Clean",
             "imeiVerificationStatus": "Verified Clean",
-            "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network."
+            "otherRepairsNotes": "Pristine US trade-in unit with carrier contract lock on AT&T network.",
+            "touchscreen": "Working"
           },
           "repairHistory": [
             {
@@ -11800,6 +12216,8 @@
           "status": "Active",
           "createdAt": "2026-11-06T15:00:00Z",
           "views": 140,
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false,
           "modelYear": 2020,
           "yearMadePrecision": "approximate",
           "stockQuantity": 3,
@@ -12008,6 +12426,8 @@
           "views": 880,
           "stockQuantity": 3,
           "totalStock": 3,
+          "originEvidenceReviewed": true,
+          "usedRightInspected": false,
           "thingsToKnow": []
         },
         "buyerId": "buyer-user-1",
@@ -12176,8 +12596,8 @@
         "vendorName": "Prime Mobile Store",
         "buyerId": "buyer-user-1",
         "buyerName": "Ayodele Olayinka",
-        "deviceTitle": "Apple iPhone 13 (Foreign Used)",
-        "itemTitle": "Apple iPhone 13 (Foreign Used)",
+        "deviceTitle": "Apple iPhone 13",
+        "itemTitle": "Apple iPhone 13",
         "deviceImage": "/assets/aistudio/IMG_2196_33cba3a2.jpeg",
         "variationInfo": "Black · 128GB · Grade A",
         "grossAmount": 286974,
@@ -12205,8 +12625,8 @@
         "vendorName": "Prime Mobile Store",
         "buyerId": "buyer-user-1",
         "buyerName": "Ayodele Olayinka",
-        "deviceTitle": "Apple iPhone 13 (Foreign Used)",
-        "itemTitle": "Apple iPhone 13 (Foreign Used)",
+        "deviceTitle": "Apple iPhone 13",
+        "itemTitle": "Apple iPhone 13",
         "deviceImage": "/assets/aistudio/IMG_2196_33cba3a2.jpeg",
         "variationInfo": "Blue · 128GB · Grade A",
         "grossAmount": 284960,
@@ -12370,7 +12790,7 @@
         "buyerId": "buyer-user-1",
         "buyerName": "Ayodele Olayinka",
         "listingId": "dev-phone-ip13-demo",
-        "listingTitle": "Apple iPhone 13 (Foreign Used)",
+        "listingTitle": "Apple iPhone 13",
         "listingPrice": 282000,
         "listingImage": "/assets/aistudio/IMG_2196_33cba3a2.jpeg",
         "orderId": "ord-131",
@@ -12400,7 +12820,7 @@
         "buyerId": "buyer-user-1",
         "buyerName": "Ayodele Olayinka",
         "listingId": "dev-phone-ip13-demo",
-        "listingTitle": "Apple iPhone 13 (Foreign Used)",
+        "listingTitle": "Apple iPhone 13",
         "listingPrice": 280000,
         "listingImage": "/assets/aistudio/IMG_2196_33cba3a2.jpeg",
         "orderId": "ord-123",
@@ -12420,7 +12840,7 @@
             "dateLabel": "Yesterday",
             "productRef": {
               "id": "dev-phone-ip13-demo",
-              "title": "Apple iPhone 13 (Foreign Used)",
+              "title": "Apple iPhone 13",
               "price": 280000,
               "image": "/assets/aistudio/IMG_2196_33cba3a2.jpeg",
               "condition": "Foreign-Used • Grade A"

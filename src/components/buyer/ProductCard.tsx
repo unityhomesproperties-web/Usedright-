@@ -1,6 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { BadgeCheck, Heart, MapPin, Star } from 'lucide-react';
+import { AlertTriangle, BadgeCheck, Heart, MapPin, Star } from 'lucide-react';
 import { DeviceListing, ProductColorSwatch } from '../../types/marketplace';
+import {
+  buildConditionStatement,
+  getPrimaryCardWarning,
+  mapCosmeticGrade,
+} from '../../utils/deviceCondition';
 import { formatNaira } from '../../utils/marketplace';
 import { getListingVendorState, getShortStateLabel } from '../../utils/nigerianStates';
 import { resolveColorHex } from '../../utils/productConfig';
@@ -84,6 +89,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const isComboBundle = Boolean(listing.bundleItems && listing.bundleItems.length >= 2);
   const vendorShortState = getShortStateLabel(getListingVendorState(listing));
 
+  const mappedGrade = useMemo(
+    () => mapCosmeticGrade(listing.cosmeticGrade),
+    [listing.cosmeticGrade]
+  );
+  const conditionStatement = useMemo(
+    () => buildConditionStatement({ listing }),
+    [listing]
+  );
+  const primaryWarning = useMemo(
+    () => getPrimaryCardWarning(listing),
+    [listing]
+  );
+  const storageLabel = listing.storage || listing.storageCapacity;
+
   return (
     <article className="group bg-white rounded-2xl border border-[#EAE6F0] shadow-sm hover:shadow-md hover:border-[#A981FF] transition-all duration-200 p-3 flex flex-col justify-between">
       <div>
@@ -125,8 +144,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </button>
 
           {/* Cosmetic Grade Micro-Tag (Top-left) */}
-          <span className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-md bg-white/95 border border-[#EAE6F0] text-[10px] font-medium text-[#211B2B] pointer-events-none">
-            {listing.cosmeticGrade}
+          <span
+            data-testid="card-cosmetic-grade"
+            className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-md bg-white/95 border border-[#D0BCFC] text-[9px] font-semibold tracking-wide text-[#30102F] pointer-events-none"
+          >
+            {mappedGrade.badgeText}
           </span>
 
           {/* Save Heart Button (Top-right) */}
@@ -156,7 +178,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   ? 'bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]'
                   : promoLabel === 'GIFT PACK'
                   ? 'bg-[#ECFDF5] text-[#238653] border border-[#A7F3D0]'
-                  : 'bg-[#F5F0FF] text-[#7E4EF2] border border-[#D0BCFC]'
+                  : 'bg-[#F5F0FF] text-[#30102F] border border-[#D0BCFC]'
               }`}
             >
               {promoLabel}
@@ -164,16 +186,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           )}
         </div>
 
-        {/* 2. Brand & Model Rating Row */}
+        {/* 2. Brand, Storage Capacity & Model Rating Row */}
         <div className="flex items-center justify-between gap-1 mt-2 text-[11px]">
-          <span className="text-[#716B7B] truncate">{listing.brand}</span>
+          <div className="flex items-center gap-1.5 min-w-0">
+            <span className="text-[#716B7B] truncate">{listing.brand}</span>
+            {storageLabel && (
+              <span className="px-1.5 py-0.5 rounded bg-[#FAF9FC] border border-[#EAE6F0] text-[10px] font-medium text-[#30102F] shrink-0">
+                {storageLabel}
+              </span>
+            )}
+          </div>
           <span className="inline-flex items-center gap-0.5 text-[#238653] font-medium tabular-nums shrink-0">
             <Star className="w-3 h-3 fill-[#238653] text-[#238653]" />
             {modelRating.toFixed(2)} ({reviewCount})
           </span>
         </div>
 
-        {/* 3. Product Title (2-line clamp, 13px font-medium) */}
+        {/* 3. Product Title */}
         <button
           type="button"
           onClick={() => onViewDetails(listing)}
@@ -184,7 +213,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </h3>
         </button>
 
-        {/* 4. Pricing Row (13px semi-bold + optional strikethrough) */}
+        {/* 4. Concise Qualified Condition Statement */}
+        <p
+          data-testid="card-condition-statement"
+          className="mt-1 text-[11px] text-[#4A4356] line-clamp-2 leading-snug"
+        >
+          {conditionStatement}
+        </p>
+
+        {/* Direct Card Warning Callout for Limitations / SIM Lock / Replaced Part / Untested */}
+        {primaryWarning && (
+          <div
+            data-testid="card-limitation-warning"
+            className={`mt-1.5 px-2 py-1 rounded-lg border text-[10px] font-medium flex items-center gap-1.5 ${
+              primaryWarning.tone === 'danger'
+                ? 'bg-[#FFF5F5] border-[#FED7D7] text-[#C53030]'
+                : 'bg-[#FEF3C7]/60 border-[#FDE68A] text-[#92400E]'
+            }`}
+          >
+            <AlertTriangle className="w-3 h-3 shrink-0" />
+            <span className="truncate">{primaryWarning.label}</span>
+          </div>
+        )}
+
+        {/* 5. Pricing Row (13px semi-bold + optional strikethrough) */}
         <div className="mt-1.5 flex flex-wrap items-baseline gap-1.5 tabular-nums">
           <span className="text-[13px] font-semibold text-[#211B2B]">
             {listing.priceHasStartingPrefix ? 'From ' : ''}
@@ -197,7 +249,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           )}
         </div>
 
-        {/* 5. Interactive Color Swatch Dots or 1-Tap Add Bundle */}
+        {/* 6. Interactive Color Swatch Dots or 1-Tap Add Bundle */}
         {isComboBundle && onAddToCart ? (
           <div className="mt-2 space-y-1.5">
             <div className="text-[10px] text-[#716B7B] truncate">
@@ -209,7 +261,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 e.stopPropagation();
                 onAddToCart(listing);
               }}
-              className="w-full py-1.5 px-2.5 rounded-xl bg-[#F5F0FF] hover:bg-[#A981FF] text-[#7E4EF2] hover:text-white border border-[#D0BCFC] text-[11px] font-semibold transition-colors"
+              className="w-full py-1.5 px-2.5 rounded-xl bg-[#F5F0FF] hover:bg-[#A981FF] text-[#30102F] hover:text-white border border-[#D0BCFC] text-[11px] font-semibold transition-colors"
             >
               Add Bundle
             </button>
@@ -242,7 +294,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
       </div>
 
-      {/* 6. Vendor Identity, Location & Rating Footer */}
+      {/* 7. Vendor Identity, Location & Rating Footer */}
       <button
         type="button"
         onClick={() => onViewDetails(listing)}
@@ -261,7 +313,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </div>
         <div className="flex items-center">
-          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-[#F5F0FF] text-[#4A4356] text-[10px] font-medium">
+          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-[#F5F0FF] text-[#30102F] text-[10px] font-medium">
             <MapPin className="w-2.5 h-2.5 text-[#A981FF] shrink-0" />
             {vendorShortState}
           </span>

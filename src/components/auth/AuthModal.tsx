@@ -490,7 +490,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   >
                     <User className="w-4 h-4 text-[#A981FF] mb-1" />
                     <div className="font-semibold text-[#211B2B]">Customer Account</div>
-                    <div className="text-[11px] text-[#716B7B]">Buy verified foreign-used tech</div>
+                    <div className="text-[11px] text-[#716B7B]">Buy quality pre-owned tech</div>
                   </button>
 
                   <button

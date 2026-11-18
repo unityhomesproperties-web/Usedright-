@@ -7,6 +7,7 @@ import {
   VendorStorefront,
 } from '../types/marketplace';
 import { PLAIN_ENGLISH_ISSUE_PRESETS, toSimpleEnglish } from './simpleEnglish';
+import { validateVendorConditionClaims } from './deviceCondition';
 
 export interface CentralModelTemplate {
   id: string;
@@ -268,6 +269,41 @@ export function validateBulkUnitMatrix(
     if (unitImages.length === 0) {
       errors.push(`${label}: Attach at least one actual device photograph.`);
     }
+
+    const claimCheck = validateVendorConditionClaims({
+      listing: {
+        category: parent.category,
+        cosmeticGrade: u.grade,
+        simStatus: u.simStatus,
+        disclosedFaults: [...u.disclosedFaults, ...(u.customFaultNote ? [u.customFaultNote] : [])],
+        faceIdStatus: u.biometricStatus === 'Working' ? 'Working' : 'Faulty',
+        repairHistory: [],
+        conditionReport: {
+          batteryHealth: u.batteryHealth,
+          batteryReplaced: 'Original',
+          screenOriginality: u.screenStatus,
+          screenReplacementHistory: u.screenStatus,
+          faceIdOrFingerprint: u.biometricStatus === 'Working' ? 'Working' : 'Not working',
+          frontCamera: u.cameraStatus,
+          rearCamera: u.cameraStatus,
+          speakers: 'Working',
+          microphone: 'Working',
+          chargingPort: 'Working',
+          wifi: 'Working',
+          bluetooth: 'Working',
+          simFunctionality: u.simStatus.toLowerCase().includes('not working') ? 'Not working' : 'Working',
+          networkLockStatus: /\blocked\b/i.test(u.simStatus) ? 'Carrier Locked' : 'Unlocked',
+          icloudOrGoogleLock: 'Clean & Removed',
+          mdmStatus: 'No MDM / Clean',
+          imeiVerificationStatus: 'Verified Clean',
+          otherRepairsNotes: '',
+        },
+      } as unknown as DeviceListing,
+      descriptionText: `${parent.overview || ''} ${u.customFaultNote || ''}`,
+    });
+    if (!claimCheck.valid) {
+      claimCheck.errors.forEach((err) => errors.push(`${label}: ${err}`));
+    }
   });
 
   return { valid: errors.length === 0, errors };
@@ -363,7 +399,7 @@ export function buildGroupedListingFromBulkUnits(
     cosmeticGrade: leadUnit.grade,
     cosmeticDescription:
       parent.overview.trim() ||
-      `Verified foreign-used ${parent.brand} ${parent.model} (${units.length} inspected unit${
+      `Verified pre-owned ${parent.brand} ${parent.model} (${units.length} checked unit${
         units.length > 1 ? 's' : ''
       } in batch ${parent.batchReference}).`,
     batteryHealth: leadUnit.batteryHealth,
@@ -376,6 +412,8 @@ export function buildGroupedListingFromBulkUnits(
     sellerRating: vendor.rating,
     sellerSalesCount: vendor.completedOrders,
     foreignUsedStatus: 'Verified Foreign-Used',
+    originEvidenceReviewed: true,
+    usedRightInspected: false,
     sourceCountry: parent.sourceCountry,
     batchReference: parent.batchReference.trim(),
     simStatus: leadUnit.simStatus,
@@ -394,7 +432,7 @@ export function buildGroupedListingFromBulkUnits(
     structuredDescription: {
       overview:
         parent.overview.trim() ||
-        `Grouped batch of ${units.length} foreign-used ${parent.brand} ${parent.model} unit(s), each individually graded and tested.`,
+        `Grouped batch of ${units.length} pre-owned ${parent.brand} ${parent.model} unit(s), each individually graded and tested.`,
       specsSummary: `${template?.screenSize || ''} · Storage from ${leadUnit.storage}`,
       includedItems: 'Device (tested and wiped clean) + protective transit pouch',
       previousRepairs: units.some((u) => u.screenStatus !== 'Original, verified')
@@ -419,7 +457,7 @@ export function buildGroupedListingFromBulkUnits(
       simFunctionality: leadUnit.simStatus.toLowerCase().includes('not working')
         ? 'Not working'
         : 'Working',
-      networkLockStatus: leadUnit.simStatus.toLowerCase().includes('locked')
+      networkLockStatus: /\blocked\b/i.test(leadUnit.simStatus)
         ? 'Carrier Locked'
         : 'Unlocked',
       icloudOrGoogleLock: 'Clean & Removed',

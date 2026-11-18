@@ -191,14 +191,31 @@ function loadInitialState(): MarketplaceState {
           .filter((l) => !retiredIds.has(l.id))
           .map((l) => {
             const seedMatch = seedById.get(l.id);
-            if (seedMatch?.bundleItems && !l.bundleItems) {
-              return {
-                ...l,
-                bundleItems: seedMatch.bundleItems,
-                promoBadge: seedMatch.promoBadge || l.promoBadge,
-              };
-            }
-            return l;
+            const mergedReport =
+              seedMatch &&
+              l.conditionReport &&
+              'simFunctionality' in l.conditionReport &&
+              'simFunctionality' in seedMatch.conditionReport &&
+              !(l.conditionReport as any).touchscreen
+                ? {
+                    ...l.conditionReport,
+                    touchscreen: (seedMatch.conditionReport as any).touchscreen,
+                  }
+                : l.conditionReport;
+            return {
+              ...l,
+              title: seedMatch ? seedMatch.title : l.title,
+              cosmeticDescription: seedMatch?.cosmeticDescription ?? l.cosmeticDescription,
+              conditionReport: mergedReport,
+              originEvidenceReviewed:
+                l.originEvidenceReviewed ??
+                seedMatch?.originEvidenceReviewed ??
+                (l.foreignUsedStatus === 'Verified Foreign-Used'),
+              usedRightInspected: l.usedRightInspected ?? seedMatch?.usedRightInspected ?? false,
+              functionalTestStatus: l.functionalTestStatus ?? seedMatch?.functionalTestStatus,
+              bundleItems: seedMatch?.bundleItems && !l.bundleItems ? seedMatch.bundleItems : l.bundleItems,
+              promoBadge: seedMatch?.promoBadge || l.promoBadge,
+            };
           });
         const existingIds = new Set(existingClean.map((l) => l.id));
         const missingNewCatalog = seed.listings.filter(
@@ -1792,7 +1809,7 @@ export default function App() {
     }
     setSelectedListingId(item.id);
     commitViewTransition('product_details');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
   const handleBackFromProductDetails = () => {
@@ -1812,13 +1829,13 @@ export default function App() {
   const handleViewVendorStorefront = (vendorId: string) => {
     setSelectedVendorId(vendorId);
     commitViewTransition('vendor_storefront');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
   const handleOpenOrderDetail = (orderId: string) => {
     setSelectedOrderId(orderId);
     commitViewTransition('order_details');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
   // ====== SEND AS A GIFT & REQUEST SOMEONE TO PAY HANDLERS ======

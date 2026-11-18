@@ -15,8 +15,17 @@ import {
   PlatformFeeConfig,
   PromoBadgeType,
   VendorStorefront,
+  FunctionalTestStatus,
 } from '../types/marketplace';
 import { getListingVendorState, normalizeNigerianState } from './nigerianStates';
+import {
+  getEffectiveFunctionalStatus,
+  getSimRestrictionDetails,
+  hasReplacedBattery,
+  hasReplacedScreen,
+  normalizeCosmeticGradeKey,
+  validateVendorConditionClaims,
+} from './deviceCondition';
 
 // Approved UsedRight platform fee ceilings and defaults
 export const MAX_CUSTOMER_FEE_RATE = 0.007; // 0.7% max
@@ -537,6 +546,11 @@ export interface CatalogToolbarFilters {
   storage: string;
   grade: CosmeticGrade | 'all';
   locationState: string;
+  functionalStatus?: FunctionalTestStatus | 'all';
+  simFilter?: 'all' | 'unlocked' | 'locked' | 'wifi_only';
+  batteryFilter?: 'all' | 'original' | 'replaced';
+  screenFilter?: 'all' | 'original' | 'replaced';
+  originReviewedOnly?: boolean;
 }
 
 export const DEFAULT_CATALOG_TOOLBAR_FILTERS: CatalogToolbarFilters = {
@@ -547,6 +561,11 @@ export const DEFAULT_CATALOG_TOOLBAR_FILTERS: CatalogToolbarFilters = {
   storage: 'all',
   grade: 'all',
   locationState: 'all',
+  functionalStatus: 'all',
+  simFilter: 'all',
+  batteryFilter: 'all',
+  screenFilter: 'all',
+  originReviewedOnly: false,
 };
 
 export function hasActiveCatalogFilters(filters: CatalogToolbarFilters): boolean {
@@ -557,7 +576,12 @@ export function hasActiveCatalogFilters(filters: CatalogToolbarFilters): boolean
     filters.color !== 'all' ||
     filters.storage !== 'all' ||
     filters.grade !== 'all' ||
-    filters.locationState !== 'all'
+    filters.locationState !== 'all' ||
+    (Boolean(filters.functionalStatus) && filters.functionalStatus !== 'all') ||
+    (Boolean(filters.simFilter) && filters.simFilter !== 'all') ||
+    (Boolean(filters.batteryFilter) && filters.batteryFilter !== 'all') ||
+    (Boolean(filters.screenFilter) && filters.screenFilter !== 'all') ||
+    Boolean(filters.originReviewedOnly)
   );
 }
 
@@ -678,7 +702,9 @@ export function filterListings(
       }
 
       if (filters.cosmeticGrades && filters.cosmeticGrades.length > 0) {
-        if (!filters.cosmeticGrades.includes(item.cosmeticGrade)) return false;
+        const normalizedAllowed = filters.cosmeticGrades.map((g) => normalizeCosmeticGradeKey(g));
+        const itemGrade = normalizeCosmeticGradeKey(item.cosmeticGrade);
+        if (!normalizedAllowed.includes(itemGrade)) return false;
       }
 
       if (filters.minBatteryHealth !== undefined && filters.minBatteryHealth > 0) {
@@ -733,6 +759,38 @@ export function filterListings(
 
       if (filters.faceIdOnly) {
         if (item.category === 'phones' && item.faceIdStatus !== 'Working') return false;
+      }
+
+      if (filters.functionalStatus && filters.functionalStatus !== 'all') {
+        const effectiveStatus = getEffectiveFunctionalStatus({ listing: item });
+        if (effectiveStatus !== filters.functionalStatus) return false;
+      }
+
+      if (filters.simFilter && filters.simFilter !== 'all') {
+        const sim = getSimRestrictionDetails(item);
+        if (filters.simFilter === 'unlocked' && sim.type !== 'unlocked') return false;
+        if (filters.simFilter === 'locked' && sim.type !== 'carrier_locked') return false;
+        if (filters.simFilter === 'wifi_only' && sim.type !== 'wifi_only') return false;
+      }
+
+      if (filters.batteryFilter && filters.batteryFilter !== 'all') {
+        const replaced = hasReplacedBattery(item);
+        if (filters.batteryFilter === 'replaced' && !replaced) return false;
+        if (filters.batteryFilter === 'original' && replaced) return false;
+      }
+
+      if (filters.screenFilter && filters.screenFilter !== 'all') {
+        const replaced = hasReplacedScreen(item);
+        if (filters.screenFilter === 'replaced' && !replaced) return false;
+        if (filters.screenFilter === 'original' && replaced) return false;
+      }
+
+      if (filters.originReviewedOnly) {
+        const originReviewed =
+          item.originEvidenceReviewed !== undefined
+            ? item.originEvidenceReviewed
+            : item.foreignUsedStatus === 'Verified Foreign-Used';
+        if (!originReviewed) return false;
       }
 
       if (filters.locationState && filters.locationState !== 'all') {
@@ -829,6 +887,23 @@ export function applyCatalogToolbarFilters(
       colors: toolbar.color !== 'all' ? [toolbar.color] : extra?.colors,
       storage: toolbar.storage !== 'all' ? [toolbar.storage] : extra?.storage,
       cosmeticGrades: toolbar.grade !== 'all' ? [toolbar.grade] : extra?.cosmeticGrades,
+      functionalStatus:
+        toolbar.functionalStatus && toolbar.functionalStatus !== 'all'
+          ? toolbar.functionalStatus
+          : extra?.functionalStatus,
+      simFilter:
+        toolbar.simFilter && toolbar.simFilter !== 'all'
+          ? toolbar.simFilter
+          : extra?.simFilter,
+      batteryFilter:
+        toolbar.batteryFilter && toolbar.batteryFilter !== 'all'
+          ? toolbar.batteryFilter
+          : extra?.batteryFilter,
+      screenFilter:
+        toolbar.screenFilter && toolbar.screenFilter !== 'all'
+          ? toolbar.screenFilter
+          : extra?.screenFilter,
+      originReviewedOnly: toolbar.originReviewedOnly || extra?.originReviewedOnly,
       locationState:
         toolbar.locationState && toolbar.locationState !== 'all'
           ? toolbar.locationState
@@ -889,13 +964,29 @@ export function validateDeviceListing(
     errors.push('Valid price in Nigerian Naira is required.');
   }
   if (!listing.cosmeticGrade) {
-    errors.push('Cosmetic Grade (A, B, C, or D) must be selected.');
+    errors.push('Cosmetic Grade (Excellent / Grade A, Very Good / Grade B, or Good / Grade C) must be selected.');
   }
   if (!listing.batchReference || listing.batchReference.trim() === '') {
     errors.push('Device must be linked to an approved Foreign-Use batch manifest or airway bill.');
   }
   if (!listing.imeiOrSerial || listing.imeiOrSerial.trim() === '') {
     errors.push('IMEI (for phones) or Serial Number is required for verification.');
+  }
+
+  const combinedClaimsText = [
+    listing.title || '',
+    listing.cosmeticDescription || '',
+    listing.structuredDescription?.overview || '',
+    listing.structuredDescription?.productCondition || '',
+  ].join(' ');
+  if (combinedClaimsText.trim() && listing.category) {
+    const claimCheck = validateVendorConditionClaims({
+      listing: listing as DeviceListing,
+      descriptionText: combinedClaimsText,
+    });
+    if (!claimCheck.valid) {
+      errors.push(...claimCheck.errors);
+    }
   }
 
   return {
@@ -1320,6 +1411,14 @@ export function validateGiftOrderDetails(
     city: string;
     state: string;
     landmark?: string;
+    recipientAddress?: {
+      fullName?: string;
+      phone?: string;
+      street?: string;
+      city?: string;
+      state?: string;
+      landmark?: string;
+    };
     deliveryInstructions?: string;
     giftMessage?: string;
     senderVisibility?: GiftSenderVisibility;
@@ -1330,11 +1429,14 @@ export function validateGiftOrderDetails(
   deliveryMethod: DeliveryMethod = 'usedright_delivery'
 ): { valid: boolean; errors: string[]; giftDetails?: GiftOrderDetails } {
   const errors: string[] = [];
-  const recipientName = (input.recipientName || '').trim();
-  const recipientPhone = (input.recipientPhone || '').trim();
-  const street = (input.street || '').trim();
-  const city = (input.city || '').trim();
-  const state = normalizeNigerianState((input.state || '').trim() || 'Lagos State');
+  const recipientName = (input.recipientName || input.recipientAddress?.fullName || '').trim();
+  const recipientPhone = (input.recipientPhone || input.recipientAddress?.phone || '').trim();
+  const street = (input.street || input.recipientAddress?.street || '').trim();
+  const city = (input.city || input.recipientAddress?.city || '').trim();
+  const state = normalizeNigerianState(
+    (input.state || input.recipientAddress?.state || '').trim() || 'Lagos State'
+  );
+  const landmark = (input.landmark || input.recipientAddress?.landmark || '').trim() || undefined;
 
   if (recipientName.length < 2) {
     errors.push('Enter the gift recipient’s full name.');
@@ -1388,7 +1490,7 @@ export function validateGiftOrderDetails(
             ? city || 'In-Store Pickup'
             : city,
         state,
-        landmark: input.landmark?.trim() || undefined,
+        landmark,
       },
       deliveryInstructions: cleanedInstructions || undefined,
       giftMessage: cleanedMessage || undefined,

@@ -195,7 +195,7 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
           {filteredListings.length === 0 ? (
             <div className="bg-white rounded-2xl border border-[#EAE6F0] p-8 text-center space-y-3">
               <p className="text-sm font-medium text-[#211B2B]">
-                No verified foreign-used devices matched these exact filters.
+                No pre-owned devices matched these exact filters.
               </p>
               <button
                 type="button"
@@ -228,17 +228,22 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
           <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-7 space-y-3.5">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F5F0FF] border border-[#D0BCFC] text-xs font-medium text-[#211B2B]">
-                  <ShieldCheck className="w-4 h-4 text-[#A981FF] shrink-0" />
-                  Foreign-Used Technology • {platformConfig.inspectionHours}-Hour Post-Delivery Inspection
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F5F0FF] border border-[#D0BCFC] text-xs font-medium text-[#30102F]">
+                    <ShieldCheck className="w-4 h-4 text-[#A981FF] shrink-0" />
+                    Know Exactly What You’re Buying.
+                  </div>
+                  <span className="text-xs font-medium text-[#716B7B]">
+                    Premium Tech. Smarter Prices. • {platformConfig.inspectionHours}-Hour Inspection Hold
+                  </span>
                 </div>
 
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#211B2B] tracking-tight leading-snug">
-                  Know Exactly What You’re Buying Before You Pay.
+                  Discover Quality Pre-Owned Tech.
                 </h1>
 
                 <p className="text-xs sm:text-sm text-[#4A4356] max-w-2xl leading-relaxed">
-                  Shop verified foreign-used smartphones, laptops, tablets, audio gear, consoles, cameras, and laptop accessories. Every listing shows plain-English condition checks, clear red disclosures, and payment-hold protection.
+                  Shop pre-owned phones, laptops and gadgets with transparent condition details, clear product information and verified sellers.
                 </p>
 
                 <div className="flex flex-wrap gap-2.5 pt-1">
@@ -247,23 +252,23 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
                     onClick={() => onNavigateToExplore()}
                     className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-[#A981FF] hover:bg-[#B796FE] text-white text-xs sm:text-sm font-medium transition-colors min-h-[42px]"
                   >
-                    Browse All Products
+                    Explore Devices
                     <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onSelectDeals}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#F5F0FF] border border-[#D0BCFC] hover:border-[#A981FF] text-xs sm:text-sm font-medium text-[#211B2B] min-h-[42px]"
-                  >
-                    <Tag className="w-4 h-4 text-[#A981FF]" />
-                    Latest Deals
                   </button>
                   <button
                     type="button"
                     onClick={onOpenHowItWorks}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC] hover:border-[#A981FF] text-xs sm:text-sm font-medium text-[#211B2B] min-h-[42px]"
                   >
-                    Payment Protection
+                    How UsedRight Works
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onSelectDeals}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#F5F0FF] border border-[#D0BCFC] hover:border-[#A981FF] text-xs sm:text-sm font-medium text-[#30102F] min-h-[42px]"
+                  >
+                    <Tag className="w-4 h-4 text-[#A981FF]" />
+                    Latest Deals
                   </button>
                   {customerState && customerState !== 'all' && (
                     <button
@@ -370,8 +375,8 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
             <h2 className="text-base sm:text-lg font-semibold text-[#211B2B]">Shop by Category</h2>
             <p className="text-xs text-[#716B7B]">
               {platformConfig.brandNewEnabled
-                ? 'Foreign-used and brand-new categories clearly separated'
-                : 'Verified foreign-used devices and laptop accessories'}
+                ? 'Pre-owned and brand-new categories clearly separated'
+                : 'Verified Sellers. Transparent Devices. Smarter Purchases.'}
             </p>
           </div>
           <button
@@ -480,16 +485,16 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
         </section>
       )}
 
-      {/* Foreign-Used Smartphones */}
+      {/* Pre-Owned Phones */}
       {!isFiltered && foreignUsedPhones.length > 0 && (
         <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-3.5 min-w-0">
           <div className="flex items-center justify-between gap-2">
             <div>
               <h2 className="text-base sm:text-lg font-semibold text-[#211B2B]">
-                Foreign-Used Smartphones
+                Pre-Owned Phones
               </h2>
               <p className="text-xs text-[#716B7B]">
-                Tap color dots to preview finishes before opening condition details
+                Cosmetic grade and functional status disclosed separately on every phone
               </p>
             </div>
             <button
@@ -515,13 +520,13 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
         </section>
       )}
 
-      {/* Foreign-Used Laptops */}
+      {/* Pre-Owned Laptops */}
       {!isFiltered && foreignUsedLaptops.length > 0 && (
         <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-3.5 min-w-0">
           <div className="flex items-center justify-between gap-2">
             <div>
               <h2 className="text-base sm:text-lg font-semibold text-[#211B2B]">
-                Foreign-Used Laptops
+                Pre-Owned Laptops
               </h2>
               <p className="text-xs text-[#716B7B]">
                 Confirmed model year, battery cycle details, ports & keyboard checks
@@ -559,7 +564,7 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
                 Tablets, Audio, Gaming, Cameras & Laptop Gear
               </h2>
               <p className="text-xs text-[#716B7B]">
-                Category-checked foreign-used electronics, chargers, and padded laptop bags
+                Find the device you want, understand its condition and buy with confidence
               </p>
             </div>
             <button

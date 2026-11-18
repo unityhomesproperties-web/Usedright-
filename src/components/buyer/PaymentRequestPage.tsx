@@ -306,7 +306,7 @@ export const PaymentRequestPage: React.FC<PaymentRequestPageProps> = ({
               You are paying for an order selected by {safeView.orderOwnerDisplayName}
             </h1>
             <p className="text-xs text-[#4A4356] leading-relaxed">
-              {safeView.orderOwnerDisplayName} reviewed these inspected foreign-used items on UsedRight (
+              {safeView.orderOwnerDisplayName} selected these pre-owned items on UsedRight (
               <span className="font-medium">Know Exactly What You’re Buying</span>) and sent you this
               locked payment link. Paying here settles the order without giving you access to their
               UsedRight account.
@@ -389,10 +389,12 @@ export const PaymentRequestPage: React.FC<PaymentRequestPageProps> = ({
                   setReceiptCopied(true);
                   setTimeout(() => setReceiptCopied(false), 2000);
                 }}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#EAE6F0] text-xs font-medium text-[#211B2B]"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#EAE6F0] text-xs font-medium text-[#211B2B] max-w-full"
               >
-                <Copy className="w-3.5 h-3.5 text-[#A981FF]" />
-                {receiptCopied ? 'Ref Copied' : `Copy Ref: ${safeView.paymentProviderRef}`}
+                <Copy className="w-3.5 h-3.5 text-[#A981FF] shrink-0" />
+                <span className="truncate">
+                  {receiptCopied ? 'Ref Copied' : `Copy Ref: ${safeView.paymentProviderRef}`}
+                </span>
               </button>
             )}
           </div>

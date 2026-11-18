@@ -76,14 +76,14 @@ export const INITIAL_POLICIES: PolicyDocument[] = [
     slug: 'about-usedright',
     title: 'About UsedRight',
     category: 'Core Terms',
-    summary: 'Who UsedRight is, our brand promise ("Know Exactly What You’re Buying."), and how our Nigerian verified foreign-used electronics marketplace operates.',
+    summary: 'Who UsedRight is, our brand promise ("Know Exactly What You’re Buying."), and how our Nigerian pre-owned technology marketplace operates.',
     relatedSlugs: ['customer-terms-and-conditions', 'vendor-agreement', 'foreign-used-device-policy'],
     sections: [
       {
         heading: '1. Marketplace Mission & Brand Promise',
         paragraphs: [
-          'UsedRight (shopusedright.com) is a Nigerian technology marketplace built to bring clarity, verifiable device histories, and honest pricing to foreign-used smartphones, laptops, tablets, audio gear, cameras, and accessories.',
-          'Our core brand promise is "Know Exactly What You’re Buying." Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and origin before checkout.',
+          'UsedRight (shopusedright.com) is a Nigerian pre-owned technology marketplace built to bring clarity, verifiable device histories, and honest pricing to pre-owned smartphones, laptops, tablets, audio gear, cameras, and accessories.',
+          'Our core brand promise is "Know Exactly What You’re Buying." Every device listing must state exact specifications, cosmetic grade, functional status, known defects, battery condition, and foreign-origin provenance before checkout.',
         ],
       },
       {
@@ -208,7 +208,7 @@ export const INITIAL_POLICIES: PolicyDocument[] = [
       {
         heading: '1. Mandatory Listing Fields & Prominent Defect Alerts',
         paragraphs: [
-          'Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Grade A/B/C/D), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.',
+          'Every listing must state accurate model, storage/RAM, colour, cosmetic grade (Excellent / Grade A, Very Good / Grade B, or Good / Grade C), battery health percentage or explicit unavailability, screen/battery replacement history, Face ID/biometric state, SIM lock/carrier country, and included accessories.',
           'Critical limitations (e.g., SIM Locked, Wi-Fi Only, Non-Working Face ID, Battery Below 80%) must appear prominently in clear plain language—never buried inside prose.',
         ],
       },
@@ -231,19 +231,18 @@ export const INITIAL_POLICIES: PolicyDocument[] = [
     slug: 'device-condition-and-verification-policy',
     title: 'Device Condition and Verification Policy',
     category: 'Devices & Warranty',
-    summary: 'Definitions of Grade A, Grade B, Grade C, and Grade D plus standardized component statuses ("Working", "Not working", "Replaced").',
+    summary: 'Definitions of Excellent (Grade A), Very Good (Grade B), and Good (Grade C) cosmetic grades, kept strictly separate from functionality status ("Working", "Not working", "Not tested").',
     relatedSlugs: ['product-listing-and-disclosure-policy', 'warranty-policy'],
     sections: [
       {
-        heading: '1. Cosmetic Grading Standards',
+        heading: '1. Cosmetic Grading Standards (Appearance Only)',
         paragraphs: [
-          'UsedRight classifies devices consistently across all listings, carts, checkouts, and order history snapshots:',
+          'UsedRight classifies physical appearance separately from functional testing across all listings, carts, checkouts, and order history snapshots:',
         ],
         bullets: [
-          'Excellent (Grade A): Clean glass and body with near-invisible hairline wear from normal inspection distances; all core hardware tested.',
-          'Great (Grade B): Light visible micro-scuffs or faint bezel wear balanced with substantial price savings and full functional disclosure.',
-          'Good (Grade C): Visible exterior wear, lower battery capacity (<80%), or disclosed secondary component defects priced transparently for value.',
-          'Fair / Value (Grade D): Heavy cosmetic marks or hardware faults itemized in red prior to checkout.',
+          'Excellent (Grade A): Nearly flawless appearance with very little visible cosmetic wear.',
+          'Very Good (Grade B): Minor scratches or cosmetic marks while maintaining a clean overall appearance.',
+          'Good (Grade C): Visible scratches, dents or signs of use while still passing required functionality checks (any limitation is disclosed separately).',
         ],
       },
       {

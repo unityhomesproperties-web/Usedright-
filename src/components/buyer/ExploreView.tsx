@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin, Search, SlidersHorizontal, Tag, X, RotateCcw } from 
 import {
   AccessoryItem,
   Category,
+  CosmeticGrade,
   DeviceListing,
   PlatformConfig,
   VendorStorefront,
@@ -122,7 +123,7 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
   const activeCategoryLabel = dealsFilterActive
     ? 'Latest Deals & Discounts'
     : selectedCategory === 'all'
-    ? 'Explore All Foreign-Used Tech'
+    ? 'Explore All Pre-Owned Tech'
     : enabledCategories.find((c) => c.id === selectedCategory)?.label || 'Explore';
 
   const anyExtraDirty =
@@ -332,22 +333,134 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
               </select>
             </div>
 
+            <div>
+              <label className="block font-medium text-[#211B2B] mb-1">
+                Cosmetic Grade
+              </label>
+              <select
+                aria-label="Sidebar filter by cosmetic grade"
+                value={catalogFilters.grade}
+                onChange={(e) =>
+                  onCatalogFiltersChange({
+                    ...catalogFilters,
+                    grade: e.target.value as CosmeticGrade | 'all',
+                  })
+                }
+                className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+              >
+                <option value="all">All Cosmetic Grades</option>
+                <option value="Grade A">Excellent (Grade A)</option>
+                <option value="Grade B">Very Good (Grade B)</option>
+                <option value="Grade C">Good (Grade C)</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block font-medium text-[#211B2B] mb-1">
+                Functionality Status
+              </label>
+              <select
+                aria-label="Sidebar filter by functionality status"
+                value={catalogFilters.functionalStatus || 'all'}
+                onChange={(e) =>
+                  onCatalogFiltersChange({
+                    ...catalogFilters,
+                    functionalStatus: e.target.value as CatalogToolbarFilters['functionalStatus'],
+                  })
+                }
+                className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+              >
+                <option value="all">All Functionality Statuses</option>
+                <option value="Fully Functional">Fully Functional</option>
+                <option value="Functional With Disclosed Limitations">
+                  Functional With Disclosed Limitations
+                </option>
+                <option value="Not Tested">Not Tested</option>
+              </select>
+            </div>
+
             {(selectedCategory === 'all' || selectedCategory === 'phones') && (
-              <div>
-                <label className="block font-medium text-[#211B2B] mb-1">
-                  Minimum Battery Health: {minBatteryHealth > 0 ? `${minBatteryHealth}%` : 'Any'}
-                </label>
-                <select
-                  value={minBatteryHealth}
-                  onChange={(e) => setMinBatteryHealth(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
-                >
-                  <option value={0}>Any Battery Health</option>
-                  <option value={80}>80% and above</option>
-                  <option value={85}>85% and above</option>
-                  <option value={90}>90% and above</option>
-                </select>
-              </div>
+              <>
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">
+                    SIM / Network Status
+                  </label>
+                  <select
+                    aria-label="Sidebar filter by SIM and network status"
+                    value={catalogFilters.simFilter || 'all'}
+                    onChange={(e) =>
+                      onCatalogFiltersChange({
+                        ...catalogFilters,
+                        simFilter: e.target.value as CatalogToolbarFilters['simFilter'],
+                      })
+                    }
+                    className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="all">Any SIM / Network</option>
+                    <option value="unlocked">SIM Unlocked</option>
+                    <option value="locked">SIM Locked</option>
+                    <option value="wifi_only">Wi-Fi Only</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">
+                    Battery Replacement History
+                  </label>
+                  <select
+                    aria-label="Sidebar filter by battery history"
+                    value={catalogFilters.batteryFilter || 'all'}
+                    onChange={(e) =>
+                      onCatalogFiltersChange({
+                        ...catalogFilters,
+                        batteryFilter: e.target.value as CatalogToolbarFilters['batteryFilter'],
+                      })
+                    }
+                    className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="all">Any Battery Status</option>
+                    <option value="original">Original Battery Only</option>
+                    <option value="replaced">Battery Replaced</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">
+                    Screen Replacement History
+                  </label>
+                  <select
+                    aria-label="Sidebar filter by screen history"
+                    value={catalogFilters.screenFilter || 'all'}
+                    onChange={(e) =>
+                      onCatalogFiltersChange({
+                        ...catalogFilters,
+                        screenFilter: e.target.value as CatalogToolbarFilters['screenFilter'],
+                      })
+                    }
+                    className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="all">Any Screen Status</option>
+                    <option value="original">Original Screen Only</option>
+                    <option value="replaced">Screen Replaced</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">
+                    Minimum Battery Health: {minBatteryHealth > 0 ? `${minBatteryHealth}%` : 'Any'}
+                  </label>
+                  <select
+                    value={minBatteryHealth}
+                    onChange={(e) => setMinBatteryHealth(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value={0}>Any Battery Health</option>
+                    <option value={80}>80% and above</option>
+                    <option value={85}>85% and above</option>
+                    <option value={90}>90% and above</option>
+                  </select>
+                </div>
+              </>
             )}
 
             {(selectedCategory === 'all' || selectedCategory === 'laptops') && (
@@ -367,6 +480,21 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
             )}
 
             <label className="flex items-center gap-2 pt-1 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={Boolean(catalogFilters.originReviewedOnly)}
+                onChange={(e) =>
+                  onCatalogFiltersChange({
+                    ...catalogFilters,
+                    originReviewedOnly: e.target.checked,
+                  })
+                }
+                className="rounded border-[#EAE6F0] accent-[#A981FF]"
+              />
+              <span className="text-[#211B2B]">Origin evidence reviewed only</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"
                 checked={dealsFilterActive}
@@ -403,7 +531,7 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
           {filtered.length === 0 ? (
             <div className="bg-white rounded-2xl border border-[#EAE6F0] p-10 text-center space-y-3">
               <p className="text-sm font-medium text-[#211B2B]">
-                No matching foreign-used products found.
+                No matching pre-owned products found.
               </p>
               <button
                 type="button"

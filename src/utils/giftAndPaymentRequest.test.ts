@@ -75,6 +75,11 @@ test('validateGiftOrderDetails enforces recipient phone, address, instructions, 
     valid.giftDetails.recipientAccessTokenHash,
     sha256Hex(valid.giftDetails.recipientPortalToken!)
   );
+
+  // Also ensure GiftOrderDetails objects with nested recipientAddress validate cleanly
+  const nestedRes = validateGiftOrderDetails(valid.giftDetails, 'usedright_delivery');
+  assert.equal(nestedRes.valid, true);
+  assert.equal(nestedRes.giftDetails?.recipientAddress.street, '18 Awolowo Road, Ikoyi');
 });
 
 test('Gift order routes confidential 6-digit PIN to recipient portal and strips all prices/anonymous sender', () => {

@@ -37,6 +37,15 @@ export type FunctionalStatus =
   | 'Not tested'
   | 'Not applicable';
 
+export type FunctionalTestStatus =
+  | 'Fully Functional'
+  | 'Functional With Disclosed Limitations'
+  | 'Not Working'
+  | 'Not Tested'
+  | 'Not Applicable';
+
+export type StandardCosmeticGrade = 'EXCELLENT' | 'VERY GOOD' | 'GOOD';
+
 export interface ProductVariation {
   id: string;
   color: string;
@@ -54,6 +63,10 @@ export interface ProductVariation {
   conditionSummary?: string;
   images?: string[];
   batteryHealth?: number;
+  batteryReplaced?: 'Original' | 'Replaced' | 'Unknown';
+  screenReplaced?: boolean;
+  faceIdStatus?: 'Working' | 'Not working' | 'Not tested' | 'Not applicable';
+  functionalTestStatus?: FunctionalTestStatus;
   disclosedFaults?: string[];
   disclosedFaultsList?: DisclosedFault[];
   simStatus?: string;
@@ -142,7 +155,8 @@ export interface PhoneConditionReport {
   batteryReplaced: 'Original' | 'Replaced' | 'Unknown';
   screenOriginality: string;
   screenReplacementHistory: string;
-  faceIdOrFingerprint: 'Working' | 'Faulty' | 'Not working' | 'Not applicable';
+  touchscreen?: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
+  faceIdOrFingerprint: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
   frontCamera: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
   rearCamera: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
   speakers: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
@@ -151,9 +165,9 @@ export interface PhoneConditionReport {
   wifi: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
   bluetooth: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
   simFunctionality: 'Working' | 'Faulty' | 'Not working' | 'Not tested' | 'Not applicable';
-  networkLockStatus: 'Unlocked' | 'Carrier Locked';
-  icloudOrGoogleLock: 'Clean & Removed' | 'Locked' | 'Pending Verification';
-  mdmStatus: 'No MDM / Clean' | 'MDM Enrolled';
+  networkLockStatus: 'Unlocked' | 'Carrier Locked' | 'Not tested';
+  icloudOrGoogleLock: 'Clean & Removed' | 'Locked' | 'Pending Verification' | 'Not tested';
+  mdmStatus: 'No MDM / Clean' | 'MDM Enrolled' | 'Not tested';
   imeiVerificationStatus: 'Verified Clean' | 'Under Review' | 'Flagged';
   otherRepairsNotes: string;
   knownFaults?: DisclosedFault[];
@@ -246,6 +260,9 @@ export interface DeviceListing {
   sellerRating: number;
   sellerSalesCount: number;
   foreignUsedStatus: 'Verified Foreign-Used' | 'Under Review' | 'Evidence Required';
+  originEvidenceReviewed?: boolean;
+  usedRightInspected?: boolean;
+  functionalTestStatus?: FunctionalTestStatus;
   sourceCountry: string;
   batchReference: string;
   simStatus?: string;
@@ -1122,6 +1139,11 @@ export interface ListingFilters {
   colors?: string[];
   dealsOnly?: boolean;
   locationState?: string;
+  functionalStatus?: FunctionalTestStatus | 'all';
+  simFilter?: 'all' | 'unlocked' | 'locked' | 'wifi_only';
+  batteryFilter?: 'all' | 'original' | 'replaced';
+  screenFilter?: 'all' | 'original' | 'replaced';
+  originReviewedOnly?: boolean;
   sortBy?:
     | 'recommended'
     | 'price_asc'

@@ -9,6 +9,7 @@ import {
   ParentOrderRecord,
   PaymentHold,
   PaymentRequestRecord,
+  PhoneConditionReport,
   PlatformConfig,
   PlatformFeeConfig,
   VendorStorefront,
@@ -149,7 +150,7 @@ const SHOWCASE_CATEGORY_LISTINGS: DeviceListing[] = [
     id: 'dev-phone-ip13-demo',
     category: 'phones',
     condition: 'Foreign-Used',
-    title: 'Apple iPhone 13 (Foreign Used)',
+    title: 'Apple iPhone 13',
     brand: 'Apple',
     model: 'iPhone 13',
     modelNumber: 'A2482',
@@ -528,8 +529,25 @@ const SHOWCASE_CATEGORY_LISTINGS: DeviceListing[] = [
 ];
 
 function normalizeListing(item: DeviceListing): DeviceListing {
+  const isPhoneRep = item.conditionReport && 'simFunctionality' in item.conditionReport;
+  const normalizedConditionReport =
+    isPhoneRep &&
+    item.functionalTestStatus !== 'Not Tested' &&
+    !(item.conditionReport as PhoneConditionReport).touchscreen
+      ? {
+          ...(item.conditionReport as PhoneConditionReport),
+          touchscreen: 'Working' as const,
+        }
+      : item.conditionReport;
+
   return {
     ...item,
+    conditionReport: normalizedConditionReport,
+    originEvidenceReviewed:
+      item.originEvidenceReviewed !== undefined
+        ? item.originEvidenceReviewed
+        : item.foreignUsedStatus === 'Verified Foreign-Used',
+    usedRightInspected: item.usedRightInspected ?? false,
     cosmeticDescription: item.cosmeticDescription
       ? sanitizeConditionText(item.cosmeticDescription)
       : undefined,

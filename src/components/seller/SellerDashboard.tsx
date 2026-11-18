@@ -51,6 +51,7 @@ import {
   DeviceListing,
   DisputeRecord,
   ForeignUseEvidenceBatch,
+  FunctionalTestStatus,
   MessageConversation,
   Order,
   OrderStatus,
@@ -259,6 +260,17 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
   const [newPrice, setNewPrice] = useState<string>('320000');
   const [newStock, setNewStock] = useState<string>('1');
   const [newGrade, setNewGrade] = useState<CosmeticGrade>('Grade A');
+  const [newFunctionalStatus, setNewFunctionalStatus] =
+    useState<FunctionalTestStatus>('Fully Functional');
+  const [newSimLockStatus, setNewSimLockStatus] = useState<
+    'Unlocked' | 'Carrier Locked' | 'Wi-Fi Only'
+  >('Unlocked');
+  const [newBatteryReplaced, setNewBatteryReplaced] = useState<
+    'Original' | 'Replaced' | 'Unknown'
+  >('Original');
+  const [newScreenOriginality, setNewScreenOriginality] = useState<
+    'Original, verified' | 'Replaced OEM' | 'Replaced Aftermarket'
+  >('Original, verified');
   const [newBatteryHealth, setNewBatteryHealth] = useState<string>('90');
   const [newSourceCountry, setNewSourceCountry] = useState('United States');
   const [newBatchRef, setNewBatchRef] = useState(evidenceBatches[0]?.batchNumber || 'US-BATCH-2026-041');
@@ -474,8 +486,63 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
       ...(newCustomIssue.trim() ? [newCustomIssue.trim()] : []),
     ];
 
+    const isCarrierLocked =
+      newSimLockStatus === 'Carrier Locked' ||
+      issues.some((i) => /\blocked\b/i.test(i));
+    const isWifiOnly =
+      newSimLockStatus === 'Wi-Fi Only' ||
+      issues.some((i) => i.toLowerCase().includes('wi-fi only'));
+    const effectiveSimStatus = isWifiOnly
+      ? 'SIM Not Working (Wi-Fi Only)'
+      : isCarrierLocked
+      ? 'Carrier Locked'
+      : 'Unlocked (Physical + eSIM)';
+
+    const conditionReportCandidate = {
+      touchscreen: (newFunctionalStatus === 'Not Tested' ? 'Not tested' : 'Working') as
+        | 'Working'
+        | 'Not tested',
+      batteryHealth: Number(newBatteryHealth) || 88,
+      batteryReplaced: newBatteryReplaced,
+      screenOriginality: newScreenOriginality,
+      screenReplacementHistory:
+        newScreenOriginality === 'Original, verified'
+          ? 'No screen replacement recorded'
+          : `${newScreenOriginality} disclosed`,
+      faceIdOrFingerprint: (issues.some((i) => i.toLowerCase().includes('face id'))
+        ? 'Not working'
+        : newFunctionalStatus === 'Not Tested'
+        ? 'Not tested'
+        : 'Working') as 'Working' | 'Not working' | 'Not tested',
+      frontCamera: (newFunctionalStatus === 'Not Tested' ? 'Not tested' : 'Working') as
+        | 'Working'
+        | 'Not tested',
+      rearCamera: (newFunctionalStatus === 'Not Tested' ? 'Not tested' : 'Working') as
+        | 'Working'
+        | 'Not tested',
+      speakers: 'Working' as const,
+      microphone: 'Working' as const,
+      chargingPort: 'Working' as const,
+      wifi: 'Working' as const,
+      bluetooth: 'Working' as const,
+      simFunctionality: (isWifiOnly || issues.some((i) => i.toLowerCase().includes('sim'))
+        ? 'Not working'
+        : newFunctionalStatus === 'Not Tested'
+        ? 'Not tested'
+        : 'Working') as 'Working' | 'Not working' | 'Not tested',
+      networkLockStatus: (isCarrierLocked
+        ? 'Carrier Locked'
+        : newFunctionalStatus === 'Not Tested'
+        ? 'Not tested'
+        : 'Unlocked') as 'Unlocked' | 'Carrier Locked' | 'Not tested',
+      icloudOrGoogleLock: 'Clean & Removed' as const,
+      mdmStatus: 'No MDM / Clean' as const,
+      imeiVerificationStatus: 'Verified Clean' as const,
+      otherRepairsNotes: newPreviousRepairs.trim() || 'Tested clean.',
+    };
+
     const candidate: Partial<DeviceListing> = {
-      title: newTitle.trim() || `${newBrand} ${newModel} (${newCondition})`,
+      title: newTitle.trim() || `${newBrand} ${newModel} (Pre-Owned)`,
       category: newCategory,
       condition: newCondition,
       brand: newBrand.trim(),
@@ -494,6 +561,18 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
       ram: newRam.trim() || undefined,
       price: Number(newPrice) || 0,
       cosmeticGrade: newGrade,
+      cosmeticDescription: newOverview.trim(),
+      functionalTestStatus: newFunctionalStatus,
+      isWifiOnly,
+      simStatus: effectiveSimStatus,
+      disclosedFaults: issues,
+      conditionReport: conditionReportCandidate,
+      structuredDescription: {
+        overview: newOverview.trim(),
+        includedItems: newIncludedItems.trim(),
+        previousRepairs: newPreviousRepairs.trim(),
+        knownLimitations: newKnownLimitations.trim(),
+      },
       batteryHealth: newCategory === 'phones' ? Number(newBatteryHealth) || 85 : undefined,
       batchReference: newBatchRef.trim(),
       imeiOrSerial: newImeiOrSerial.trim(),
@@ -523,7 +602,10 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
       cosmeticGrade: newGrade,
       cosmeticDescription:
         newOverview.trim() ||
-        'Tested and honestly described for everyday use.',
+        'Tested and clearly described for everyday use.',
+      functionalTestStatus: newFunctionalStatus,
+      isWifiOnly,
+      simStatus: effectiveSimStatus,
       batteryHealth: candidate.batteryHealth,
       images: newImageUrl.trim() ? [newImageUrl.trim()] : [],
       sellerId: vendor.id,
@@ -533,6 +615,10 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
       sellerRating: vendor.rating,
       sellerSalesCount: vendor.completedOrders,
       foreignUsedStatus: 'Verified Foreign-Used',
+      originEvidenceReviewed: evidenceBatches.some(
+        (b) => b.batchNumber === newBatchRef.trim() && b.status === 'Verified'
+      ),
+      usedRightInspected: false,
       sourceCountry: newSourceCountry,
       batchReference: newBatchRef.trim(),
       imeiOrSerial: newImeiOrSerial.trim(),
@@ -548,43 +634,18 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
       structuredDescription: {
         overview:
           newOverview.trim() ||
-          `Foreign-used ${newBrand} ${newModel} inspected and clearly described.`,
+          `Pre-owned ${newBrand} ${newModel} inspected and clearly described.`,
         includedItems: newIncludedItems.trim(),
         previousRepairs: newPreviousRepairs.trim(),
         knownLimitations:
           newKnownLimitations.trim() ||
           (issues.length > 0 ? issues.join('; ') : 'None disclosed.'),
       },
-      conditionReport: {
-        batteryHealth: Number(newBatteryHealth) || 88,
-        batteryReplaced: 'Original',
-        screenOriginality: 'Original, verified',
-        screenReplacementHistory: 'No screen replacement recorded',
-        faceIdOrFingerprint: issues.some((i) => i.toLowerCase().includes('face id'))
-          ? 'Not working'
-          : 'Working',
-        frontCamera: 'Working',
-        rearCamera: 'Working',
-        speakers: 'Working',
-        microphone: 'Working',
-        chargingPort: 'Working',
-        wifi: 'Working',
-        bluetooth: 'Working',
-        simFunctionality: issues.some((i) => i.toLowerCase().includes('sim'))
-          ? 'Not working'
-          : 'Working',
-        networkLockStatus: issues.some((i) => i.toLowerCase().includes('locked'))
-          ? 'Carrier Locked'
-          : 'Unlocked',
-        icloudOrGoogleLock: 'Clean & Removed',
-        mdmStatus: 'No MDM / Clean',
-        imeiVerificationStatus: 'Verified Clean',
-        otherRepairsNotes: newPreviousRepairs.trim() || 'Tested clean.',
-      },
+      conditionReport: conditionReportCandidate,
       repairHistory: [],
-      warrantyDays: 14,
+      warrantyDays: 90,
       warrantyPolicyNotes: vendor.warrantyPolicy,
-      deliveryFee: 5000,
+      deliveryFee: 3000,
       freeDeliveryEligible: candidate.price! >= 500000,
       status: 'Active',
       createdAt: new Date().toISOString().slice(0, 10),
@@ -1273,15 +1334,15 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
             >
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#EAE6F0]">
                 <div>
-                  <h3 className="text-sm font-semibold text-[#211B2B]">List Foreign-Used Technology</h3>
+                  <h3 className="text-sm font-semibold text-[#211B2B]">List Pre-Owned Technology</h3>
                   <p className="text-[#716B7B]">
-                    Use everyday English and keep Model Year separate from Year Made.
+                    Use everyday English, separate cosmetic grade from functionality, and keep Model Year separate from Year Made.
                   </p>
                 </div>
                 {!platformConfig.brandNewEnabled && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#F5F0FF] border border-[#D0BCFC] text-[11px] font-medium text-[#211B2B]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#F5F0FF] border border-[#D0BCFC] text-[11px] font-medium text-[#30102F]">
                     <Lock className="w-3.5 h-3.5 text-[#A981FF]" />
-                    Foreign-Used Only Mode
+                    Foreign-Origin Pre-Owned Policy
                   </span>
                 )}
               </div>
@@ -1346,7 +1407,7 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
                     type="text"
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
-                    placeholder="Auto-filled if left blank (e.g. Apple iPhone 13 128GB Foreign Used)"
+                    placeholder="Auto-filled if left blank (e.g. Apple iPhone 13 128GB Pre-Owned)"
                     className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
                   />
                 </div>
@@ -1409,16 +1470,80 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-medium text-[#211B2B] mb-1">Cosmetic Grade</label>
+                  <label className="block font-medium text-[#211B2B] mb-1">Cosmetic Grade (Appearance Only)</label>
                   <select
+                    aria-label="Cosmetic Grade"
                     value={newGrade}
                     onChange={(e) => setNewGrade(e.target.value as CosmeticGrade)}
                     className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
                   >
-                    <option value="Grade A">Grade A (Very Clean)</option>
-                    <option value="Grade B">Grade B (Light Wear)</option>
-                    <option value="Grade C">Grade C (Noticeable Signs)</option>
-                    <option value="Grade D">Grade D (Heavy Marks)</option>
+                    <option value="Grade A">Excellent (Grade A) — Nearly flawless appearance</option>
+                    <option value="Grade B">Very Good (Grade B) — Minor scratches or cosmetic marks</option>
+                    <option value="Grade C">Good (Grade C) — Visible scratches, dents or signs of use</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">Functionality Status</label>
+                  <select
+                    aria-label="Functionality Status"
+                    value={newFunctionalStatus}
+                    onChange={(e) => setNewFunctionalStatus(e.target.value as FunctionalTestStatus)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="Fully Functional">Fully Functional (All checks tested & passed)</option>
+                    <option value="Functional With Disclosed Limitations">Functional With Disclosed Limitations</option>
+                    <option value="Not Tested">Not Tested / Partially Tested</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">SIM / Network Status</label>
+                  <select
+                    aria-label="SIM and Network Status"
+                    value={newSimLockStatus}
+                    onChange={(e) =>
+                      setNewSimLockStatus(e.target.value as 'Unlocked' | 'Carrier Locked' | 'Wi-Fi Only')
+                    }
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="Unlocked">SIM Unlocked (All Networks)</option>
+                    <option value="Carrier Locked">Carrier / SIM Locked</option>
+                    <option value="Wi-Fi Only">Wi-Fi Only (No SIM)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">Battery History</label>
+                  <select
+                    aria-label="Battery Replacement History"
+                    value={newBatteryReplaced}
+                    onChange={(e) =>
+                      setNewBatteryReplaced(e.target.value as 'Original' | 'Replaced' | 'Unknown')
+                    }
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="Original">Original Battery</option>
+                    <option value="Replaced">Battery Replaced</option>
+                    <option value="Unknown">Not Disclosed / Unknown</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium text-[#211B2B] mb-1">Screen History</label>
+                  <select
+                    aria-label="Screen Originality History"
+                    value={newScreenOriginality}
+                    onChange={(e) =>
+                      setNewScreenOriginality(
+                        e.target.value as 'Original, verified' | 'Replaced OEM' | 'Replaced Aftermarket'
+                      )
+                    }
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#EAE6F0] bg-[#FAF9FC]"
+                  >
+                    <option value="Original, verified">Original Screen (Verified)</option>
+                    <option value="Replaced OEM">Screen Replaced (OEM)</option>
+                    <option value="Replaced Aftermarket">Screen Replaced (Aftermarket)</option>
                   </select>
                 </div>
 
@@ -1620,7 +1745,7 @@ export const SellerDashboard: React.FC<SellerDashboardProps> = ({
                     type="submit"
                     className="px-5 py-2.5 rounded-xl bg-[#A981FF] hover:bg-[#B796FE] text-white font-medium"
                   >
-                    Publish Foreign-Used Product
+                    Publish Pre-Owned Product
                   </button>
                 </div>
               </form>

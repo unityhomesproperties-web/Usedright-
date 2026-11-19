@@ -50,6 +50,8 @@ import {
   validateGiftOrderDetails,
   verifySimulatedOtp,
 } from '../../utils/marketplace';
+import { createMultiVendorOrdersFromCheckout } from '../../utils/transactionEngine';
+import { createInitialMarketplaceState } from '../../data/marketplaceCatalog';
 import { toSimpleEnglish } from '../../utils/simpleEnglish';
 import { NIGERIAN_COMMERCIAL_HUBS } from '../../utils/nigerianStates';
 import { initializeCheckoutPayment, verifyCheckoutPayment } from '../../utils/apiClient';
@@ -442,6 +444,38 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         setGiftError(null);
       }
 
+      const runLocalDemoFallbackCheckout = (refId: string) => {
+        const baseState = createInitialMarketplaceState();
+        const fallbackState = {
+          ...baseState,
+          listings: listings.length > 0 ? listings : baseState.listings,
+          vendors: vendors.length > 0 ? vendors : baseState.vendors,
+          feeConfig: feeConfig || baseState.feeConfig,
+          deliveryConfig: deliveryConfig || baseState.deliveryConfig,
+          platformConfig: {
+            ...baseState.platformConfig,
+            inspectionHours: Math.max(24, inspectionHours || baseState.platformConfig.inspectionHours),
+          },
+        };
+        const created = createMultiVendorOrdersFromCheckout(fallbackState, {
+          buyerId: buyerInfo.id,
+          orderOwnerId: buyerInfo.id,
+          buyerName: buyerInfo.name,
+          buyerEmail: buyerInfo.email,
+          buyerPhone: buyerInfo.phone || phone.trim(),
+          thirdPartyPayer: thirdPartyPayload,
+          isGift: isGiftOrder,
+          giftDetails: giftPayload,
+          cartItems: effectiveCartItems,
+          deliveryMethod,
+          idempotencyKey,
+          paymentProviderRef: refId,
+          isDemoTransaction: true,
+          deliveryAddress: addressPayload,
+        });
+        finalizeVerifiedOrder(created.parentOrder, created.childOrders);
+      };
+
       const initRes = await initializeCheckoutPayment({
         cartItems: effectiveCartItems,
         deliveryMethod,
@@ -458,6 +492,22 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         demoOutcome,
         acceptedPriceChanges: true,
       });
+
+      if (initRes.backendUnavailable) {
+        if (demoOutcome === 'failed') {
+          setPaymentError(
+            'Simulated Paystack payment declined. Your cart is preserved — switch outcome or retry safely.'
+          );
+          setIdempotencyKey(`idem-${Date.now()}-${Math.floor(Math.random() * 10000)}`);
+          return;
+        }
+        if (demoOutcome === 'pending') {
+          setPendingRef(`LOCAL-PEND-${Date.now()}`);
+          return;
+        }
+        runLocalDemoFallbackCheckout(`LOCAL-PAY-${Date.now()}`);
+        return;
+      }
 
       if (!initRes.ok || !initRes.data) {
         setPaymentError(
@@ -481,6 +531,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       }
 
       const verifyRes = await verifyCheckoutPayment({ reference: initRes.data.reference });
+      if (verifyRes.backendUnavailable) {
+        runLocalDemoFallbackCheckout(initRes.data.reference);
+        return;
+      }
       if (!verifyRes.ok || !verifyRes.data?.verified || !verifyRes.data.parentOrder || !verifyRes.data.childOrders) {
         setPaymentError(
           verifyRes.error || verifyRes.data?.error || 'Could not verify payment. Please retry.'
@@ -499,6 +553,43 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     setIsSubmitting(true);
     setPaymentError(null);
     try {
+      if (pendingRef.startsWith('LOCAL-PEND-')) {
+        const baseState = createInitialMarketplaceState();
+        const fallbackState = {
+          ...baseState,
+          listings: listings.length > 0 ? listings : baseState.listings,
+          vendors: vendors.length > 0 ? vendors : baseState.vendors,
+          feeConfig: feeConfig || baseState.feeConfig,
+          deliveryConfig: deliveryConfig || baseState.deliveryConfig,
+          platformConfig: {
+            ...baseState.platformConfig,
+            inspectionHours: Math.max(24, inspectionHours || baseState.platformConfig.inspectionHours),
+          },
+        };
+        const created = createMultiVendorOrdersFromCheckout(fallbackState, {
+          buyerId: buyerInfo.id,
+          orderOwnerId: buyerInfo.id,
+          buyerName: buyerInfo.name,
+          buyerEmail: buyerInfo.email,
+          buyerPhone: buyerInfo.phone || phone.trim(),
+          cartItems: effectiveCartItems,
+          deliveryMethod,
+          idempotencyKey,
+          paymentProviderRef: pendingRef,
+          isDemoTransaction: true,
+          deliveryAddress: {
+            fullName: fullName.trim() || buyerInfo.name,
+            phone: phone.trim() || buyerInfo.phone,
+            street: street.trim() || 'Verified Vendor Pickup Desk',
+            city: city.trim() || 'In-Store Pickup',
+            state: stateName.trim() || 'Lagos State',
+          },
+        });
+        setPendingRef(null);
+        finalizeVerifiedOrder(created.parentOrder, created.childOrders);
+        return;
+      }
+
       const verifyRes = await verifyCheckoutPayment({
         reference: pendingRef,
         forceCompletePending: true,

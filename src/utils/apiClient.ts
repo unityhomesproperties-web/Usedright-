@@ -32,33 +32,80 @@ import type {
   VendorSearchResultItem,
 } from './marketplace';
 
-async function postJson<T>(url: string, body: unknown): Promise<{ ok: boolean; status: number; data?: T; error?: string }> {
+export interface ApiResponse<T> {
+  ok: boolean;
+  status: number;
+  data?: T;
+  error?: string;
+  backendUnavailable?: boolean;
+}
+
+async function parseJsonSafe<T>(res: Response): Promise<{ parsed?: T; isJson: boolean }> {
+  const contentType = res.headers.get('content-type') || '';
+  const text = await res.text();
+  if (!text) return { isJson: contentType.includes('application/json') };
+  try {
+    return { parsed: JSON.parse(text) as T, isJson: true };
+  } catch {
+    return { isJson: false };
+  }
+}
+
+async function postJson<T>(url: string, body: unknown): Promise<ApiResponse<T>> {
   try {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-    const data = await res.json();
-    if (!res.ok) {
-      return { ok: false, status: res.status, data, error: data?.error || `HTTP ${res.status}` };
+    const { parsed, isJson } = await parseJsonSafe<T & { error?: string }>(res);
+    if (!isJson && (res.status === 404 || res.status === 405 || res.ok)) {
+      return {
+        ok: false,
+        status: res.status,
+        error: 'Backend API is not available in static hosting mode.',
+        backendUnavailable: true,
+      };
     }
-    return { ok: true, status: res.status, data };
+    if (!res.ok) {
+      return {
+        ok: false,
+        status: res.status,
+        data: parsed,
+        error: parsed?.error || `HTTP ${res.status}`,
+        backendUnavailable: res.status === 404 && !isJson,
+      };
+    }
+    return { ok: true, status: res.status, data: parsed };
   } catch (err) {
-    return { ok: false, status: 0, error: (err as Error).message };
+    return { ok: false, status: 0, error: (err as Error).message, backendUnavailable: true };
   }
 }
 
-async function getJson<T>(url: string): Promise<{ ok: boolean; status: number; data?: T; error?: string }> {
+async function getJson<T>(url: string): Promise<ApiResponse<T>> {
   try {
     const res = await fetch(url);
-    const data = await res.json();
-    if (!res.ok) {
-      return { ok: false, status: res.status, data, error: data?.error || `HTTP ${res.status}` };
+    const { parsed, isJson } = await parseJsonSafe<T & { error?: string }>(res);
+    if (!isJson && (res.status === 404 || res.status === 405 || res.ok)) {
+      return {
+        ok: false,
+        status: res.status,
+        error: 'Backend API is not available in static hosting mode.',
+        backendUnavailable: true,
+      };
     }
-    return { ok: true, status: res.status, data };
+    if (!res.ok) {
+      return {
+        ok: false,
+        status: res.status,
+        data: parsed,
+        error: parsed?.error || `HTTP ${res.status}`,
+        backendUnavailable: res.status === 404 && !isJson,
+      };
+    }
+    return { ok: true, status: res.status, data: parsed };
   } catch (err) {
-    return { ok: false, status: 0, error: (err as Error).message };
+    return { ok: false, status: 0, error: (err as Error).message, backendUnavailable: true };
   }
 }
 

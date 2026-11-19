@@ -83,9 +83,9 @@ export const CENTRAL_PARENT_MODELS: CentralModelTemplate[] = [
       { name: 'White Titanium', hex: '#F3F2EE' },
       { name: 'Desert Titanium', hex: '#B9987B' },
     ],
-    defaultImage: '/assets/images/iphone_15_natural_titanium_1794643998693.jpg',
+    defaultImage: '/assets/images/iphone_15_natural_titanium_1794643998199.jpg',
     sampleImages: [
-      '/assets/images/iphone_15_natural_titanium_1794643998693.jpg',
+      '/assets/images/iphone_15_natural_titanium_1794643998199.jpg',
       '/assets/images/iphone_15_space_black_1794643997957.jpg',
       '/assets/images/iphone_15_front_screen_1794644013924.jpg',
     ],

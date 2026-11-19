@@ -471,7 +471,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {isApprovedVendor ? (
         <nav
           aria-label="Vendor mobile navigation"
-          className="md:hidden fixed bottom-3 left-4 right-4 z-50 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-[#EAE6F0] py-2 px-4 flex items-center justify-around"
+          className="md:hidden fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] left-4 right-4 z-50 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-[#EAE6F0] py-2 px-4 flex items-center justify-around"
         >
           <button
             type="button"
@@ -625,7 +625,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       ) : currentRole !== 'admin' && activeView !== 'product_details' ? (
         <nav
           aria-label="Customer mobile navigation"
-          className="md:hidden fixed bottom-3 left-4 right-4 z-50 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-[#EAE6F0] py-2 px-4 flex items-center justify-around"
+          className="md:hidden fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] left-4 right-4 z-50 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-[#EAE6F0] py-2 px-4 flex items-center justify-around"
         >
           {/* 1. Home */}
           <button

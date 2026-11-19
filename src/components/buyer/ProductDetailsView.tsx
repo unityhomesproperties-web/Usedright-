@@ -639,7 +639,7 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
 
   return (
     <div className="bg-[#FAF9FC] min-h-screen overflow-x-clip">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 pb-36 space-y-8 min-w-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 pb-[calc(9rem+env(safe-area-inset-bottom))] space-y-8 min-w-0">
         {/* Top Breadcrumb Bar */}
         <div className="flex items-center justify-between gap-2">
           <button
@@ -1579,7 +1579,7 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({
       {/* F. Sticky Bottom Action Bar */}
       <div
         data-testid="sticky-bottom-action-bar"
-        className="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#EAE6F0] shadow-[0_-4px_20px_rgba(33,27,43,0.06)]"
+        className="fixed bottom-0 inset-x-0 z-40 pb-[env(safe-area-inset-bottom)] bg-white/95 backdrop-blur-md border-t border-[#EAE6F0] shadow-[0_-4px_20px_rgba(33,27,43,0.06)]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-2.5 sm:gap-4">
           <div className="hidden md:flex flex-col min-w-0">

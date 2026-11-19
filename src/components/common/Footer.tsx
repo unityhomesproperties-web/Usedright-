@@ -8,6 +8,7 @@ interface FooterProps {
   onOpenBuyerProtection: () => void;
   onOpenInspectionEducationModal?: () => void;
   onOpenPolicyCentre?: (slug?: string) => void;
+  hideTopTrustBanner?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -16,11 +17,13 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenBuyerProtection,
   onOpenInspectionEducationModal,
   onOpenPolicyCentre,
+  hideTopTrustBanner = false,
 }) => {
   return (
-    <footer className="bg-white text-[#211B2B] border-t border-[#EAE6F0] pt-10 pb-24 md:pb-10">
+    <footer className="bg-white text-[#211B2B] border-t border-[#EAE6F0] pt-10 pb-[calc(7.25rem+env(safe-area-inset-bottom))] md:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Trust Banner */}
+        {!hideTopTrustBanner && (
         <div className="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF9FC] border border-[#EAE6F0] shadow-[0_1px_2px_rgba(33,27,43,0.03)] flex items-start gap-3.5">
             <TrustTileIcon variant="provenance" />
@@ -62,6 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
         </div>
+        )}
 
         {/* Links & Brand */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-10 border-b border-[#EAE6F0]">

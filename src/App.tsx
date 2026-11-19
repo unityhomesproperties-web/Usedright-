@@ -51,6 +51,7 @@ import {
   filterListings,
   scanMessageForDisallowedContent,
 } from './utils/marketplace';
+import { shouldShowDemoControls } from './utils/homeUiPolicy';
 import {
   enrichListingsWithVendorState,
   getListingVendorState,
@@ -2084,10 +2085,29 @@ export default function App() {
   const savedDevices = resolvedListings.filter((l) => savedItemIds.includes(l.id));
   const isCategoryRoute = activeCategories.some((c) => c.id === activeView);
   const showCatalogFilterBar =
-    activeView === 'home' ||
     activeView === 'explore' ||
     activeView === 'deals' ||
     isCategoryRoute;
+
+  const showDemoControls = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    const search = window.location.search || '';
+    let hasSessionDemoFlag = false;
+    try {
+      if (/(?:\?|&)(?:demo|preview)=1(?:&|$)/.test(search)) {
+        window.sessionStorage.setItem('usedright_demo_session', '1');
+      }
+      hasSessionDemoFlag = window.sessionStorage.getItem('usedright_demo_session') === '1';
+    } catch {
+      // ignore storage errors
+    }
+    return shouldShowDemoControls({
+      role,
+      isDev: Boolean(import.meta.env.DEV),
+      search,
+      hasSessionDemoFlag,
+    });
+  }, [role]);
 
   const matchingToolbarCount = useMemo(() => {
     if (!showCatalogFilterBar) return undefined;
@@ -2649,6 +2669,7 @@ export default function App() {
         onOpenBuyerProtection={() => setProtectionModalOpen(true)}
         onOpenInspectionEducationModal={() => setInspectionGuideOpen(true)}
         onOpenPolicyCentre={(slug) => setPolicyModalSlug(slug || 'about-usedright')}
+        hideTopTrustBanner={activeView === 'home'}
       />
 
       {/* Cart & Checkout */}
@@ -2831,7 +2852,8 @@ export default function App() {
         initialSlug={policyModalSlug || undefined}
       />
 
-      {/* Floating Demo Controls */}
+      {/* Floating Demo Controls (hidden from ordinary production customers) */}
+      {showDemoControls && (
       <DemoControlsBar
         currentRole={role}
         activeView={activeView}
@@ -2923,6 +2945,7 @@ export default function App() {
         }
         onResetDemoData={handleResetDemoData}
       />
+      )}
     </div>
   );
 }

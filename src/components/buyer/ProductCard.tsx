@@ -7,6 +7,7 @@ import {
   mapCosmeticGrade,
 } from '../../utils/deviceCondition';
 import { formatNaira } from '../../utils/marketplace';
+import { getCardReviewDisplay } from '../../utils/homeUiPolicy';
 import { getListingVendorState, getShortStateLabel } from '../../utils/nigerianStates';
 import { resolveColorHex } from '../../utils/productConfig';
 import { SmartImage } from '../common/SmartImage';
@@ -81,8 +82,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const displayImage = activeSwatch?.image || listing.images[0];
   const displayTitle = formatCardTitle(listing, swatches, activeSwatch?.name || listing.color);
 
-  const modelRating = listing.modelRating ?? Number((listing.sellerRating - 0.04).toFixed(2));
-  const reviewCount = listing.modelReviewCount ?? Math.max(18, Math.round((listing.views || 120) / 8));
+  const { modelRating, modelReviewCount, sellerRating } = useMemo(
+    () => getCardReviewDisplay(listing),
+    [listing]
+  );
 
   const promoLabel = listing.promoBadge || (listing.freeGift ? 'FREE GIFT' : undefined);
   const isDealOfWeek = promoLabel === 'DEAL OF THE WEEK';
@@ -146,9 +149,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Cosmetic Grade Micro-Tag (Top-left) */}
           <span
             data-testid="card-cosmetic-grade"
-            className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-md bg-white/95 border border-[#D0BCFC] text-[9px] font-semibold tracking-wide text-[#30102F] pointer-events-none"
+            className="absolute top-1.5 left-1.5 max-w-[calc(100%-2.75rem)] px-1.5 py-0.5 rounded-md bg-white/95 border border-[#D0BCFC] text-[8.5px] sm:text-[9px] font-semibold tracking-wide text-[#30102F] truncate pointer-events-none"
           >
-            {mappedGrade.badgeText}
+            <span className="sm:hidden">{mappedGrade.shortBadge}</span>
+            <span className="hidden sm:inline">{mappedGrade.badgeText}</span>
           </span>
 
           {/* Save Heart Button (Top-right) */}
@@ -186,20 +190,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           )}
         </div>
 
-        {/* 2. Brand, Storage Capacity & Model Rating Row */}
-        <div className="flex items-center justify-between gap-1 mt-2 text-[11px]">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <span className="text-[#716B7B] truncate">{listing.brand}</span>
-            {storageLabel && (
-              <span className="px-1.5 py-0.5 rounded bg-[#FAF9FC] border border-[#EAE6F0] text-[10px] font-medium text-[#30102F] shrink-0">
-                {storageLabel}
-              </span>
-            )}
-          </div>
-          <span className="inline-flex items-center gap-0.5 text-[#238653] font-medium tabular-nums shrink-0">
-            <Star className="w-3 h-3 fill-[#238653] text-[#238653]" />
-            {modelRating.toFixed(2)} ({reviewCount})
-          </span>
+        {/* 2. Brand & Storage Capacity Row */}
+        <div className="flex items-center justify-between gap-1.5 mt-2.5 text-[11px] min-h-[20px]">
+          <span className="text-[#716B7B] font-medium truncate">{listing.brand}</span>
+          {storageLabel && (
+            <span className="px-1.5 py-0.5 rounded bg-[#FAF9FC] border border-[#EAE6F0] text-[10px] font-medium text-[#30102F] shrink-0">
+              {storageLabel}
+            </span>
+          )}
         </div>
 
         {/* 3. Product Title */}
@@ -216,7 +214,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* 4. Concise Qualified Condition Statement */}
         <p
           data-testid="card-condition-statement"
-          className="mt-1 text-[11px] text-[#4A4356] line-clamp-2 leading-snug"
+          className="mt-1 text-[11px] text-[#4A4356] line-clamp-2 leading-snug min-h-[1.875rem]"
         >
           {conditionStatement}
         </p>
@@ -294,26 +292,48 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
       </div>
 
-      {/* 7. Vendor Identity, Location & Rating Footer */}
+      {/* 7. Separated Model Reviews & Vendor Identity Footer */}
       <button
         type="button"
         onClick={() => onViewDetails(listing)}
-        className="border-t border-[#EAE6F0] pt-1.5 mt-2.5 flex flex-col gap-1 text-left w-full"
+        className="border-t border-[#EAE6F0] pt-2 mt-2.5 flex flex-col gap-1 text-left w-full"
       >
-        <div className="flex items-center justify-between gap-1 w-full">
+        <div className="flex flex-wrap items-center justify-between gap-x-1.5 gap-y-0.5 w-full text-[9.5px] sm:text-[10px] text-[#716B7B]">
+          {modelRating !== null ? (
+            <span
+              data-testid="card-model-review"
+              className="inline-flex items-center gap-1 text-[#238653] font-medium tabular-nums whitespace-nowrap"
+            >
+              <Star className="w-2.5 h-2.5 fill-[#238653] text-[#238653] shrink-0" />
+              <span>
+                Model {modelRating.toFixed(2)}
+                {modelReviewCount !== null ? ` (${modelReviewCount})` : ''}
+              </span>
+            </span>
+          ) : (
+            <span data-testid="card-model-review-empty" className="text-[#716B7B] whitespace-nowrap">
+              No device reviews yet
+            </span>
+          )}
+          {sellerRating !== null && (
+            <span
+              data-testid="card-seller-rating"
+              className="inline-flex items-center gap-0.5 font-medium text-[#211B2B] tabular-nums whitespace-nowrap shrink-0"
+            >
+              <Star className="w-2.5 h-2.5 fill-[#211B2B] text-[#211B2B]" />
+              <span>Seller {sellerRating.toFixed(1)}</span>
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between gap-1.5 w-full">
           <span className="inline-flex items-center gap-1 text-[11px] text-[#4A4356] font-medium truncate min-w-0">
             <span className="truncate">{listing.sellerName}</span>
             {listing.sellerVerified && (
               <BadgeCheck className="w-3.5 h-3.5 text-[#A981FF] shrink-0" />
             )}
           </span>
-          <span className="inline-flex items-center gap-0.5 text-[11px] font-medium text-[#211B2B] tabular-nums shrink-0">
-            <Star className="w-3 h-3 fill-[#211B2B] text-[#211B2B]" />
-            {listing.sellerRating.toFixed(1)}
-          </span>
-        </div>
-        <div className="flex items-center">
-          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-[#F5F0FF] text-[#30102F] text-[10px] font-medium">
+          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-[#F5F0FF] text-[#30102F] text-[10px] font-medium shrink-0">
             <MapPin className="w-2.5 h-2.5 text-[#A981FF] shrink-0" />
             {vendorShortState}
           </span>

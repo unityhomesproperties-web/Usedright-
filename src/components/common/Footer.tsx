@@ -9,6 +9,7 @@ interface FooterProps {
   onOpenInspectionEducationModal?: () => void;
   onOpenPolicyCentre?: (slug?: string) => void;
   hideTopTrustBanner?: boolean;
+  showInnerSupportBar?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -18,10 +19,41 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenInspectionEducationModal,
   onOpenPolicyCentre,
   hideTopTrustBanner = false,
+  showInnerSupportBar = false,
 }) => {
   return (
-    <footer className="bg-white text-[#211B2B] border-t border-[#EAE6F0] pt-10 pb-[calc(7.25rem+env(safe-area-inset-bottom))] md:pb-10">
+    <footer className="bg-white text-[#211B2B] border-t border-[#EAE6F0] pt-8 pb-[calc(7.25rem+env(safe-area-inset-bottom))] md:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Clean Single-Line Support Bar for Inner Screens */}
+        {hideTopTrustBanner && showInnerSupportBar && (
+          <div
+            data-testid="footer-inner-support-bar"
+            className="mb-8 px-4 py-3 rounded-2xl bg-[#FAF8F4] border border-[#EAE6F0] flex flex-wrap items-center justify-between gap-3 text-xs"
+          >
+            <span className="font-medium text-[#211B2B]">
+              UsedRight Buyer Protection &amp; Marketplace Rules
+            </span>
+            <div className="flex flex-wrap items-center gap-4">
+              {onOpenPolicyCentre && (
+                <button
+                  type="button"
+                  onClick={() => onOpenPolicyCentre('about-usedright')}
+                  className="font-semibold text-[#5B37B7] hover:underline"
+                >
+                  Policies &amp; Guidelines
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={onOpenBuyerProtection}
+                className="font-semibold text-[#5B37B7] hover:underline"
+              >
+                Help &amp; Support
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Top Trust Banner */}
         {!hideTopTrustBanner && (
         <div className="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

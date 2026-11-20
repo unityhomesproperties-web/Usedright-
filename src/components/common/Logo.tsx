@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'header' | 'md' | 'lg';
   showTagline?: boolean;
   className?: string;
 }
@@ -15,6 +15,7 @@ export const Logo: React.FC<LogoProps> = ({
 
   const sizeClasses = {
     sm: 'h-6 sm:h-7',
+    header: 'h-8 sm:h-9',
     md: 'h-7 sm:h-8',
     lg: 'h-9 sm:h-11',
   };

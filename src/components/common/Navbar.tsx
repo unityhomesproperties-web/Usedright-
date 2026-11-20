@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center focus:outline-none text-left shrink-0 min-h-[44px]"
               aria-label="UsedRight Home"
             >
-              <Logo size="sm" showTagline={false} />
+              <Logo size="header" showTagline={false} />
             </button>
 
             {/* Desktop Search */}

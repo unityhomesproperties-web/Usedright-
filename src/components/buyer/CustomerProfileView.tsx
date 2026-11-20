@@ -19,6 +19,8 @@ import {
   ExternalLink,
   XCircle,
   Clock,
+  BookOpen,
+  ClipboardCheck,
 } from 'lucide-react';
 import {
   AuditLogEntry,
@@ -39,7 +41,6 @@ import { getWarrantyDaysRemaining, isWarrantyActive } from '../../utils/warranty
 import { getShortStateLabel, NIGERIAN_COMMERCIAL_HUBS } from '../../utils/nigerianStates';
 import { SmartImage } from '../common/SmartImage';
 import { ActivityHistoryView } from '../common/ActivityHistoryView';
-import { TrustTileIcon, VendorToolGraphic } from '../common/TrustGraphics';
 
 export type CustomerSubScreen =
   | 'overview'
@@ -337,8 +338,31 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
     },
   ];
 
+  const profileMenuGroups: {
+    groupTitle: string;
+    rows: typeof profileMenuRows;
+  }[] = [
+    {
+      groupTitle: 'Account & Orders',
+      rows: profileMenuRows.filter((r) =>
+        ['personal_info', 'addresses', 'orders', 'activity'].includes(r.id)
+      ),
+    },
+    {
+      groupTitle: 'Saved & Payments',
+      rows: profileMenuRows.filter((r) =>
+        ['payment_requests', 'saved', 'payment_methods', 'warranties'].includes(r.id)
+      ),
+    },
+    {
+      groupTitle: 'Protection & Support',
+      rows: profileMenuRows.filter((r) => ['protection', 'help'].includes(r.id)),
+    },
+  ];
+  const signOutRow = profileMenuRows.find((r) => r.id === 'sign_out');
+
   return (
-    <div className="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8 py-5 pb-28 space-y-4">
+    <div className="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8 py-5 pb-[calc(6.75rem+env(safe-area-inset-bottom))] md:pb-12 space-y-4">
       {/* Compact Account Header */}
       <div className="bg-white rounded-2xl border border-[#EAE6F0] p-4 flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
@@ -355,7 +379,7 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
               <ArrowLeft className="w-4 h-4" />
             </button>
           )}
-          <div className="w-12 h-12 rounded-full bg-[#F5F0FF] border border-[#D0BCFC] text-[#A981FF] font-semibold flex items-center justify-center shrink-0">
+          <div className="w-12 h-12 rounded-full bg-[#F5F0FF] border border-[#D0BCFC] text-[#5B37B7] font-semibold flex items-center justify-center shrink-0">
             {fullName.slice(0, 2).toUpperCase()}
           </div>
           <div className="min-w-0">
@@ -375,54 +399,68 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
         )}
       </div>
 
-      {/* OVERVIEW: CLEAN VERTICAL STACK OF FULL-WIDTH ROWS */}
+      {/* OVERVIEW: CLEAN GROUPED VERTICAL SECTIONS */}
       {subScreen === 'overview' && (
-        <div className="bg-white rounded-2xl border border-[#EAE6F0] divide-y divide-[#EAE6F0] overflow-hidden">
-          {profileMenuRows.map((row) => {
-            const Icon = row.icon;
-            return (
+        <div data-testid="customer-profile-overview" className="space-y-4">
+          {profileMenuGroups.map((group) => (
+            <div key={group.groupTitle} className="space-y-1.5">
+              <h2 className="px-1 text-[11px] font-semibold uppercase tracking-wider text-[#716B7B]">
+                {group.groupTitle}
+              </h2>
+              <div className="bg-white rounded-2xl border border-[#EAE6F0] divide-y divide-[#EAE6F0] overflow-hidden">
+                {group.rows.map((row) => {
+                  const Icon = row.icon;
+                  return (
+                    <button
+                      key={row.id}
+                      type="button"
+                      onClick={row.onClick}
+                      className="w-full px-4 py-3 flex items-center justify-between gap-3 text-left transition-colors min-h-[56px] hover:bg-[#FAF8F4]"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-9 h-9 rounded-xl bg-[#F5F0FF] border border-[#EAE6F0] text-[#7E4EF2] flex items-center justify-center shrink-0">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-sm font-medium text-[#211B2B]">{row.label}</div>
+                          <div className="text-xs text-[#716B7B] truncate">{row.subtitle}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        {row.badge !== undefined && (
+                          <span className="px-2 py-0.5 rounded-full bg-[#F5F0FF] border border-[#D0BCFC] text-[#5B37B7] text-xs font-semibold tabular-nums">
+                            {row.badge}
+                          </span>
+                        )}
+                        <ChevronRight className="w-4 h-4 text-[#716B7B]" />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
+          {signOutRow && (
+            <div className="bg-white rounded-2xl border border-[#EAE6F0] overflow-hidden">
               <button
-                key={row.id}
                 type="button"
-                onClick={row.onClick}
-                className={`w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left transition-colors min-h-[60px] ${
-                  row.danger ? 'hover:bg-[#FFF5F5]' : 'hover:bg-[#FAF9FC]'
-                }`}
+                onClick={signOutRow.onClick}
+                className="w-full px-4 py-3 flex items-center justify-between gap-3 text-left transition-colors min-h-[56px] hover:bg-[#FFF5F5]"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                      row.danger
-                        ? 'bg-[#FFF5F5] text-[#D9534F]'
-                        : 'bg-[#F5F0FF] text-[#A981FF]'
-                    }`}
-                  >
-                    <Icon className="w-4 h-4" />
+                  <div className="w-9 h-9 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] text-[#C53030] flex items-center justify-center shrink-0">
+                    <LogOut className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
-                    <div
-                      className={`text-sm font-medium ${
-                        row.danger ? 'text-[#D9534F]' : 'text-[#211B2B]'
-                      }`}
-                    >
-                      {row.label}
-                    </div>
-                    <div className="text-xs text-[#716B7B] truncate">{row.subtitle}</div>
+                    <div className="text-sm font-medium text-[#C53030]">{signOutRow.label}</div>
+                    <div className="text-xs text-[#716B7B] truncate">{signOutRow.subtitle}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  {row.badge !== undefined && (
-                    <span className="px-2 py-0.5 rounded-full bg-[#F5F0FF] text-[#A981FF] text-xs font-semibold">
-                      {row.badge}
-                    </span>
-                  )}
-                  <ChevronRight
-                    className={`w-4 h-4 ${row.danger ? 'text-[#D9534F]' : 'text-[#716B7B]'}`}
-                  />
-                </div>
+                <ChevronRight className="w-4 h-4 text-[#C53030]" />
               </button>
-            );
-          })}
+            </div>
+          )}
         </div>
       )}
 
@@ -1077,8 +1115,10 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
       {subScreen === 'protection' && (
         <div className="bg-white rounded-2xl border border-[#EAE6F0] p-5 space-y-4 text-xs">
           <h2 className="text-base font-semibold text-[#211B2B]">UsedRight Purchase Protection</h2>
-          <div className="p-4 rounded-2xl bg-[#FAF9FC] border border-[#EAE6F0] flex items-start gap-3.5">
-            <TrustTileIcon variant="escrow" />
+          <div className="p-4 rounded-2xl bg-[#FAF8F4] border border-[#EAE6F0] flex items-start gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-[#F5F0FF] border border-[#D0BCFC] text-[#7E4EF2] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
             <div className="space-y-1.5">
               <div className="font-semibold text-sm text-[#211B2B]">
                 Minimum {inspectionHours}-Hour Physical Inspection Guarantee
@@ -1112,56 +1152,95 @@ export const CustomerProfileView: React.FC<CustomerProfileViewProps> = ({
       {/* HELP & SUPPORT */}
       {subScreen === 'help' && (
         <div className="bg-white rounded-2xl border border-[#EAE6F0] p-5 space-y-4 text-xs">
-          <h2 className="text-base font-semibold text-[#211B2B]">Help &amp; Support</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <h2 className="text-base font-semibold text-[#211B2B]">Help &amp; Support</h2>
+            <p className="text-[#716B7B] mt-0.5">
+              Guides, escrow inspection rules, and official UsedRight disclosures.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[#EAE6F0] divide-y divide-[#EAE6F0] overflow-hidden">
             <button
               type="button"
               onClick={onOpenHowItWorksModal}
-              className="p-4 rounded-2xl bg-[#FAF9FC] border border-[#EAE6F0] hover:border-[#A981FF] hover:bg-white transition-all text-left space-y-2.5"
+              className="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#FAF8F4] transition-colors"
             >
-              <TrustTileIcon variant="delivery" size="sm" />
-              <div>
-                <div className="font-semibold text-[#211B2B]">How UsedRight Works</div>
-                <div className="text-[11px] text-[#716B7B] mt-0.5">Step-by-step escrow flow →</div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#F5F0FF] border border-[#EAE6F0] text-[#7E4EF2] flex items-center justify-center shrink-0">
+                  <HelpCircle className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[#211B2B]">How UsedRight Works</div>
+                  <div className="text-[11px] text-[#716B7B]">Step-by-step escrow flow</div>
+                </div>
               </div>
+              <ChevronRight className="w-4 h-4 text-[#716B7B]" />
             </button>
+
             <button
               type="button"
               onClick={onOpenProtectionModal}
-              className="p-4 rounded-2xl bg-[#FAF9FC] border border-[#EAE6F0] hover:border-[#A981FF] hover:bg-white transition-all text-left space-y-2.5"
+              className="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#FAF8F4] transition-colors"
             >
-              <TrustTileIcon variant="escrow" size="sm" />
-              <div>
-                <div className="font-semibold text-[#211B2B]">Payment Protection Rules</div>
-                <div className="text-[11px] text-[#716B7B] mt-0.5">{inspectionHours}h inspection &amp; disputes →</div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#F5F0FF] border border-[#EAE6F0] text-[#7E4EF2] flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[#211B2B]">Payment Protection Rules</div>
+                  <div className="text-[11px] text-[#716B7B]">
+                    {inspectionHours}h inspection &amp; dispute window
+                  </div>
+                </div>
               </div>
+              <ChevronRight className="w-4 h-4 text-[#716B7B]" />
             </button>
+
             {onOpenInspectionEducationModal && (
               <button
                 type="button"
                 onClick={onOpenInspectionEducationModal}
-                className="p-4 rounded-2xl bg-[#FAF9FC] border border-[#EAE6F0] hover:border-[#A981FF] hover:bg-white transition-all text-left space-y-2.5"
+                className="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#FAF8F4] transition-colors"
               >
-                <TrustTileIcon variant="inspection" size="sm" />
-                <div>
-                  <div className="font-semibold text-[#211B2B]">10-Point Inspection Guide</div>
-                  <div className="text-[11px] text-[#716B7B] mt-0.5">Interactive phone &amp; laptop checks →</div>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F5F0FF] border border-[#EAE6F0] text-[#7E4EF2] flex items-center justify-center shrink-0">
+                    <ClipboardCheck className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-[#211B2B]">10-Point Inspection Guide</div>
+                    <div className="text-[11px] text-[#716B7B]">
+                      Interactive phone &amp; laptop handover checks
+                    </div>
+                  </div>
                 </div>
+                <ChevronRight className="w-4 h-4 text-[#716B7B]" />
+              </button>
+            )}
+
+            {onOpenPolicyCentre && (
+              <button
+                type="button"
+                onClick={() => onOpenPolicyCentre()}
+                className="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-[#FAF8F4] transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F5F0FF] border border-[#EAE6F0] text-[#7E4EF2] flex items-center justify-center shrink-0">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-[#211B2B]">
+                      Public Policy Centre (22 Policies)
+                    </div>
+                    <div className="text-[11px] text-[#716B7B]">
+                      All UsedRight marketplace policies &amp; fee rules
+                    </div>
+                  </div>
+                </div>
+                <ChevronRight className="w-4 h-4 text-[#716B7B]" />
               </button>
             )}
           </div>
-          {onOpenPolicyCentre && (
-            <button
-              type="button"
-              onClick={() => onOpenPolicyCentre()}
-              className="w-full py-2.5 px-4 rounded-xl bg-[#F5F0FF] border border-[#D0BCFC] hover:border-[#A981FF] text-[#211B2B] font-semibold"
-            >
-              Browse All 22 UsedRight Policies &amp; Disclosures →
-            </button>
-          )}
-          <div className="pt-1 flex items-center gap-2 text-[11px] text-[#716B7B]">
-            <VendorToolGraphic tool="help" />
-            <span>Need direct help with an active order? Open any order and message Support inside its Transaction Chat.</span>
+          <div className="p-3 rounded-xl bg-[#FAF8F4] border border-[#EAE6F0] text-[11px] text-[#4A4356]">
+            Need direct help with an active order? Open any order and message Support inside its Transaction Chat.
           </div>
         </div>
       )}

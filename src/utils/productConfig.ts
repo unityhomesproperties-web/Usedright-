@@ -281,10 +281,10 @@ export function buildGenericGradeOptions(
         ? matchedVar.stockQuantity
         : 0
       : matchesBaseListing
-      ? listing.stockQuantity ?? 2
+      ? listing.stockQuantity ?? 1
       : grade === 'Grade A' && selectedColorName.toLowerCase().includes('white')
       ? 0
-      : 2;
+      : 1;
 
     const fallbackFaults: DisclosedFault[] =
       grade === 'Grade C'
@@ -424,7 +424,7 @@ export function generatePriceHistorySeries(
   range: '3M' | '6M' = '6M'
 ): PriceHistoryPoint[] {
   const retailRef = Math.round((currentPrice * 1.28) / 5000) * 5000;
-  // Realistic foreign-used Nigerian Naira depreciation & FX stabilization curve
+  // Realistic pre-owned Nigerian Naira depreciation & FX curve
   const allPoints: PriceHistoryPoint[] = [
     {
       month: 'Jun',

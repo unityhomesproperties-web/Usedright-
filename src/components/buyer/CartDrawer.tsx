@@ -5,7 +5,7 @@ import {
   ShieldCheck,
   ArrowRight,
   ShoppingBag,
-  Globe,
+  AlertTriangle,
   Gift,
   Pencil,
   Info,
@@ -42,6 +42,7 @@ import {
   validateGiftOrderDetails,
 } from '../../utils/marketplace';
 import { NIGERIAN_COMMERCIAL_HUBS } from '../../utils/nigerianStates';
+import { getPrimaryCardWarning, mapCosmeticGrade } from '../../utils/deviceCondition';
 import { SmartImage } from '../common/SmartImage';
 
 interface CartDrawerProps {
@@ -60,8 +61,10 @@ interface CartDrawerProps {
   onUpdateQuantity?: (cartItemId: string, nextQuantity: number) => void;
   onEditItem?: (item: CartItem) => void;
   onContinueShopping?: () => void;
+  onQuickNavigate?: (view: string) => void;
   onOpenFeeInfo?: () => void;
   onProceedToCheckout: () => void;
+  isDemoMode?: boolean;
   onCreatePaymentRequest?: (payload: {
     deliveryMethod: DeliveryMethod;
     deliveryAddress: {
@@ -94,8 +97,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onUpdateQuantity,
   onEditItem,
   onContinueShopping,
+  onQuickNavigate,
   onOpenFeeInfo,
   onProceedToCheckout,
+  isDemoMode = false,
   onCreatePaymentRequest,
   onOpenPaymentRequestPreview,
 }) => {
@@ -549,7 +554,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     className="w-full py-3 px-4 rounded-xl bg-[#A981FF] hover:bg-[#B796FE] text-white font-semibold inline-flex items-center justify-center gap-1.5 min-h-[44px]"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Open Hosted Payer Review Page (Demo)
+                    {isDemoMode ? 'Open Hosted Payer Review Page (Demo)' : 'Open Hosted Payer Review Page'}
                   </button>
                 )}
               </div>
@@ -576,18 +581,48 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           )}
 
           {reqMode === 'cart' && items.length === 0 ? (
-            <div className="py-14 text-center space-y-4">
-              <ShoppingBag className="w-10 h-10 text-[#D0BCFC] mx-auto" />
-              <div className="space-y-1">
-                <p className="text-sm font-semibold text-[#211B2B]">Your cart is empty</p>
-                <p className="text-xs text-[#716B7B] max-w-xs mx-auto">
-                  Browse quality pre-owned phones, laptops, and accessories backed by our Delivery Verification Code and 24-hour inspection window.
+            <div data-testid="empty-cart-state" className="py-10 px-2 text-center space-y-5">
+              <div className="w-12 h-12 rounded-2xl bg-[#F5F0FF] border border-[#D0BCFC] text-[#7E4EF2] flex items-center justify-center mx-auto">
+                <ShoppingBag className="w-6 h-6" />
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-base font-semibold text-[#211B2B]">Your cart is empty</p>
+                <p className="text-xs text-[#716B7B] max-w-xs mx-auto leading-relaxed">
+                  Explore pre-owned phones and laptops with transparent condition grades, Delivery PINs, and a 24-hour inspection window.
                 </p>
               </div>
+
+              <div className="space-y-2.5 max-w-xs mx-auto">
+                <div className="text-[11px] font-medium text-[#716B7B]">Quick shortcuts</div>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { label: 'iPhones', view: 'phones' },
+                    { label: 'Laptops', view: 'laptops' },
+                    { label: 'Latest Deals', view: 'deals' },
+                    { label: 'Explore All', view: 'explore' },
+                  ].map((shortcut) => (
+                    <button
+                      key={shortcut.view}
+                      type="button"
+                      onClick={() => {
+                        if (onQuickNavigate) {
+                          onQuickNavigate(shortcut.view);
+                        } else {
+                          (onContinueShopping || onClose)();
+                        }
+                      }}
+                      className="px-3 py-2.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] hover:border-[#A981FF] hover:bg-[#F5F0FF] text-xs font-medium text-[#211B2B] transition-colors min-h-[42px]"
+                    >
+                      {shortcut.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <button
                 type="button"
                 onClick={onContinueShopping || onClose}
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#A981FF] hover:bg-[#B796FE] text-white text-xs font-medium min-h-[42px]"
+                className="w-full max-w-xs inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-[#A981FF] hover:bg-[#B796FE] text-white text-xs font-semibold min-h-[44px] transition-colors"
               >
                 Continue Shopping
                 <ArrowRight className="w-4 h-4" />
@@ -618,6 +653,21 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           qItem.cartItemId
                       ) || items[0];
                     const maxQty = getCartItemMaxQty(rawCartItem);
+                    const mappedGrade = mapCosmeticGrade(
+                      qItem.selectedVariation?.grade || qItem.listing.cosmeticGrade
+                    );
+                    const itemWarning = getPrimaryCardWarning(
+                      qItem.listing,
+                      qItem.selectedVariation
+                    );
+                    const specParts = [
+                      mappedGrade.label,
+                      qItem.selectedVariation?.storage ||
+                        qItem.selectedVariation?.ram ||
+                        qItem.listing.storage ||
+                        qItem.listing.storageCapacity,
+                      qItem.selectedVariation?.color || qItem.listing.color,
+                    ].filter(Boolean);
 
                     return (
                       <div
@@ -645,14 +695,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                             </button>
                           </div>
 
-                          <div className="text-[11px] text-[#716B7B] flex items-center gap-1.5">
-                            <Globe className="w-3 h-3 text-[#A981FF] shrink-0" />
-                            <span className="truncate">
-                              {qItem.selectedVariation
-                                ? `${qItem.selectedVariation.color} · ${qItem.selectedVariation.storage || qItem.selectedVariation.ram || ''} · ${qItem.selectedVariation.grade}`
-                                : `${qItem.listing.color} · ${qItem.listing.cosmeticGrade}`}
-                            </span>
+                          <div className="text-[11px] text-[#4A4356] truncate">
+                            {specParts.join(' · ')}
                           </div>
+
+                          {itemWarning && (
+                            <div
+                              data-testid="cart-item-disclosure"
+                              className={`px-2 py-1 rounded-lg border text-[10px] font-medium flex items-center gap-1.5 ${
+                                itemWarning.tone === 'danger'
+                                  ? 'bg-[#FFF5F5] border-[#FED7D7] text-[#C53030]'
+                                  : 'bg-[#FEF3C7]/70 border-[#FDE68A] text-[#92400E]'
+                              }`}
+                            >
+                              <AlertTriangle className="w-3 h-3 shrink-0" />
+                              <span className="truncate">{itemWarning.label}</span>
+                            </div>
+                          )}
 
                           {qItem.selectedAccessories.length > 0 && (
                             <div className="text-[11px] text-[#4A4356] space-y-0.5">
@@ -740,7 +799,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         </div>
 
         {reqMode === 'cart' && items.length > 0 && (
-          <div className="p-4 sm:p-5 border-t border-[#EAE6F0] bg-white space-y-3 shadow-[0_-4px_16px_rgba(33,27,43,0.05)]">
+          <div className="p-4 sm:p-5 pb-[calc(1rem+env(safe-area-inset-bottom))] border-t border-[#EAE6F0] bg-white space-y-3 shadow-[0_-4px_16px_rgba(33,27,43,0.05)]">
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between text-[#716B7B]">
                 <span>Product Subtotal</span>

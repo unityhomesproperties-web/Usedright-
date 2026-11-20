@@ -10,6 +10,7 @@ import { filterListings, validateDeviceListing } from './marketplace';
 import {
   buildConditionStatement,
   buildFunctionalityChecklistRows,
+  buildGroupedHardwareChecks,
   buildVerificationLayers,
   getEffectiveFunctionalStatus,
   getPrimaryCardWarning,
@@ -179,12 +180,12 @@ test('Scenario 10-12: Three Verification Layers stay strictly separate and never
 
   const layersInspected = buildVerificationLayers(inspectedListing);
   assert.equal(layersInspected.vendorVerification.label, 'Verified Vendor');
-  assert.equal(layersInspected.originEvidence.label, 'Origin Evidence Reviewed');
+  assert.equal(layersInspected.originEvidence.label, 'Origin Verified');
   assert.equal(layersInspected.physicalInspection.label, 'UsedRight Inspected');
 
   const layersVendorOnly = buildVerificationLayers(flagshipVendorOnly);
   assert.equal(layersVendorOnly.vendorVerification.label, 'Verified Vendor');
-  assert.equal(layersVendorOnly.originEvidence.label, 'Origin Evidence Reviewed');
+  assert.equal(layersVendorOnly.originEvidence.label, 'Origin Verified');
   assert.equal(
     layersVendorOnly.physicalInspection.label,
     'Not Physically Inspected by UsedRight'
@@ -195,7 +196,7 @@ test('Scenario 10-12: Three Verification Layers stay strictly separate and never
     sellerVerified: false,
   });
   assert.equal(layersUnverifiedOrigin.vendorVerification.label, 'Unverified Vendor');
-  assert.equal(layersUnverifiedOrigin.originEvidence.label, 'Origin Evidence Not Reviewed');
+  assert.equal(layersUnverifiedOrigin.originEvidence.label, 'Origin Not Verified');
   assert.equal(
     layersUnverifiedOrigin.physicalInspection.label,
     'Not Physically Inspected by UsedRight'
@@ -291,3 +292,27 @@ test('Scenario 15: Vendor guardrails block misleading "Works like new", "Certifi
   );
   assert.equal(/certified|refurbished|works like new/i.test(sanitized.cleaned), false);
 });
+
+test('Scenario 16: buildGroupedHardwareChecks organizes hardware into logical sections and preserves untested/fault states', () => {
+  const state = createInitialMarketplaceState();
+  const simLocked = state.listings.find((l) => l.id === 'dev-phone-4')!;
+  const untested = state.listings.find((l) => l.id === 'ur-samsung-s23-untested')!;
+
+  const simGroups = buildGroupedHardwareChecks({ listing: simLocked });
+  assert.deepEqual(
+    simGroups.map((g) => g.title),
+    ['Display', 'Cameras', 'Biometrics', 'Connectivity', 'Battery', 'Other Features']
+  );
+  const connGroup = simGroups.find((g) => g.id === 'connectivity')!;
+  assert.equal(connGroup.hasIssue, true);
+  assert.ok(connGroup.rows.some((r) => r.label === 'Network / SIM' && r.state === 'issue'));
+
+  const untestedGroups = buildGroupedHardwareChecks({ listing: untested });
+  const cameraGroup = untestedGroups.find((g) => g.id === 'cameras')!;
+  assert.equal(cameraGroup.hasUntested, true);
+  assert.equal(
+    cameraGroup.rows.every((r) => r.state === 'not_tested'),
+    true
+  );
+});
+

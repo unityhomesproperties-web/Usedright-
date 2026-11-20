@@ -52,6 +52,7 @@ import {
   scanMessageForDisallowedContent,
 } from './utils/marketplace';
 import { shouldShowDemoControls } from './utils/homeUiPolicy';
+import { shouldHideFooterTrustStack } from './utils/orderStatusUi';
 import {
   enrichListingsWithVendorState,
   getListingVendorState,
@@ -2292,7 +2293,7 @@ export default function App() {
         )}
 
         {activeView === 'messages' && role !== 'visitor' && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-28 space-y-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 pb-[calc(6.75rem+env(safe-area-inset-bottom))] md:pb-10 space-y-4">
             <button
               type="button"
               onClick={handleUniversalBack}
@@ -2346,6 +2347,7 @@ export default function App() {
               onAdminUpdateDispute={handleAdminUpdateDispute}
               onAdminResolveDispute={handleAdminResolveDispute}
               onSubmitReport={handleSubmitReport}
+              onOpenPolicyCentre={() => setPolicyModalSlug('about-usedright')}
             />
           </div>
         )}
@@ -2458,6 +2460,15 @@ export default function App() {
               if (target) handleViewDetails(target);
             }}
             onOpenGiftRecipientPortal={handleOpenGiftRecipientPortal}
+            onOpenPolicyCentre={() => setPolicyModalSlug('about-usedright')}
+            onOpenHelp={() => {
+              if (role === 'buyer') {
+                setCustomerSubScreen('help');
+                commitViewTransition('profile');
+              } else {
+                setProtectionModalOpen(true);
+              }
+            }}
           />
         )}
 
@@ -2669,7 +2680,8 @@ export default function App() {
         onOpenBuyerProtection={() => setProtectionModalOpen(true)}
         onOpenInspectionEducationModal={() => setInspectionGuideOpen(true)}
         onOpenPolicyCentre={(slug) => setPolicyModalSlug(slug || 'about-usedright')}
-        hideTopTrustBanner={activeView === 'home'}
+        hideTopTrustBanner={shouldHideFooterTrustStack(activeView)}
+        showInnerSupportBar={['messages', 'order_details', 'profile'].includes(activeView)}
       />
 
       {/* Cart & Checkout */}
@@ -2683,6 +2695,7 @@ export default function App() {
         deliveryConfig={state.deliveryConfig}
         viewerProfile={role === 'buyer' ? buyerProfile : undefined}
         paymentRequestValidityHours={state.platformConfig.paymentRequestValidityHours ?? 24}
+        isDemoMode={showDemoControls}
         undoRemovedItem={undoRemovedItem}
         onUndoRemove={handleUndoRemoveCartItem}
         onRemoveItem={handleRemoveCartItem}
@@ -2691,6 +2704,10 @@ export default function App() {
         onContinueShopping={() => {
           setIsCartOpen(false);
           handleNavigate('explore');
+        }}
+        onQuickNavigate={(view) => {
+          setIsCartOpen(false);
+          handleNavigate(view);
         }}
         onOpenFeeInfo={() => setProtectionModalOpen(true)}
         onProceedToCheckout={handleProceedCartCheckout}

@@ -140,7 +140,7 @@ export const BuyerHome: React.FC<BuyerHomeProps> = ({
   const inspectionHours = platformConfig.inspectionHours || 24;
 
   return (
-    <div className="space-y-8 pb-8 bg-[#FAF9FC] min-w-0">
+    <div className="space-y-5 sm:space-y-7 pb-8 bg-[#FAF9FC] min-w-0">
       {/* 2. Hero Image Carousel */}
       <HeroCarousel
         onExploreDevices={() => onNavigateToExplore()}

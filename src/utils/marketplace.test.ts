@@ -1532,4 +1532,35 @@ test('Store search, permanent Vendor ID (U-XXXX), Follow Store, social URL norma
   assert.equal(verifiedState.pendingSellerState.socialVerificationStatus, 'Needs Info');
 });
 
+test('Cart helpers enforce single-unit caps, merge duplicate configurations, and allow quantity > 1 only when stock permits', () => {
+  const state = createInitialMarketplaceState();
+  const basePhone = state.listings.find((l) => l.category === 'phones')!;
+  const singleUnitListing = { ...basePhone, stockQuantity: 1 };
+  const multiUnitListing = { ...basePhone, id: 'multi-unit-phone', stockQuantity: 3 };
 
+  assert.equal(getCartItemMaxQuantity(singleUnitListing), 1);
+  assert.equal(getCartItemMaxQuantity(multiUnitListing), 3);
+
+  // Adding the same single-unit device twice does not create duplicate rows or exceed qty 1
+  let cart = addOrMergeCartItem([], { listing: singleUnitListing });
+  cart = addOrMergeCartItem(cart, { listing: singleUnitListing });
+  assert.equal(cart.length, 1);
+  assert.equal(cart[0].quantity, 1);
+
+  // Adding a multi-unit item twice merges into one row with quantity 2 (capped at 3)
+  let multiCart = addOrMergeCartItem([], { listing: multiUnitListing });
+  multiCart = addOrMergeCartItem(multiCart, { listing: multiUnitListing });
+  multiCart = addOrMergeCartItem(multiCart, { listing: multiUnitListing });
+  multiCart = addOrMergeCartItem(multiCart, { listing: multiUnitListing });
+  assert.equal(multiCart.length, 1);
+  assert.equal(multiCart[0].quantity, 3);
+
+  // Direct quantity updates also obey stock bounds
+  const updated = updateCartItemQuantityWithStockLimit(
+    multiCart,
+    multiCart[0].id!,
+    99,
+    (it) => it.id!
+  );
+  assert.equal(updated[0].quantity, 3);
+});

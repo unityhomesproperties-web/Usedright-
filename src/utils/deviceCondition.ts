@@ -35,6 +35,14 @@ export interface ChecklistRow {
   state: 'working' | 'issue' | 'not_tested' | 'info';
 }
 
+export interface GroupedHardwareCheckSection {
+  id: string;
+  title: string;
+  rows: ChecklistRow[];
+  hasIssue: boolean;
+  hasUntested: boolean;
+}
+
 export interface VerificationLayersResult {
   vendorVerification: {
     verified: boolean;
@@ -43,7 +51,7 @@ export interface VerificationLayersResult {
   };
   originEvidence: {
     reviewed: boolean;
-    label: 'Origin Evidence Reviewed' | 'Origin Evidence Not Reviewed';
+    label: 'Origin Verified' | 'Origin Not Verified';
     detail: string;
   };
   physicalInspection: {
@@ -847,6 +855,77 @@ export function buildFunctionalityChecklistRows(
   ];
 }
 
+export function buildGroupedHardwareChecks(
+  input: ConditionQualificationInput
+): GroupedHardwareCheckSection[] {
+  const flatRows = buildFunctionalityChecklistRows(input);
+  const byLabel = new Map<string, ChecklistRow>(flatRows.map((r) => [r.label, r]));
+  const pick = (label: string): ChecklistRow | null => byLabel.get(label) || null;
+  const makeGroup = (id: string, title: string, rows: (ChecklistRow | null)[]): GroupedHardwareCheckSection | null => {
+    const cleanRows = rows.filter((r): r is ChecklistRow => Boolean(r));
+    if (cleanRows.length === 0) return null;
+    return {
+      id,
+      title,
+      rows: cleanRows,
+      hasIssue: cleanRows.some((r) => r.state === 'issue'),
+      hasUntested: cleanRows.some((r) => r.state === 'not_tested'),
+    };
+  };
+
+  const { listing } = input;
+  if (listing.category === 'phones') {
+    const r = isPhoneReport(listing.conditionReport) ? listing.conditionReport : null;
+    const wifiRow: ChecklistRow = {
+      label: 'Wi-Fi',
+      ...(r ? mapRawComponentStatus(r.wifi) : { value: 'Not tested', state: 'not_tested' as const }),
+    };
+    const btRow: ChecklistRow = {
+      label: 'Bluetooth',
+      ...(r ? mapRawComponentStatus(r.bluetooth) : { value: 'Not tested', state: 'not_tested' as const }),
+    };
+
+    return [
+      makeGroup('display', 'Display', [pick('Touchscreen'), pick('Display Panel')]),
+      makeGroup('cameras', 'Cameras', [pick('Front Camera'), pick('Rear Camera')]),
+      makeGroup('biometrics', 'Biometrics', [pick('Face ID / Biometrics')]),
+      makeGroup('connectivity', 'Connectivity', [pick('Network / SIM'), wifiRow, btRow]),
+      makeGroup('battery', 'Battery', [pick('Battery')]),
+      makeGroup('other', 'Other Features', [
+        pick('Speakers'),
+        pick('Microphone'),
+        pick('Charging Port'),
+        pick('Account / MDM Lock'),
+      ]),
+    ].filter((g): g is GroupedHardwareCheckSection => Boolean(g));
+  }
+
+  if (listing.category === 'laptops' && isLaptopReport(listing.conditionReport)) {
+    const r = listing.conditionReport;
+    const webcamRow: ChecklistRow = {
+      label: 'Webcam',
+      ...mapRawComponentStatus(r.webcam),
+    };
+    const wifiRow: ChecklistRow = {
+      label: 'Wi-Fi',
+      ...mapRawComponentStatus(r.wifi),
+    };
+    return [
+      makeGroup('display', 'Display', [pick('Display Panel')]),
+      makeGroup('input', 'Input & Trackpad', [pick('Keyboard & Trackpad')]),
+      makeGroup('ports', 'Ports & Power', [pick('Ports & Charging')]),
+      makeGroup('audio_cam', 'Audio, Camera & Wi-Fi', [pick('Speakers & Mic'), webcamRow, wifiRow]),
+      makeGroup('battery', 'Battery', [pick('Battery Condition')]),
+      makeGroup('security', 'Security & Locks', [pick('Firmware / MDM Lock')]),
+    ].filter((g): g is GroupedHardwareCheckSection => Boolean(g));
+  }
+
+  return [
+    makeGroup('core', 'Core Checks', [pick('Core Functionality')]),
+    makeGroup('battery', 'Battery', [pick('Battery Runtime')]),
+  ].filter((g): g is GroupedHardwareCheckSection => Boolean(g));
+}
+
 export function buildVerificationLayers(
   listing: DeviceListing,
   vendor?: VendorStorefront | null
@@ -863,22 +942,22 @@ export function buildVerificationLayers(
       verified: vendorVerified,
       label: vendorVerified ? 'Verified Vendor' : 'Unverified Vendor',
       detail: vendorVerified
-        ? 'Seller identity and business documentation approved by UsedRight.'
+        ? 'Vendor identity and business registration documents are approved on UsedRight.'
         : 'Vendor identity verification is still pending or unverified.',
     },
     originEvidence: {
       reviewed: originReviewed,
-      label: originReviewed ? 'Origin Evidence Reviewed' : 'Origin Evidence Not Reviewed',
+      label: originReviewed ? 'Origin Verified' : 'Origin Not Verified',
       detail: originReviewed
-        ? `Foreign-used sourcing manifest (${listing.batchReference || 'Import batch'}) reviewed.`
-        : 'Import manifest or foreign-origin evidence has not yet been reviewed.',
+        ? `Origin and batch records (${listing.batchReference || 'Import batch'}) were checked.`
+        : 'Origin or import batch records have not been verified for this listing.',
     },
     physicalInspection: {
       inspected: usedRightInspected,
       label: usedRightInspected ? 'UsedRight Inspected' : 'Not Physically Inspected by UsedRight',
       detail: usedRightInspected
-        ? 'Physically checked on a UsedRight diagnostic bench prior to listing.'
-        : 'Condition and component statuses are vendor-declared and covered by your post-delivery inspection window.',
+        ? 'Physically inspected on a UsedRight diagnostic bench prior to listing.'
+        : 'Condition details are vendor-declared and covered by your 24-hour post-delivery inspection window.',
     },
   };
 }

@@ -1,4 +1,5 @@
 import {
+  AccessoryItem,
   BundleItemSummary,
   CartItem,
   DeliveryConfig,
@@ -13,6 +14,7 @@ import {
   PaymentRequestRecord,
   PlatformConfig,
   PlatformFeeConfig,
+  ProductVariation,
   PromoBadgeType,
   VendorStorefront,
   FunctionalTestStatus,
@@ -1924,4 +1926,92 @@ export function buildPayerSafeRequestView(
   };
 }
 
+export function getCartItemMaxQuantity(
+  listing: DeviceListing,
+  selectedVariation?: ProductVariation
+): number {
+  const isAccessory =
+    listing.category === 'accessories' || listing.category === 'computer_accessories';
+  const rawStock = selectedVariation?.stockQuantity ?? listing.stockQuantity ?? 1;
+  if (!isAccessory && rawStock <= 1) return 1;
+  return Math.max(1, Math.min(rawStock, isAccessory ? 10 : rawStock));
+}
 
+export function buildCartConfigurationKey(
+  listingId: string,
+  selectedVariation?: ProductVariation,
+  selectedAccessories?: AccessoryItem[]
+): string {
+  const accKey = (selectedAccessories || [])
+    .map((a) => a.id)
+    .sort()
+    .join(',');
+  return `${listingId}::${selectedVariation?.id || 'base'}::${accKey}`;
+}
+
+export function addOrMergeCartItem(
+  cartItems: CartItem[],
+  params: {
+    listing: DeviceListing;
+    selectedAccessories?: AccessoryItem[];
+    selectedVariation?: ProductVariation;
+  }
+): CartItem[] {
+  const { listing, selectedAccessories, selectedVariation } = params;
+  const maxQty = getCartItemMaxQuantity(listing, selectedVariation);
+  const targetKey = buildCartConfigurationKey(listing.id, selectedVariation, selectedAccessories);
+  const existingIndex = cartItems.findIndex(
+    (item) =>
+      buildCartConfigurationKey(
+        item.listing.id,
+        item.selectedVariation,
+        item.selectedAccessories
+      ) === targetKey
+  );
+
+  if (existingIndex >= 0) {
+    return cartItems.map((item, idx) => {
+      if (idx !== existingIndex) return item;
+      const nextQty = Math.min(maxQty, Math.max(1, (item.quantity || 1) + 1));
+      return {
+        ...item,
+        listing,
+        selectedVariation,
+        selectedAccessories,
+        includedFreeGift: listing.freeGift,
+        quantity: nextQty,
+      };
+    });
+  }
+
+  return [
+    ...cartItems,
+    {
+      id: `cart-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      listing,
+      selectedVariation,
+      quantity: 1,
+      selectedAccessories,
+      includedFreeGift: listing.freeGift,
+    },
+  ];
+}
+
+export function updateCartItemQuantityWithStockLimit(
+  cartItems: CartItem[],
+  cartItemId: string,
+  nextQuantity: number,
+  getKey: (item: CartItem, idx: number) => string
+): CartItem[] {
+  if (nextQuantity <= 0) {
+    return cartItems.filter((it, idx) => getKey(it, idx) !== cartItemId);
+  }
+  return cartItems.map((it, idx) => {
+    if (getKey(it, idx) !== cartItemId) return it;
+    const maxQty = getCartItemMaxQuantity(it.listing, it.selectedVariation);
+    return {
+      ...it,
+      quantity: Math.min(maxQty, Math.max(1, nextQuantity)),
+    };
+  });
+}

@@ -24,6 +24,9 @@ import {
   Gift,
   ExternalLink,
   CreditCard,
+  ChevronDown,
+  ChevronUp,
+  BookOpen,
 } from 'lucide-react';
 import {
   DeliveryProblemType,
@@ -54,6 +57,10 @@ import {
   canRolePerformOrderAction,
   getRoleSafeDisputeView,
 } from '../../utils/transactionEngine';
+import {
+  deriveOrderStatusSummary,
+  isDeliveryPinAllowedForViewer,
+} from '../../utils/orderStatusUi';
 import { SmartImage } from '../common/SmartImage';
 
 interface OrderDetailViewProps {
@@ -91,6 +98,8 @@ interface OrderDetailViewProps {
   onViewVendorStorefront?: (vendorId: string) => void;
   onViewProduct?: (listingId: string) => void;
   onOpenGiftRecipientPortal?: (orderId: string, recipientToken?: string) => void;
+  onOpenPolicyCentre?: () => void;
+  onOpenHelp?: () => void;
 }
 
 export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
@@ -115,6 +124,8 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
   onViewVendorStorefront,
   onViewProduct,
   onOpenGiftRecipientPortal,
+  onOpenPolicyCentre,
+  onOpenHelp,
 }) => {
   const [confirmReceiptModalOpen, setConfirmReceiptModalOpen] = useState(false);
   const [deliveryProblemOpen, setDeliveryProblemOpen] = useState(false);
@@ -143,6 +154,8 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
   const [claimAttachmentName, setClaimAttachmentName] = useState('');
   const [claimError, setClaimError] = useState<string | null>(null);
   const [claimSuccessNotice, setClaimSuccessNotice] = useState<string | null>(null);
+  const [warrantyTermsExpanded, setWarrantyTermsExpanded] = useState(false);
+  const [activityExpanded, setActivityExpanded] = useState(false);
 
   const safeDispute = dispute
     ? getRoleSafeDisputeView(
@@ -187,13 +200,15 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
   const expectedVendorPayout =
     paymentHold?.netVendorPayout ?? Math.max(0, feeBase - vendorFee);
 
-  const showConfidentialOtpCard =
-    viewerRole === 'buyer' &&
-    !order.isGift &&
-    Boolean(order.deliveryVerificationCode) &&
-    !order.deliveryCodeUsedAt &&
-    (order.fulfillmentStatus === 'In transit' ||
-      order.fulfillmentStatus === 'Ready for Pickup');
+  const showConfidentialOtpCard = isDeliveryPinAllowedForViewer(order, viewerRole);
+
+  const orderSummary = deriveOrderStatusSummary({
+    order,
+    paymentHold,
+    dispute: safeDispute,
+    viewerRole,
+    remainingSeconds,
+  });
 
   const orderRecipientComplaints = recipientComplaints.filter((c) => c.orderId === order.id);
 
@@ -287,7 +302,7 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 space-y-5">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 pb-[calc(6.75rem+env(safe-area-inset-bottom))] md:pb-12 space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <button
           type="button"
@@ -743,21 +758,115 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
         </div>
       )}
 
-      {/* 8-STAGE ORDER JOURNEY TRACKER */}
-      <div className="bg-white rounded-2xl border border-[#EAE6F0] p-5 space-y-4">
+      {/* TOP ORDER & ESCROW STATUS OVERVIEW */}
+      <div
+        data-testid="order-status-overview"
+        className="bg-white rounded-2xl border border-[#EAE6F0] p-4 sm:p-5 space-y-4"
+      >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h2 className="text-sm font-semibold text-[#211B2B]">8-Stage Order Journey</h2>
+            <h2 className="text-sm font-semibold text-[#211B2B]">
+              {orderSummary.orderStatusLabel}
+            </h2>
             <p className="text-[11px] text-[#716B7B]">
               {order.deliveryMethod === 'physical_pickup'
                 ? 'In-Store Pickup fulfilment & protected inspection flow'
                 : 'Vendor-managed delivery & protected inspection flow'}
             </p>
           </div>
-          <span className="px-2.5 py-1 rounded-lg bg-[#F5F0FF] border border-[#D0BCFC] text-xs font-medium text-[#211B2B]">
-            {order.fulfillmentStatus.replace(/_/g, ' ')}
+          <span className="px-2.5 py-1 rounded-lg bg-[#F5F0FF] border border-[#D0BCFC] text-xs font-medium text-[#30102F]">
+            Stage {Math.min(stageIndex + 1, ORDER_STAGES_8.length)} of {ORDER_STAGES_8.length}
           </span>
         </div>
+
+        {/* Distinct Status Grid: Order, Payment, Delivery, Inspection */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+          <div className="p-3 rounded-xl bg-[#FAF8F4] border border-[#EAE6F0]">
+            <div className="text-[10px] font-medium text-[#716B7B]">Order Stage</div>
+            <div className="font-semibold text-[#211B2B] mt-0.5 leading-snug">
+              {orderSummary.orderStatusLabel}
+            </div>
+          </div>
+          <div className="p-3 rounded-xl bg-[#FAF8F4] border border-[#EAE6F0]">
+            <div className="text-[10px] font-medium text-[#716B7B]">Payment Status</div>
+            <div
+              className={`font-semibold mt-0.5 leading-snug ${
+                orderSummary.paymentTone === 'paused' || orderSummary.paymentTone === 'refunded'
+                  ? 'text-[#C53030]'
+                  : orderSummary.paymentTone === 'released'
+                  ? 'text-[#065F46]'
+                  : 'text-[#5B37B7]'
+              }`}
+            >
+              {orderSummary.paymentStatusLabel}
+            </div>
+          </div>
+          <div className="p-3 rounded-xl bg-[#FAF8F4] border border-[#EAE6F0]">
+            <div className="text-[10px] font-medium text-[#716B7B]">Delivery Status</div>
+            <div
+              className={`font-semibold mt-0.5 leading-snug ${
+                orderSummary.deliveryTone === 'issue'
+                  ? 'text-[#C53030]'
+                  : orderSummary.deliveryTone === 'verified'
+                  ? 'text-[#065F46]'
+                  : 'text-[#211B2B]'
+              }`}
+            >
+              {orderSummary.deliveryStatusLabel}
+            </div>
+          </div>
+          <div className="p-3 rounded-xl bg-[#F5F0FF] border border-[#D0BCFC]">
+            <div className="text-[10px] font-medium text-[#5B37B7]">
+              {inspectionHours}h Inspection Status
+            </div>
+            <div
+              data-testid="order-inspection-status-value"
+              className={`font-semibold mt-0.5 leading-snug tabular-nums ${
+                orderSummary.inspectionTone === 'paused'
+                  ? 'text-[#C53030]'
+                  : orderSummary.inspectionTone === 'active'
+                  ? 'text-[#5B37B7]'
+                  : 'text-[#30102F]'
+              }`}
+            >
+              {orderSummary.inspectionTone === 'active'
+                ? orderSummary.inspectionRemainingText
+                : orderSummary.inspectionStatusLabel}
+            </div>
+          </div>
+        </div>
+
+        {/* Verified Receipt & 24-Hour Inspection Window Timestamps */}
+        {orderSummary.hasVerifiedReceipt && (
+          <div
+            data-testid="order-inspection-timestamps"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 rounded-xl bg-[#FAF8F4] border border-[#EAE6F0] text-xs"
+          >
+            <div>
+              <div className="text-[10px] text-[#716B7B]">Receipt / Inspection Started</div>
+              <div className="font-medium text-[#211B2B] mt-0.5">
+                {orderSummary.inspectionStartedAt
+                  ? new Date(orderSummary.inspectionStartedAt).toLocaleString()
+                  : 'Confirmed on delivery'}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] text-[#716B7B]">Inspection Deadline</div>
+              <div className="font-medium text-[#211B2B] mt-0.5">
+                {orderSummary.inspectionDeadlineAt
+                  ? new Date(orderSummary.inspectionDeadlineAt).toLocaleString()
+                  : `${inspectionHours} hours from receipt`}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] text-[#716B7B]">Remaining Inspection Time</div>
+              <div className="font-semibold text-[#5B37B7] mt-0.5 tabular-nums flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 shrink-0" />
+                <span>{orderSummary.inspectionRemainingText}</span>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
           {ORDER_STAGES_8.map((stageLabel, idx) => {
@@ -1240,31 +1349,53 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <div className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-1.5">
-            <div className="font-semibold text-[#211B2B]">Covered Under Warranty</div>
-            <ul className="space-y-1 text-[11px] text-[#4A4356]">
-              {orderWarranty.coveredTerms.map((term, i) => (
-                <li key={i}>• {term}</li>
-              ))}
-            </ul>
+        {orderWarranty.disclosedFaultsExcluded.length > 0 && (
+          <div className="p-3 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] text-[11px] text-[#C53030]">
+            <strong>Disclosed Pre-Existing Faults Excluded from Warranty:</strong>{' '}
+            {orderWarranty.disclosedFaultsExcluded
+              .map((f) => toSimpleEnglish(f).label)
+              .join(' · ')}
           </div>
-          <div className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-1.5">
-            <div className="font-semibold text-[#211B2B]">Excluded from Coverage</div>
-            <ul className="space-y-1 text-[11px] text-[#4A4356]">
-              {orderWarranty.excludedTerms.map((term, i) => (
-                <li key={i}>• {term}</li>
-              ))}
-            </ul>
-            {orderWarranty.disclosedFaultsExcluded.length > 0 && (
-              <div className="pt-1.5 mt-1.5 border-t border-[#EAE6F0] text-[11px] text-[#C53030]">
-                <strong>Disclosed Pre-Existing Faults Excluded:</strong>{' '}
-                {orderWarranty.disclosedFaultsExcluded
-                  .map((f) => toSimpleEnglish(f).label)
-                  .join(' · ')}
+        )}
+
+        <div className="border border-[#EAE6F0] rounded-xl overflow-hidden">
+          <button
+            type="button"
+            data-testid="toggle-warranty-terms"
+            aria-expanded={warrantyTermsExpanded}
+            onClick={() => setWarrantyTermsExpanded((v) => !v)}
+            className="w-full px-3.5 py-2.5 bg-[#FAF9FC] hover:bg-[#F5F0FF] flex items-center justify-between text-xs font-medium text-[#211B2B] transition-colors"
+          >
+            <span>Warranty Coverage &amp; Exclusion Terms</span>
+            <span className="inline-flex items-center gap-1 text-[11px] text-[#5B37B7]">
+              {warrantyTermsExpanded ? 'Hide terms' : 'Read terms'}
+              {warrantyTermsExpanded ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
+            </span>
+          </button>
+          {warrantyTermsExpanded && (
+            <div className="p-3.5 bg-white border-t border-[#EAE6F0] grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-1.5">
+                <div className="font-semibold text-[#211B2B]">Covered Under Warranty</div>
+                <ul className="space-y-1 text-[11px] text-[#4A4356]">
+                  {orderWarranty.coveredTerms.map((term, i) => (
+                    <li key={i}>• {term}</li>
+                  ))}
+                </ul>
               </div>
-            )}
-          </div>
+              <div className="p-3.5 rounded-xl bg-[#FAF9FC] border border-[#EAE6F0] space-y-1.5">
+                <div className="font-semibold text-[#211B2B]">Excluded from Coverage</div>
+                <ul className="space-y-1 text-[11px] text-[#4A4356]">
+                  {orderWarranty.excludedTerms.map((term, i) => (
+                    <li key={i}>• {term}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
 
         {orderClaims.length > 0 && (
@@ -1303,14 +1434,32 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
         )}
       </div>
 
-      {/* Timestamped Order History */}
+      {/* Timestamped Order History (Collapsed beyond recent 2 events) */}
       <div className="bg-white rounded-2xl border border-[#EAE6F0] p-5 space-y-3">
-        <h3 className="text-sm font-semibold text-[#211B2B] flex items-center gap-2">
-          <FileText className="w-4 h-4 text-[#A981FF]" />
-          Order Activity History
-        </h3>
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm font-semibold text-[#211B2B] flex items-center gap-2">
+            <FileText className="w-4 h-4 text-[#A981FF]" />
+            Order Activity History ({order.events.length})
+          </h3>
+          {order.events.length > 2 && (
+            <button
+              type="button"
+              data-testid="toggle-order-activity"
+              aria-expanded={activityExpanded}
+              onClick={() => setActivityExpanded((v) => !v)}
+              className="inline-flex items-center gap-1 text-xs font-medium text-[#5B37B7] hover:underline"
+            >
+              {activityExpanded ? 'Show latest' : `Show all ${order.events.length}`}
+              {activityExpanded ? (
+                <ChevronUp className="w-3.5 h-3.5" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5" />
+              )}
+            </button>
+          )}
+        </div>
         <div className="space-y-2.5">
-          {order.events.map((ev, idx) => (
+          {(activityExpanded ? order.events : order.events.slice(-2)).map((ev, idx) => (
             <div key={idx} className="flex items-start gap-2.5 text-xs">
               <CheckCircle2 className="w-4 h-4 text-[#A981FF] shrink-0 mt-0.5" />
               <div>
@@ -1321,6 +1470,33 @@ export const OrderDetailView: React.FC<OrderDetailViewProps> = ({
           ))}
         </div>
       </div>
+
+      {(onOpenPolicyCentre || onOpenHelp) && (
+        <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 rounded-2xl bg-[#FAF8F4] border border-[#EAE6F0] text-xs text-[#716B7B]">
+          <span>Questions about delivery, escrow hold, or warranty terms?</span>
+          <div className="flex items-center gap-4">
+            {onOpenHelp && (
+              <button
+                type="button"
+                onClick={onOpenHelp}
+                className="font-medium text-[#5B37B7] hover:underline"
+              >
+                Help &amp; Support
+              </button>
+            )}
+            {onOpenPolicyCentre && (
+              <button
+                type="button"
+                onClick={onOpenPolicyCentre}
+                className="inline-flex items-center gap-1 font-medium text-[#5B37B7] hover:underline"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                Policies &amp; Guidelines
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* SUBMIT 3-MONTH WARRANTY CLAIM MODAL */}
       {warrantyModalOpen && (
